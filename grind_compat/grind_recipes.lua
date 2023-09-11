@@ -46,42 +46,42 @@ elepm.register_craft({
 	type   = "grind",
 	recipe = {"technic:chromium_lump"},
 	output = "technic:chromium_dust 2",
-	time   = 6
+	time   = 8
 })
 
 elepm.register_craft({
 	type   = "grind",
 	recipe = {"default:ice"},
 	output = "default:snowblock",
-	time   = 6
+	time   = 8
 })
 
 elepm.register_craft({
 	type   = "grind",
 	recipe = {"technic:lead_lump"},
 	output = "technic:lead_dust 2",
-	time   = 6
+	time   = 8
 })
 
 elepm.register_craft({
 	type   = "grind",
 	recipe = {"default:stone"},
 	output = "technic:stone_dust",
-	time   = 6
+	time   = 8
 })
 
 elepm.register_craft({
 	type   = "grind",
 	recipe = {"technic:sulfur_lump"},
 	output = "technic:sulfur_dust 2",
-	time   = 6
+	time   = 8
 })
 
 elepm.register_craft({
 	type   = "grind",
 	recipe = {"technic:zinc_lump"},
 	output = "technic:zinc_dust 2",
-	time   = 6
+	time   = 8
 })
 
 --Uranium Recipes for Both
@@ -89,7 +89,7 @@ elepm.register_craft({
 	type   = "grind",
 	recipe = {"technic:uranium_lump"},
 	output = "technic:uranium_dust 2",
-	time   = 6
+	time   = 8
 })
 
 if minetest.get_modpath("elepower_nuclear") then
@@ -103,6 +103,6 @@ if minetest.get_modpath("elepower_nuclear") then
 		type   = "grind",
 		recipe = {"elepower_nuclear:uranium_lump"},
 		output = "technic:uranium_dust 2",
-		time   = 6
+		time   = 8
 	})
 end
