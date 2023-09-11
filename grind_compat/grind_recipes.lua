@@ -58,6 +58,13 @@ elepm.register_craft({
 
 elepm.register_craft({
 	type   = "grind",
+	recipe = {"default:stone"},
+	output = "technic:stone_dust",
+	time   = 6
+})
+
+elepm.register_craft({
+	type   = "grind",
 	recipe = {"technic:sulfur_lump"},
 	output = "technic:sulfur_dust 2",
 	time   = 6
