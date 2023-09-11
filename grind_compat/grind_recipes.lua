@@ -1,7 +1,25 @@
 --Elepower Recipes for Technic Grinders
 technic.register_grinder_recipe({
+	input  = {"elepower_dynamics:graphite_ingot"},
+	output = "elepower_dynamics:graphite_rod 3",
+	time   = 3
+})
+
+technic.register_grinder_recipe({
 	input  = {"elepower_dynamics:lead_lump"},
 	output = "elepower_dynamics:lead_dust 2",
+	time   = 3
+})
+
+technic.register_grinder_recipe({
+	input  = {"default:mese"},
+	output = "default:mese_crystal 9",
+	time   = 3
+})
+
+technic.register_grinder_recipe({
+	input  = {"default:mese_crystal_fragment"},
+	output = "elepower_dynamics:mese_dust",
 	time   = 3
 })
 
@@ -23,29 +41,18 @@ technic.register_grinder_recipe({
 	time   = 3
 })
 
-technic.register_grinder_recipe({
-	input  = {"default:mese"},
-	output = "default:mese_crystal 9",
-	time   = 3
-})
-
-technic.register_grinder_recipe({
-	input  = {"default:mese_crystal_fragment"},
-	output = "elepower_dynamics:mese_dust",
-	time   = 3
-})
-
-technic.register_grinder_recipe({
-	input  = {"elepower_dynamics:graphite_ingot"},
-	output = "elepower_dynamics:graphite_rod 3",
-	time   = 3
-})
-
 --Technic Recipes for Elepower Grindstone and Pulverizer
 elepm.register_craft({
 	type   = "grind",
 	recipe = {"technic:chromium_lump"},
 	output = "technic:chromium_dust 2",
+	time   = 6
+})
+
+elepm.register_craft({
+	type   = "grind",
+	recipe = {"default:ice"},
+	output = "default:snowblock",
 	time   = 6
 })
 
