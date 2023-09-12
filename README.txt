@@ -1,3 +1,3 @@
-A collaboration project with Bob64 that adds recipes for Technic machines to make some items from Elepower. Also allows Elepower machines to make some items from Technic.
+A collaboration project with Bob64 that adds recipes for Technic machines to make some items from Elepower. Also allows Elepower machines to make some items from Technic. Electric Compatibility will later be added to enable Elepower machines to use electricity from Technic.
 
 All content contained within is licensed under GNU Lesser General Public License version 3.
