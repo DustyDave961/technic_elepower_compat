@@ -127,7 +127,7 @@ elepm.register_craft({
 })
 
 --New Recipes
----Elepower Silicon from Technic Dust
+---Elepower Alloys from Technic Dust
 elepm.register_craft({
 	type   = "alloy",
 	recipe = {"default:desert_sand 2", "technic:coal_dust 2"},
@@ -150,4 +150,4 @@ technic.register_alloy_recipe({
 	output = "elepower_dynamics:silicon_wafer",
 })
 
----Technic Silicon from Elepower Dust
+---Technic Alloys from Elepower Dust
