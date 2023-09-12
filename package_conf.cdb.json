@@ -1,0 +1,18 @@
+{
+	"type": "MOD",
+	"title": "Technic Elepower Compatibility",
+	"name": "technic_elepower_compat",
+	"short_description": "Technic machines can make items from Elepower. Elepower machines can make items from Technic. Elepower machines will soon be able to use electricity from Technic.",
+	"dev_state": "BETA",
+	"tags": ["crafting", "survival"],
+	"content_warnings": null,
+	"license": "LGPL-3.0-only",
+	"media_license": "LGPL-3.-only",
+	"long_description": "A collaboration project with Bob64 that adds recipes for Technic machines to make some items from Elepower. Also allows Elepower machines to make some items from Technic. Electric Compatibility will later be added to enable Elepower machines to use electricity from Technic. All content contained within is licensed under GNU Lesser General Public License version 3.0 or later.",
+	"website": null,
+	"repo": "https://github.com/DumbDave961/technic_elepower_compat",
+	"issue_tracker": null,
+	"forums": null,
+	"video_url": null,
+	"donate_url": null
+}
