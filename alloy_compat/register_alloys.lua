@@ -126,38 +126,9 @@ elepm.register_craft({
 	time   = 5
 })
 
---New Recipes
----Elepower Alloys from Technic Dust
-elepm.register_craft({
-	type   = "alloy",
-	recipe = {"default:desert_sand 2", "technic:coal_dust 2"},
-	output = "elepower_dynamics:silicon_wafer",
-})
+--New Recipes for Both
+register_alloy_recipe("default:desert_sand 2", "technic:coal_dust 2", "elepower_dynamics:silicon_wafer")
 
-elepm.register_craft({
-	type   = "alloy",
-	recipe = {"basic_materials:silicon", "technic:coal_dust 2"},
-	output = "elepower_dynamics:silicon_wafer",
-})
+register_alloy_recipe("basic_materials:silicon", "technic:coal_dust 2", "elepower_dynamics:silicon_wafer")
 
-technic.register_alloy_recipe({
-	input  = {"default:desert_sand 2", "technic:coal_dust 2"},
-	output = "elepower_dynamics:silicon_wafer",
-})
-
-technic.register_alloy_recipe({
-	input  = {"basic_materials:silicon", "technic:coal_dust 2"},
-	output = "elepower_dynamics:silicon_wafer",
-})
-
----Technic Alloys from Elepower Dust
-elepm.register_craft({
-	type   = "alloy",
-	recipe = {"default:sand 2", "elepower_dynamics:coal_dust 2"},
-	output = "technic:silicon_wafer",
-})
-
-technic.register_alloy_recipe({
-	input = {"default:sand 2", "elepower_dynamics:coal_dust 2"},
-	output = "technic:silicon_wafer",
-})
+register_alloy_recipe("default:sand 2", "elepower_dynamics:coal_dust 2", "technic:silicon_wafer")
