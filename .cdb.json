@@ -2,7 +2,7 @@
 	"type": "MOD",
 	"title": "Technic Elepower Compatibility",
 	"name": "technic_elepower_compat",
-	"short_description": "Technic machines can make items from Elepower. Elepower machines can make items from Technic, and will soon be able to use electricity from Technic.",
+	"short_description": "Technic machines can make items from Elepower. Elepower machines can make items from Technic, and will soon be able to use Technic electricity.",
 	"dev_state": "BETA",
 	"tags": ["crafting", "survival"],
 	"content_warnings": null,
