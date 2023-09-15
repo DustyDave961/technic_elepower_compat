@@ -132,3 +132,12 @@ register_alloy_recipe("default:desert_sand 2", "technic:coal_dust 2", "elepower_
 register_alloy_recipe("basic_materials:silicon", "technic:coal_dust 2", "elepower_dynamics:silicon_wafer")
 
 register_alloy_recipe("default:sand 2", "elepower_dynamics:coal_dust 2", "technic:silicon_wafer")
+
+---Temporary Ore Conversion Recipes (Recipes to be removed if and when duplicate ores can be removed)
+register_alloy_recipe("technic:lead_ingot 2", "elepower_dynamics:lead_ingot", "technic:lead_ingot 3")
+
+register_alloy_recipe("elepower_dynamics:lead_ingot 2", "technic:lead_ingot", "elepower_dynamics:lead_ingot 3")
+
+register_alloy_recipe("technic:zinc_ingot 2", "elepower_dynamics:zinc_ingot", "technic:zinc_ingot 3")
+
+register_alloy_recipe("elepower_dynamics:zinc_ingot 2", "technic:zinc_ingot", "elepower_dynamics:zinc_ingot 3")
