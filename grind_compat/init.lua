@@ -1,4 +1,4 @@
-grind_compat = {}
-grind_compat.modpath = minetest.get_modpath("grind_compat")
+local modpath = minetest.get_modpath("grind_compat")
 
-dofile(grind_compat.modpath .. "/grind_recipes.lua")
+dofile(modpath .. "/functions.lua")
+dofile(modpath .. "/grind_recipes.lua")
