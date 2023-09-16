@@ -15,6 +15,3 @@ function register_alloy_recipe(input1, input2, output1, time1, time2)
 end
 
 minetest.chat_send_all("The function is being called.")
-
-
-
