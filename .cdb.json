@@ -13,6 +13,6 @@
 	"repo": "https://github.com/DumbDave961/technic_elepower_compat",
 	"issue_tracker": null,
 	"forums": null,
-	"video_url": "https://www.youtube.com/watch?v=TnQ-NytAK10",
+	"video_url": ["https://www.youtube.com/watch?v=TnQ-NytAK10", "https://youtube.com/watch?v=3csTUucCsHY"],
 	"donate_url": null
 }
