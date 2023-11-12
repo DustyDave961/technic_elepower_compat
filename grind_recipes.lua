@@ -211,6 +211,13 @@ elepm.register_craft({
 	time   = 5
 })
 
+elepm.register_craft({
+	type   = "grind",
+	recipe = {"farming:seed_wheat"},
+	output = "farming:flour 1",
+	time   = 5
+})
+
 --Recipes for Both
 register_grind_recipe("stairs:slab_cobble 2", "default:gravel", 3, 5)
 
