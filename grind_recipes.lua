@@ -21,12 +21,12 @@ technic.register_grinder_recipe({
 
 technic.register_grinder_recipe({
 	input  = {"elepower_dynamics:lead_lump"},
-	output = "elepower_dynamics:lead_dust 2",
+	output = "technic:lead_dust 2",
 })
 
 technic.register_grinder_recipe({
 	input  = {"elepower_dynamics:lead_ingot"},
-	output = "elepower_dynamics:lead_dust",
+	output = "technic:lead_dust",
 })
 
 technic.register_grinder_recipe({
@@ -61,12 +61,12 @@ technic.register_grinder_recipe({
 
 technic.register_grinder_recipe({
 	input  = {"elepower_dynamics:zinc_lump"},
-	output = "elepower_dynamics:zinc_dust 2",
+	output = "technic:zinc_dust 2",
 })
 
 technic.register_grinder_recipe({
 	input  = {"elepower_dynamics:zinc_ingot"},
-	output = "elepower_dynamics:zinc_dust",
+	output = "technic:zinc_dust",
 })
 
 --Technic Recipes for Elepower Grindstone and Pulverizer
