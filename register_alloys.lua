@@ -2,7 +2,6 @@
 technic.register_alloy_recipe({
 	input  = {"default:copper_ingot 2", "moreores:silver_ingot"},
 	output = "basic_materials:brass_ingot 3",
-	time   = 8
 })
 
 technic.register_alloy_recipe({
@@ -126,18 +125,25 @@ elepm.register_craft({
 	time   = 5
 })
 
---New Recipes for Both
+--Register alloying recipes for both technic and elepower alloy furnaces.
+function register_alloy_recipe(input1, input2, output1, time1, time2) 
+	technic.register_alloy_recipe({
+		input  = {input1, input2},
+		output = output1,	
+		time = time1 or 6
+	})
+	elepm.register_craft({
+		type   = "alloy",
+		recipe = {input1, input2},
+		output = output1,
+		time = time2 or 4
+	})
+end
+
 register_alloy_recipe("default:desert_sand 2", "technic:coal_dust 2", "elepower_dynamics:silicon_wafer")
 
 register_alloy_recipe("basic_materials:silicon", "technic:coal_dust 2", "elepower_dynamics:silicon_wafer")
 
 register_alloy_recipe("default:sand 2", "elepower_dynamics:coal_dust 2", "technic:silicon_wafer")
 
----Temporary Ore Conversion Recipes (Recipes to be removed if and when duplicate ores can be removed)
-register_alloy_recipe("technic:lead_ingot 2", "elepower_dynamics:lead_ingot", "technic:lead_ingot 3")
-
-register_alloy_recipe("elepower_dynamics:lead_ingot 2", "technic:lead_ingot", "elepower_dynamics:lead_ingot 3")
-
-register_alloy_recipe("technic:zinc_ingot 2", "elepower_dynamics:zinc_ingot", "technic:zinc_ingot 3")
-
-register_alloy_recipe("elepower_dynamics:zinc_ingot 2", "technic:zinc_ingot", "elepower_dynamics:zinc_ingot 3")
+register_alloy_recipe("default:obsidian_glass", "technic:lead_ingot 4", "elepower_dynamics:hardened_glass 4", 7.5, 8)
