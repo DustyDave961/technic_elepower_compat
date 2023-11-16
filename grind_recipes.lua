@@ -30,8 +30,15 @@ technic.register_grinder_recipe({
 })
 
 technic.register_grinder_recipe({
+	input  = {"elepower_dynamics:lead_block"},
+	output = "technic:lead_dust 9",
+	time   = 10
+})
+
+technic.register_grinder_recipe({
 	input  = {"default:mese"},
 	output = "default:mese_crystal 9",
+	time   = 10
 })
 
 technic.register_grinder_recipe({
@@ -67,6 +74,12 @@ technic.register_grinder_recipe({
 technic.register_grinder_recipe({
 	input  = {"elepower_dynamics:zinc_ingot"},
 	output = "technic:zinc_dust",
+})
+
+technic.register_grinder_recipe({
+	input  = {"elepower_dynamics:zinc_block"},
+	output = "technic:zinc_dust 9",
+	time   = 10
 })
 
 --Technic Recipes for Elepower Grindstone and Pulverizer
@@ -218,9 +231,27 @@ elepm.register_craft({
 	time   = 5
 })
 
---Recipes for Both
+--Register grinding recipes for elepower pulverizers, grindstones, and technic grinders. For grinding ore materials in elepower grindstones and pulverizers, time = output + 4.
+function register_grind_recipe(input1, output1, time1, time2)
+	technic.register_grinder_recipe({
+		input  = {input1},
+		output = output1,	
+		time = time1 or 3
+	})
+	elepm.register_craft({
+		type   = "grind",
+		recipe = {input1},
+		output = output1,
+		time = time2 or 8
+	})
+end
+
 register_grind_recipe("stairs:slab_cobble 2", "default:gravel", 3, 5)
 
 if minetest.get_modpath("elepower_nuclear") then
 	register_grind_recipe("elepower_nuclear:uranium_lump", "technic:uranium_dust 2", 3, 6)
 end
+
+register_grind_recipe("technic:lead_block", "technic:lead_dust 9", 10, 13)
+
+register_grind_recipe("technic:zinc_block", "technic:zinc_dust 9", 10, 13)
