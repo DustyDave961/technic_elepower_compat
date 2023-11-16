@@ -132,28 +132,6 @@ elepm.register_craft({
 	time   = 5
 })
 
---Broken Sandstone recipes. Creates 4 sand instead of 2.
---elepm.register_craft({
-	--type   = "grind",
-	--recipe = {"default:desert_sandstone"},
-	--output = "default:desert_sand 2",
-	--time   = 8
---})
-
---elepm.register_craft({
-	--type   = "grind",
-	--recipe = {"default:sandstone"},
-	--output = "default:sand 2",
-	--time   = 8
---})
-
---elepm.register_craft({
-	--type   = "grind",
-	--recipe = {"default:silver_sandstone"},
-	--output = "default:silver_sand 2",
-	--time   = 8
---})
-
 elepm.register_craft({
 	type   = "grind",
 	recipe = {"default:silver_sand 4"},
