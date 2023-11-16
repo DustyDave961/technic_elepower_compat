@@ -224,12 +224,14 @@ elepm.register_craft({
 	time   = 5
 })
 
-elepm.register_craft({
-	type   = "grind",
-	recipe = {"farming:seed_wheat"},
-	output = "farming:flour 1",
-	time   = 4
-})
+if minetest.get_modpath("farming") then
+	elepm.register_craft({
+		type   = "grind",
+		recipe = {"farming:seed_wheat"},
+		output = "farming:flour 1",
+		time   = 4
+	})
+end
 
 --Register grinding recipes for elepower pulverizers, grindstones, and technic grinders. For grinding ore materials in elepower grindstones and pulverizers, time = output + 4.
 function register_grind_recipe(input1, output1, time1, time2)
