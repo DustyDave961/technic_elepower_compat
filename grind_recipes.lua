@@ -228,7 +228,7 @@ elepm.register_craft({
 	type   = "grind",
 	recipe = {"farming:seed_wheat"},
 	output = "farming:flour 1",
-	time   = 5
+	time   = 4
 })
 
 --Register grinding recipes for elepower pulverizers, grindstones, and technic grinders. For grinding ore materials in elepower grindstones and pulverizers, time = output + 4.
