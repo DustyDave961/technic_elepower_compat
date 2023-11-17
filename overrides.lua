@@ -19,7 +19,7 @@ minetest.register_abm({
     end,
 })
 
---Override lead and zinc ingots and dust and add groups for each.
+--Override ingots and dust, and add groups for each.
 minetest.override_item("technic:lead_ingot", {
 	groups = {lead_ingot = 1},
 })
