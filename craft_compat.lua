@@ -31,7 +31,13 @@ elepm.register_craft({
 	time   = 8,
 })
 
---Lead and zinc ingot smelting
+--Smelting
+minetest.register_craft({
+	type = "fuel",
+	recipe = "group:coal_dust",
+	burntime = 50,
+})
+
 minetest.register_craft({
 	type   = "cooking",
 	output = "technic:lead_ingot",
