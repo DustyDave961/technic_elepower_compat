@@ -20,6 +20,14 @@ minetest.register_abm({
 })
 
 --Override ingots and dust, and add groups for each.
+minetest.override_item("technic:coal_dust", {
+	groups = {coal_dust = 1},
+})
+
+minetest.override_item("elepower_dynamics:coal_dust", {
+	groups = {coal_dust = 1},
+})
+
 minetest.override_item("technic:lead_ingot", {
 	groups = {lead_ingot = 1},
 })
@@ -87,7 +95,7 @@ minetest.clear_craft({
 	}
 })
 
---Lead and zinc ingot smelting
+--Smelting
 minetest.clear_craft({
 	type   = "cooking",
 	output = "elepower_dynamics:lead_ingot",
@@ -134,6 +142,12 @@ minetest.clear_craft({
 	type   = "cooking",
 	output = "technic:zinc_ingot",
 	recipe = "technic:zinc_dust"
+})
+
+minetest.clear_craft({
+	type = "fuel",
+	recipe = "technic:coal_dust",
+	burntime = 50,
 })
 
 --Lead tools
