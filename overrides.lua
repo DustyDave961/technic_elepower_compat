@@ -24,44 +24,44 @@ minetest.override_item("technic:lead_ingot", {
 	groups = {lead_ingot = 1},
 })
 
-minetest.override_item("technic:zinc_ingot", {
-	groups = {zinc_ingot = 1},
-})
-
 minetest.override_item("elepower_dynamics:lead_ingot", {
 	groups = {lead_ingot = 1},
-})
-
-minetest.override_item("elepower_dynamics:zinc_ingot", {
-	groups = {zinc_ingot = 1},
 })
 
 minetest.override_item("technic:lead_dust", {
 	groups = {lead_dust = 1},
 })
 
-minetest.override_item("technic:zinc_dust", {
-	groups = {zinc_dust = 1},
-})
-
 minetest.override_item("elepower_dynamics:lead_dust", {
 	groups = {lead_dust = 1},
-})
-
-minetest.override_item("elepower_dynamics:zinc_dust", {
-	groups = {zinc_dust = 1},
 })
 
 minetest.override_item("technic:lead_lump", {
 	groups = {lead_lump = 1},
 })
 
-minetest.override_item("technic:zinc_lump", {
-	groups = {zinc_lump = 1},
-})
-
 minetest.override_item("elepower_dynamics:lead_lump", {
 	groups = {lead_lump = 1},
+})
+
+minetest.override_item("technic:zinc_ingot", {
+	groups = {zinc_ingot = 1},
+})
+
+minetest.override_item("elepower_dynamics:zinc_ingot", {
+	groups = {zinc_ingot = 1},
+})
+
+minetest.override_item("technic:zinc_dust", {
+	groups = {zinc_dust = 1},
+})
+
+minetest.override_item("elepower_dynamics:zinc_dust", {
+	groups = {zinc_dust = 1},
+})
+
+minetest.override_item("technic:zinc_lump", {
+	groups = {zinc_lump = 1},
 })
 
 minetest.override_item("elepower_dynamics:zinc_lump", {
