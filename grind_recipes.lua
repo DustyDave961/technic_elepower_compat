@@ -63,63 +63,16 @@ local elepower_grinding = {
 	{"technic:lead_lump",		  "technic:lead_dust 2", 6},
 	{"technic:lead_ingot",		  "technic:lead_dust"},
 	{"technic:stainless_steel_ingot", "technic:stainless_steel_dust"}
+	{"default:stone", 		  "technic:stone_dust", 8},
+	{"default:silver_sand",           "technic:stone_dust", 8},
+	{"technic:sulfur_lump", 	  "technic:sulfur_dust 2", 6},
+	{"technic:zinc_lump", 		  "technic:zinc_dust 2", 6},
+	{"technic:zinc_ingot", 		  "technic:zinc_dust"},
+	{"technic:uranium_lump", 	  "technic:uranium_dust 2", 6},
+	{"technic:uranium_ingot", 	  "technic:uranium_dust"},
+	{"technic:uranium0_ingot", 	  "technic:uranium0_dust"},
+	{"technic:uranium35_ingot", 	  "technic:uranium35_dust"},
 }
-
-elepm.register_craft({
-	type   = "grind",
-	recipe = {"default:stone"},
-	output = "technic:stone_dust",
-	time   = 8
-})
-
-elepm.register_craft({
-	type   = "grind",
-	recipe = {"technic:sulfur_lump"},
-	output = "technic:sulfur_dust 2",
-	time   = 6
-})
-
-elepm.register_craft({
-	type   = "grind",
-	recipe = {"technic:zinc_lump"},
-	output = "technic:zinc_dust 2",
-	time   = 6
-})
-
-elepm.register_craft({
-	type   = "grind",
-	recipe = {"technic:zinc_ingot"},
-	output = "technic:zinc_dust",
-	time   = 5
-})
-
-elepm.register_craft({
-	type   = "grind",
-	recipe = {"technic:uranium_lump"},
-	output = "technic:uranium_dust 2",
-	time   = 6
-})
-
-elepm.register_craft({
-	type   = "grind",
-	recipe = {"technic:uranium_ingot"},
-	output = "technic:uranium_dust",
-	time   = 5
-})
-
-elepm.register_craft({
-	type   = "grind",
-	recipe = {"technic:uranium0_ingot"},
-	output = "technic:uranium0_dust",
-	time   = 5
-})
-
-elepm.register_craft({
-	type   = "grind",
-	recipe = {"technic:uranium35_ingot"},
-	output = "technic:uranium35_dust",
-	time   = 5
-})
 
 if minetest.get_modpath("farming") then
 	table.insert(elepower_grinding{"farming:seed_wheat", "farming:flour 1, 4})
@@ -149,12 +102,16 @@ function register_grind_recipe(input1, output1, time1, time2)
 	})
 end
 
-register_grind_recipe("stairs:slab_cobble 2", "default:gravel", 3, 5)
+register_grind_recipe("stairs:slab_cobble 2", "default:gravel", 3, 8)
+
+register_grind_recipe("technic:lead_block", "technic:lead_dust 9", 10, 13)
+
+register_grind_recipe("technic:carbon_steel_block", "technic:carbon_steel_dust 9", 10, 13)
+
+register_grind_recipe("technic:stainless_steel_block", "technic:stainless_steel_dust 9", 10, 13)
 
 if minetest.get_modpath("elepower_nuclear") then
 	register_grind_recipe("elepower_nuclear:uranium_lump", "technic:uranium_dust 2", 3, 6)
 end
-
-register_grind_recipe("technic:lead_block", "technic:lead_dust 9", 10, 13)
 
 register_grind_recipe("technic:zinc_block", "technic:zinc_dust 9", 10, 13)
