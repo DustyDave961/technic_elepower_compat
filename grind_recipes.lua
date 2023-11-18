@@ -1,5 +1,5 @@
 --Elepower Recipes for Technic Grinders
-local technic_recipes = {
+local technic_grinding = {
 	{"elepower_dynamics:brass_plate",      "technic:brass_dust 2"},
 	{"basic_materials:brass_block",        "technic:brass_dust 9", 10},
 	{"default:bronzeblock",			       "technic:bronze_dust 9", 10},
@@ -46,76 +46,24 @@ local technic_recipes = {
 
 --Fuel rod
 if minetest.get_modpath("elepower_nuclear") then
-	table.insert(technic_recipes{"elepower_nuclear:fuel_rod_depleted", "elepower_nuclear:depleted_uranium_dust 3"})
+	table.insert(technic_grinding{"elepower_nuclear:fuel_rod_depleted", "elepower_nuclear:depleted_uranium_dust 3"})
 end
 
-for _, data in pairs(technic_recipes) do
+for _, data in pairs(technic_grinding) do
 	technic.register_grinder_recipe({input = {data[1]}, output = data[2], time = data[3] or 3})
 end
 
---Technic Recipes for Elepower Grindstone and Pulverizer
-elepm.register_craft({
-	type   = "grind",
-	recipe = {"technic:carbon_steel_ingot"},
-	output = "technic:carbon_steel_dust",
-	time   = 5
-})
-
-elepm.register_craft({
-	type   = "grind",
-	recipe = {"technic:cast_iron_ingot"},
-	output = "technic:cast_iron_dust",
-	time   = 5
-})
-
-elepm.register_craft({
-	type   = "grind",
-	recipe = {"technic:chromium_lump"},
-	output = "technic:chromium_dust 2",
-	time   = 6
-})
-
-elepm.register_craft({
-	type   = "grind",
-	recipe = {"technic:chromium_ingot"},
-	output = "technic:chromium_dust",
-	time   = 5
-})
-
-elepm.register_craft({
-	type   = "grind",
-	recipe = {"default:ice"},
-	output = "default:snowblock",
-	time   = 8
-})
-
-elepm.register_craft({
-	type   = "grind",
-	recipe = {"technic:lead_lump"},
-	output = "technic:lead_dust 2",
-	time   = 6
-})
-
-elepm.register_craft({
-	type   = "grind",
-	recipe = {"technic:lead_ingot"},
-	output = "technic:lead_dust",
-	time   = 5
-})
-
-elepm.register_craft({
-	type   = "grind",
-	recipe = {"default:silver_sand 4"},
-	output = "basic_materials:silicon",
-	time   = 8
-})
-
-elepm.register_craft({
-	type   = "grind",
-	recipe = {"technic:stainless_steel_ingot"},
-	output = "technic:stainless_steel_dust",
-	time   = 5
-})
+--Technic recipes for Elepower grindstone and pulverizer. For grinding ore materials, time = output + 4. The default time is 8.
+local elepower_grinding = {
+	{"technic:carbon_steel_ingot",    "technic:carbon_steel_dust"},
+	{"technic:cast_iron_ingot",       "technic:cast_iron_dust"},
+	{"technic:chromium_lump",         "technic:chromium_dust 2", 6},
+	{"technic:chromium_ingot",        "technic:chromium_dust"},
+	{"default:ice",			  "default:snowblock", 8},
+	{"technic:lead_lump",		  "technic:lead_dust 2", 6},
+	{"technic:lead_ingot",		  "technic:lead_dust"},
+	{"technic:stainless_steel_ingot", "technic:stainless_steel_dust"}
+}
 
 elepm.register_craft({
 	type   = "grind",
@@ -174,15 +122,19 @@ elepm.register_craft({
 })
 
 if minetest.get_modpath("farming") then
+	table.insert(elepower_grinding{"farming:seed_wheat", "farming:flour 1, 4})
+end
+
+for _,i in pairs(elepower_grinding) do
 	elepm.register_craft({
 		type   = "grind",
-		recipe = {"farming:seed_wheat"},
-		output = "farming:flour 1",
-		time   = 4
+		recipe = i.recipe,
+		output = i.output,
+		time   = i.time or 5,
 	})
 end
 
---Register grinding recipes for elepower pulverizers, grindstones, and technic grinders. For grinding ore materials in elepower grindstones and pulverizers, time = output + 4.
+--Register grinding recipes for elepower pulverizers, grindstones, and technic grinders.
 function register_grind_recipe(input1, output1, time1, time2)
 	technic.register_grinder_recipe({
 		input  = {input1},
