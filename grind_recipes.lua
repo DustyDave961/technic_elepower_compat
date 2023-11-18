@@ -1,86 +1,57 @@
 --Elepower Recipes for Technic Grinders
-technic.register_grinder_recipe({
-	input  = {"elepower_dynamics:electrum_ingot"},
-	output = "elepower_dynamics:electrum_dust",
-})
+local technic_recipes = {
+	{"elepower_dynamics:brass_plate",      "technic:brass_dust 2"},
+	{"basic_materials:brass_block",        "technic:brass_dust 9", 10},
+	{"default:bronzeblock",			       "technic:bronze_dust 9", 10},
+	{"elepower_dynamics:bronze_plate",     "technic:bronze_dust 2"},
+	{"default:copperblock",      	       "technic:copper_dust 9", 10},
+	{"elepower_dynamics:copper_plate",     "technic:copper_dust 2"},
+	{"elepower_dynamics:electrum_ingot",   "elepower_dynamics:electrum_dust"},
+	{"elepower_dynamics:electrum_plate",   "elepower_dynamics:electrum_dust 2"},
+	{"default:goldblock",     			   "technic:gold_dust 9", 10},
+	{"elepower_dynamics:gold_plate",       "technic:gold_dust 2"},
+	{"elepower_dynamics:graphite_ingot",   "elepower_dynamics:graphite_rod 3"},
+	{"elepower_dynamics:invar_ingot",      "elepower_dynamics:invar_dust"},
+	{"elepower_dynamics:invar_block",      "elepower_dynamics:invar_dust 9", 10},
+	{"elepower_dynamics:invar_plate",      "elepower_dynamics:invar_dust 2"},
+	{"elepower_dynamics:iron_ingot",	   "elepower_dynamics:iron_dust"},
+	{"elepower_dynamics:iron_plate",       "elepower_dynamics:iron_dust 2"},
+	{"elepower_dynamics:lead_lump",	       "technic:lead_dust 2"},
+	{"elepower_dynamics:lead_ingot",	   "technic:lead_dust"},
+	{"elepower_dynamics:lead_block",	   "technic:lead_dust 9", 10},
+	{"elepower_dynamics:lead_plate",       "technic:_dust 2"},
+	{"default:mese",					   "default:mese_crystal 9", 10},
+	{"default:mese_crystal_fragment"},     "elepower_dynamics:mese_dust", 1},
+	{"moreores:mithril_block",			   "technic:mithril_dust 9", 10},
+	{"elepower_dynamics:mithril_plate",    "technic:mithril_dust 2"},
+	{"elepower_dynamics:nickel_lump", 	   "elepower_dynamics:nickel_dust 2"},
+	{"elepower_dynamics:nickel_ingot",     "elepower_dynamics:nickel_dust"},
+	{"elepower_dynamics:nickel_block",     "elepower_dynamics:nickel_dust 9", 10},
+	{"elepower_dynamics:nickel_plate",     "elepower_dynamics:nickel_dust 2"},
+	{"moreores:silver_block", 			   "technic:silver_dust 9", 10},
+	{"elepower_dynamics:silver_plate",	   "technic:silver_dust 2"},
+	{"default:steelblock",				   "technic:wrought_iron_dust 9", 10},
+	{"elepower_dynamics:steel_plate", 	   "technic:wrought_iron_dust 2"},
+	{"default:tinblock",				   "technic:tin_dust 9", 10},
+	{"elepower_dynamics:tin_plate",		   "technic:tin_dust 2"},
+	{"elepower_dynamics:viridisium_lump",  "elepower_dynamics:viridisium_dust 2"},
+	{"elepower_dynamics:viridisium_ingot", "elepower_dynamics:viridisium_dust"},
+	{"elepower_dynamics:viridisium_block", "elepower_dynamics:viridisium_dust 9", 10},
+	{"elepower_dynamics:viridisium_plate", "elepower_dynamics:viridisium_dust 2"},
+	{"elepower_dynamics:zinc_lump",		   "technic:zinc_dust 2"},
+	{"elepower_dynamics:zinc_ingot", 	   "technic:zinc_dust"},
+	{"elepower_dynamics:zinc_block", 	   "technic:zinc_dust 9", 10},
+	{"elepower_dynamics:zinc_plate", 	   "technic:zinc_dust 2"},
+}
 
-technic.register_grinder_recipe({
-	input  = {"elepower_dynamics:graphite_ingot"},
-	output = "elepower_dynamics:graphite_rod 3",
-})
+--Fuel rod
+if minetest.get_modpath("elepower_nuclear") then
+	table.insert(technic_recipes{"elepower_nuclear:fuel_rod_depleted", "elepower_nuclear:depleted_uranium_dust 3"})
+end
 
-technic.register_grinder_recipe({
-	input  = {"elepower_dynamics:invar_ingot"},
-	output = "elepower_dynamics:invar_dust",
-})
-
-technic.register_grinder_recipe({
-	input  = {"elepower_dynamics:iron_ingot"},
-	output = "elepower_dynamics:iron_dust",
-})
-
-technic.register_grinder_recipe({
-	input  = {"elepower_dynamics:lead_lump"},
-	output = "technic:lead_dust 2",
-})
-
-technic.register_grinder_recipe({
-	input  = {"elepower_dynamics:lead_ingot"},
-	output = "technic:lead_dust",
-})
-
-technic.register_grinder_recipe({
-	input  = {"elepower_dynamics:lead_block"},
-	output = "technic:lead_dust 9",
-	time   = 10
-})
-
-technic.register_grinder_recipe({
-	input  = {"default:mese"},
-	output = "default:mese_crystal 9",
-	time   = 10
-})
-
-technic.register_grinder_recipe({
-	input  = {"default:mese_crystal_fragment"},
-	output = "elepower_dynamics:mese_dust",
-})
-
-technic.register_grinder_recipe({
-	input  = {"elepower_dynamics:nickel_lump"},
-	output = "elepower_dynamics:nickel_dust 2",
-})
-
-technic.register_grinder_recipe({
-	input  = {"elepower_dynamics:nickel_ingot"},
-	output = "elepower_dynamics:nickel_dust",
-})
-
-technic.register_grinder_recipe({
-	input  = {"elepower_dynamics:viridisium_lump"},
-	output = "elepower_dynamics:viridisium_dust 2",
-})
-
-technic.register_grinder_recipe({
-	input  = {"elepower_dynamics:viridisium_ingot"},
-	output = "elepower_dynamics:viridisium_dust",
-})
-
-technic.register_grinder_recipe({
-	input  = {"elepower_dynamics:zinc_lump"},
-	output = "technic:zinc_dust 2",
-})
-
-technic.register_grinder_recipe({
-	input  = {"elepower_dynamics:zinc_ingot"},
-	output = "technic:zinc_dust",
-})
-
-technic.register_grinder_recipe({
-	input  = {"elepower_dynamics:zinc_block"},
-	output = "technic:zinc_dust 9",
-	time   = 10
-})
+for _, data in pairs(technic_recipes) do
+	technic.register_grinder_recipe({input = {data[1]}, output = data[2], time = data[3] or 3})
+end
 
 --Technic Recipes for Elepower Grindstone and Pulverizer
 elepm.register_craft({
