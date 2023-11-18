@@ -71,7 +71,7 @@ local elepower_grinding = {
 	{"default:ice",			  "default:snowblock", 8},
 	{"technic:lead_lump",		  "technic:lead_dust 2", 6},
 	{"technic:lead_ingot",		  "technic:lead_dust"},
-	{"technic:stainless_steel_ingot", "technic:stainless_steel_dust"}
+	{"technic:stainless_steel_ingot", "technic:stainless_steel_dust"},
 	{"default:stone", 		  "technic:stone_dust", 8},
 	{"default:silver_sand",           "technic:stone_dust", 8},
 	{"technic:sulfur_lump", 	  "technic:sulfur_dust 2", 6},
@@ -84,7 +84,7 @@ local elepower_grinding = {
 	{"technic:uranium_block", 	  "technic:uranium_dust 9", 13},
 	{"technic:uranium0_block", 	  "technic:uranium0_dust 9", 13},
 	{"technic:uranium35_block", 	  "technic:uranium35_dust 9", 13},
-	{"technic:carbon_steel_block",    "technic:carbon_steel_dust 9", 13}
+	{"technic:carbon_steel_block",    "technic:carbon_steel_dust 9", 13},
 	{"stairs:slab_cobble 2", 	  "default:gravel"},
 	{"technic:zinc_block", 		  "technic:zinc_dust 9", 13},
 	{"technic:lead_block", 		  "technic:lead_dust 9", 13},
