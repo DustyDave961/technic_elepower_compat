@@ -92,7 +92,7 @@ local elepower_grinding = {
 }
 
 if minetest.get_modpath("farming") then
-	table.insert(elepower_grinding{"farming:seed_wheat", "farming:flour 1, 4})
+	table.insert(elepower_grinding{"farming:seed_wheat", "farming:flour 1", 4})
 end
 
 if minetest.get_modpath("elepower_nuclear") then
