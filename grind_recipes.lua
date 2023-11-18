@@ -85,10 +85,10 @@ local elepower_grinding = {
 	{"technic:uranium0_block", 	  "technic:uranium0_dust 9", 13},
 	{"technic:uranium35_block", 	  "technic:uranium35_dust 9", 13},
 	{"technic:carbon_steel_block",    "technic:carbon_steel_dust 9", 13}
-	{"stairs:slab_cobble 2", 	  "default:gravel"}
-	{"technic:zinc_block", 		  "technic:zinc_dust 9", 13}
-	{"technic:lead_block", 		  "technic:lead_dust 9", 13}
-	{"technic:stainless_steel_block", "technic:stainless_steel_dust 9", 13}
+	{"stairs:slab_cobble 2", 	  "default:gravel"},
+	{"technic:zinc_block", 		  "technic:zinc_dust 9", 13},
+	{"technic:lead_block", 		  "technic:lead_dust 9", 13},
+	{"technic:stainless_steel_block", "technic:stainless_steel_dust 9", 13},
 }
 
 if minetest.get_modpath("farming") then
