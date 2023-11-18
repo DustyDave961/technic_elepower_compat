@@ -230,11 +230,6 @@ register_grind_recipe("stairs:slab_cobble 2", "default:gravel", 3, 5)
 
 if minetest.get_modpath("elepower_nuclear") then
 	register_grind_recipe("elepower_nuclear:uranium_lump", "technic:uranium_dust 2", 3, 6)
-
-	technic.register_grinder_recipe({
-		input  = {"elepower_nuclear:fuel_rod_depleted"},
-		output = "elepower_nuclear:depleted_uranium_dust 3",
-	})
 end
 
 register_grind_recipe("technic:lead_block", "technic:lead_dust 9", 10, 13)
