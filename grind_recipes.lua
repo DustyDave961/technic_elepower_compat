@@ -102,11 +102,11 @@ function register_grind_recipe(input1, output1, time1, time2)
 	})
 end
 
+register_grind_recipe("technic:carbon_steel_block", "technic:carbon_steel_dust 9", 10, 13)
+
 register_grind_recipe("stairs:slab_cobble 2", "default:gravel", 3, 8)
 
 register_grind_recipe("technic:lead_block", "technic:lead_dust 9", 10, 13)
-
-register_grind_recipe("technic:carbon_steel_block", "technic:carbon_steel_dust 9", 10, 13)
 
 register_grind_recipe("technic:stainless_steel_block", "technic:stainless_steel_dust 9", 10, 13)
 
