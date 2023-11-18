@@ -88,30 +88,28 @@ for _,i in pairs(elepower_grinding) do
 end
 
 --Register grinding recipes for elepower pulverizers, grindstones, and technic grinders.
-function register_grind_recipe(input1, output1, time1, time2)
-	technic.register_grinder_recipe({
-		input  = {input1},
-		output = output1,	
-		time = time1 or 3
-	})
-	elepm.register_craft({
-		type   = "grind",
-		recipe = {input1},
-		output = output1,
-		time = time2 or 8
-	})
-end
-
-register_grind_recipe("technic:carbon_steel_block", "technic:carbon_steel_dust 9", 10, 13)
-
-register_grind_recipe("stairs:slab_cobble 2", "default:gravel", 3, 8)
-
-register_grind_recipe("technic:lead_block", "technic:lead_dust 9", 10, 13)
-
-register_grind_recipe("technic:stainless_steel_block", "technic:stainless_steel_dust 9", 10, 13)
+local technic_elepower_grinding = {
+	{"technic:carbon_steel_block",    "technic:carbon_steel_dust 9", 10, 13}
+	{"stairs:slab_cobble 2", 	  "default:gravel", 3, 8}
+	{"technic:zinc_block", 		  "technic:zinc_dust 9", 10, 13}
+	{"technic:lead_block", 		  "technic:lead_dust 9", 10, 13}
+	{"technic:stainless_steel_block", "technic:stainless_steel_dust 9", 10, 13}
 
 if minetest.get_modpath("elepower_nuclear") then
-	register_grind_recipe("elepower_nuclear:uranium_lump", "technic:uranium_dust 2", 3, 6)
+	table.insert(technic_elepower_grinding{"elepower_nuclear:uranium_lump", "technic:uranium_dust 2", 3, 6})
 end
 
-register_grind_recipe("technic:zinc_block", "technic:zinc_dust 9", 10, 13)
+for _,data in pairs(technic_elepower_grinding) do	
+	technic.register_grinder_recipe({
+		input  = {data[1]},
+		output = data[2],	
+		time = data[3] or 3
+	})
+	
+	elepm.register_craft({
+		type   = "grind",
+		recipe = {data[1]},
+		output = data[2],
+		time = data[4] or 8
+	})
+end
