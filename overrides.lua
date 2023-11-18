@@ -194,17 +194,11 @@ minetest.clear_craft({
 		{"elepower_dynamics:lead_ingot",  "elepower_dynamics:lead_ingot",  "elepower_dynamics:lead_ingot"},
 		{"basic_materials:copper_wire", "basic_materials:copper_wire", "basic_materials:copper_wire"},
 		{"elepower_dynamics:lead_ingot",  "elepower_dynamics:lead_ingot",  "elepower_dynamics:lead_ingot"},
-	},
-	replacements = {
-		{"basic_materials:copper_wire", "basic_materials:empty_spool"},
-		{"basic_materials:copper_wire", "basic_materials:empty_spool"},
-		{"basic_materials:copper_wire", "basic_materials:empty_spool"},
 	}
 })
 
 -- Opaque Fluid Duct
 minetest.clear_craft({
-	output = "elepower_dynamics:opaque_duct 3",
 	recipe = {
 		{"elepower_dynamics:lead_ingot",  "elepower_dynamics:lead_ingot",  "elepower_dynamics:lead_ingot"},
 		{"fluid_transfer:fluid_duct", "fluid_transfer:fluid_duct", "fluid_transfer:fluid_duct"},
@@ -236,8 +230,8 @@ minetest.clear_craft({
 	}
 })
 
+--Elepower Battery
 minetest.clear_craft({
-	output = "elepower_dynamics:battery 2",
 	recipe = {
 		{"elepower_dynamics:zinc_dust", "elepower_dynamics:graphite_rod", "elepower_dynamics:lead_dust"},
 		{"elepower_dynamics:tin_plate", "default:mese_crystal_fragment", "elepower_dynamics:tin_plate"},
