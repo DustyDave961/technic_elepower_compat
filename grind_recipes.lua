@@ -34,6 +34,9 @@ local technic_grinding = {
 	{"elepower_dynamics:steel_plate",      "technic:wrought_iron_dust 2"},
 	{"default:tinblock",		       "technic:tin_dust 9", 10},
 	{"elepower_dynamics:tin_plate",	       "technic:tin_dust 2"},
+	{"technic:uranium_block", 	       "technic:uranium_dust 9", 10},
+	{"technic:uranium0_block", 	       "technic:uranium0_dust 9", 10},
+	{"technic:uranium35_block", 	       "technic:uranium35_dust 9", 10},
 	{"elepower_dynamics:viridisium_lump",  "elepower_dynamics:viridisium_dust 2"},
 	{"elepower_dynamics:viridisium_ingot", "elepower_dynamics:viridisium_dust"},
 	{"elepower_dynamics:viridisium_block", "elepower_dynamics:viridisium_dust 9", 10},
@@ -78,6 +81,9 @@ local elepower_grinding = {
 	{"technic:uranium_ingot", 	  "technic:uranium_dust"},
 	{"technic:uranium0_ingot", 	  "technic:uranium0_dust"},
 	{"technic:uranium35_ingot", 	  "technic:uranium35_dust"},
+	{"technic:uranium_block", 	  "technic:uranium_dust 9", 13},
+	{"technic:uranium0_block", 	  "technic:uranium0_dust 9", 13},
+	{"technic:uranium35_block", 	  "technic:uranium35_dust 9", 13},
 	{"technic:carbon_steel_block",    "technic:carbon_steel_dust 9", 13}
 	{"stairs:slab_cobble 2", 	  "default:gravel"}
 	{"technic:zinc_block", 		  "technic:zinc_dust 9", 13}
