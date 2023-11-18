@@ -21,7 +21,7 @@ local technic_grinding = {
 	{"elepower_dynamics:lead_block",       "technic:lead_dust 9", 10},
 	{"elepower_dynamics:lead_plate",       "technic:_dust 2"},
 	{"default:mese",		       "default:mese_crystal 9", 10},
-	{"default:mese_crystal_fragment"},     "elepower_dynamics:mese_dust", 1},
+	{"default:mese_crystal_fragment",     "elepower_dynamics:mese_dust", 1},
 	{"moreores:mithril_block",	       "technic:mithril_dust 9", 10},
 	{"elepower_dynamics:mithril_plate",    "technic:mithril_dust 2"},
 	{"elepower_dynamics:nickel_lump",      "elepower_dynamics:nickel_dust 2"},
@@ -46,7 +46,7 @@ local technic_grinding = {
 	{"elepower_dynamics:zinc_block",       "technic:zinc_dust 9", 10},
 	{"elepower_dynamics:zinc_plate",       "technic:zinc_dust 2"},
 	{"technic:carbon_steel_block",         "technic:carbon_steel_dust 9", 10},
-	{"stairs:slab_cobble 2", 	       "default:gravel"}
+	{"stairs:slab_cobble 2", 	       "default:gravel"},
 	{"technic:zinc_block", 		       "technic:zinc_dust 9", 10,},
 	{"technic:lead_block", 		       "technic:lead_dust 9", 10},
 	{"technic:stainless_steel_block",      "technic:stainless_steel_dust 9", 10},
