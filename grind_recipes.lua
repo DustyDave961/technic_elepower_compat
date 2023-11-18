@@ -54,8 +54,8 @@ local technic_grinding = {
 
 --Fuel rod
 if minetest.get_modpath("elepower_nuclear") then
-	table.insert(technic_grinding{"elepower_nuclear:uranium_lump", "technic:uranium_dust 2"})
-	table.insert(technic_grinding{"elepower_nuclear:fuel_rod_depleted", "elepower_nuclear:depleted_uranium_dust 3"})
+	table.insert(technic_grinding, {"elepower_nuclear:uranium_lump", "technic:uranium_dust 2"})
+	table.insert(technic_grinding, {"elepower_nuclear:fuel_rod_depleted", "elepower_nuclear:depleted_uranium_dust 3"})
 end
 
 for _, data in pairs(technic_grinding) do
@@ -92,11 +92,11 @@ local elepower_grinding = {
 }
 
 if minetest.get_modpath("farming") then
-	table.insert(elepower_grinding{"farming:seed_wheat", "farming:flour 1", 4})
+	table.insert(elepower_grinding, {"farming:seed_wheat", "farming:flour 1", 4})
 end
 
 if minetest.get_modpath("elepower_nuclear") then
-	table.insert(elepower_grinding{"elepower_nuclear:uranium_lump", "technic:uranium_dust 2"})
+	table.insert(elepower_grinding, {"elepower_nuclear:uranium_lump", "technic:uranium_dust 2"})
 end
 
 for _,i in pairs(elepower_grinding) do
