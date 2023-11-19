@@ -89,7 +89,7 @@ local elepower_grinding = {
 	{"technic:lead_ingot",	              "technic:lead_dust"},
 	{"technic:lead_block", 	              "technic:lead_dust 9", 13},
 	{"moretrees:rubber_tree_trunk",       "technic:rubber_tree_grindings 4", 8},
-	{"technic:common_tree_grindings",     "technic:sawdust", 8},
+	{"technic:common_tree_grindings",     "technic:sawdust"},
 	{"technic:rubber_tree_grindings",     "technic:sawdust 4", 8},
 	{"default:ice",	                      "default:snowblock", 8},
 	{"technic:stainless_steel_ingot",     "technic:stainless_steel_dust"},
