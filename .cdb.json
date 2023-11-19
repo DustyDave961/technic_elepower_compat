@@ -8,7 +8,7 @@
 	"content_warnings": null,
 	"license": "LGPL-3.0-or-later",
 	"media_license": "LGPL-3.0-or-later",
-	"long_description": "A collaboration project with Bob64 to help Technic and Elepower work together. Recipes were added for Technic machines to make some items from Elepower and for Elepower machines to make some items from Technic. A new electric converter will later be added to connect Technic and Elepower grids together. All content contained within is licensed under GNU Lesser General Public License version 3.0 or later.",
+	"long_description": "A collaboration project with Bob64 aka DustyBagel to help Technic and Elepower work together. Recipes were added for Technic machines to make some items from Elepower and for Elepower machines to make some items from Technic. A new electric converter will later be added to connect Technic and Elepower grids together. All content contained within is licensed under GNU Lesser General Public License version 3.0 or later.",
 	"website": null,
 	"repo": "https://github.com/DumbDave961/technic_elepower_compat",
 	"issue_tracker": null,
