@@ -2,7 +2,7 @@
 local technic_grinding = {
 	{"elepower_dynamics:brass_plate",      "technic:brass_dust"},
 	{"basic_materials:brass_block",        "technic:brass_dust 9", 10},
-	{"default:bronzeblock",		       "technic:bronze_dust 9", 10},
+	{"default:bronzeblock",	               "technic:bronze_dust 9", 10},
 	{"elepower_dynamics:bronze_plate",     "technic:bronze_dust"},
 	{"technic:carbon_steel_block",         "technic:carbon_steel_dust 9", 10},
 	{"default:copperblock",      	       "technic:copper_dust 9", 10},
@@ -72,6 +72,8 @@ local elepower_grinding = {
 	{"technic:cast_iron_ingot",           "technic:cast_iron_dust"},
 	{"technic:chromium_lump",             "technic:chromium_dust 2", 6},
 	{"technic:chromium_ingot",            "technic:chromium_dust"},
+	{"technic:carbon_plate",              "technic:coal_dust 12", 16},
+	{"technic:copper_plate",              "technic:copper_dust 5", 9},
 	{"stairs:slab_cobble 2",              "default:gravel"},
 	{"technic:lead_lump",	              "technic:lead_dust 2", 6},
 	{"technic:lead_ingot",	              "technic:lead_dust"},
