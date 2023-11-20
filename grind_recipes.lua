@@ -74,7 +74,7 @@ local elepower_grinding = {
 	{"technic:carbon_steel_ingot",        "technic:carbon_steel_dust"},
 	{"technic:carbon_steel_block",        "technic:carbon_steel_dust 9", 13},
 	{"technic:cast_iron_ingot",           "technic:cast_iron_dust"},
-	{"technic:cast_iron_block",            "technic:cast_iron_dust 9", 13},
+	{"technic:cast_iron_block",           "technic:cast_iron_dust 9", 13},
 	{"technic:chernobylite_block",        "technic:chernobylite_dust"},
 	{"technic:chromium_lump",             "technic:chromium_dust 2", 6},
 	{"technic:chromium_ingot",            "technic:chromium_dust"},
