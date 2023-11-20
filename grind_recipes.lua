@@ -47,6 +47,7 @@ local technic_blocks = {
 	{"basic_materials:brass_block",        "technic:brass_dust 9"},
 	{"default:bronzeblock",	               "technic:bronze_dust 9"},
 	{"technic:carbon_steel_block",         "technic:carbon_steel_dust 9"},
+	{"technic:cast_iron_block",            "technic:cast_iron_dust 9"},
 	{"technic:chromium_block",             "technic:chromium_dust 9"},
 	{"default:copperblock",      	       "technic:copper_dust 9"},
 	{"default:diamondblock",               "elepower_dynamics:diamond_dust 9"},
@@ -73,67 +74,202 @@ for _, data in pairs(technic_blocks) do
 end
 
 --Technic recipes for Elepower grindstone and pulverizer. For grinding ore materials, time = output + 4. The default time is 8.
-elepm.register_craft({
-	type   = "grind",
-	recipe = {"technic:carbon_plate"},
-	output = "technic:coal_dust 12",
-	time = 16,
-})
-
 local elepower_grinding = {
-	{"basic_materials:chain_brass 3",     "technic:brass_dust"},
-	{"basic_materials:chainlink_brass 2", "technic:brass_dust"},
-	{"technic:carbon_steel_ingot",        "technic:carbon_steel_dust"},
-	{"technic:carbon_steel_block",        "technic:carbon_steel_dust 9", time = 13},
-	{"technic:cast_iron_ingot",           "technic:cast_iron_dust"},
-	{"technic:chernobylite_block",        "technic:chernobylite_dust"},
-	{"technic:chromium_lump",             "technic:chromium_dust 2", time = 6},
-	{"technic:chromium_ingot",            "technic:chromium_dust"},
-	{"technic:chromium_block",            "technic:chromium_dust 9", time = 13},
-	{"default:wood",                      "technic:common_tree_grindings"},
-	{"default:acacia_wood",               "technic:common_tree_grindings"},
-	{"default:aspen_wood",                "technic:common_tree_grindings"},
-	{"default:junglewood",                "technic:common_tree_grindings"},
-	{"default:pine_wood",                 "technic:common_tree_grindings"},
-	{"technic:copper_plate",              "technic:copper_dust 5", time = 9},
-	{"stairs:slab_cobble 2",              "default:gravel"},
-	{"technic:lead_lump",	              "technic:lead_dust 2", time = 6},
-	{"technic:lead_ingot",	              "technic:lead_dust"},
-	{"technic:lead_block", 	              "technic:lead_dust 9", time = 13},
-	{"moretrees:rubber_tree_trunk",       "technic:rubber_tree_grindings 4", time = 8},
-	{"technic:common_tree_grindings",     "technic:sawdust"},
-	{"technic:rubber_tree_grindings",     "technic:sawdust 4", time = 8},
-	{"default:ice",	                      "default:snowblock", time = 8},
-	{"technic:stainless_steel_ingot",     "technic:stainless_steel_dust"},
-	{"technic:stainless_steel_block",     "technic:stainless_steel_dust 9", time = 13},
-	{"default:stone",                     "technic:stone_dust", time = 8},
-	{"default:silver_sand",               "technic:stone_dust", time = 8},
-	{"technic:sulfur_lump",               "technic:sulfur_dust 2", time = 6},
-	{"technic:uranium_lump",              "technic:uranium_dust 2", time = 6},
-	{"technic:uranium_ingot",             "technic:uranium_dust"},
-	{"technic:uranium_block",             "technic:uranium_dust 9", time = 13},
-	{"technic:uranium0_ingot",            "technic:uranium0_dust"},
-	{"technic:uranium0_block",            "technic:uranium0_dust 9", time = 13},
-	{"technic:uranium35_ingot",           "technic:uranium35_dust"},
-	{"technic:uranium35_block",           "technic:uranium35_dust 9", time = 13},
-	{"technic:zinc_lump", 	              "technic:zinc_dust 2", time = 6},
-	{"technic:zinc_ingot", 	              "technic:zinc_dust"},
-	{"technic:zinc_block", 	              "technic:zinc_dust 9", time = 13},
+	{
+		recipe = { "basic_materials:chain_brass 3" },
+		output = "technic:brass_dust",
+	},
+	{
+		recipe = { "basic_materials:chainlink_brass 2" },
+		output = "technic:brass_dust",
+	},
+	{
+		recipe = { "technic:carbon_steel_ingot" },
+		output = "technic:carbon_steel_dust",
+	},
+	{
+		recipe = { "technic:carbon_steel_block" },
+		output = "technic:carbon_steel_dust 9", 
+		time   = 13,
+	},
+	{
+		recipe = { "technic:cast_iron_ingot" },  
+		output = "technic:cast_iron_dust",
+	},
+	{
+		recipe = { "technic:cast_iron_block" },
+		output = "technic:cast_iron_dust 9",
+	},
+	{
+		recipe = { "technic:chernobylite_block" },  
+		output = "technic:chernobylite_dust",
+	},
+	{
+		recipe = { "technic:carbon_plate" },
+		output = "technic:coal_dust 12", 
+		time   = 16,
+	},
+	{
+		recipe = { "technic:chromium_lump" }, 
+		output = "technic:chromium_dust 2", 
+		time   = 6,
+	},
+	{
+		recipe = { "technic:chromium_ingot" },   
+		output = "technic:chromium_dust",
+	},
+	{
+		recipe = { "technic:chromium_block" },   
+		output = "technic:chromium_dust 9", 
+		time   = 13,
+	},
+	{
+		recipe = { "default:wood" }, 
+		output = "technic:common_tree_grindings",
+	},
+	{
+		recipe = { "default:acacia_wood" },   
+		output = "technic:common_tree_grindings",
+	},
+	{
+		recipe = { "default:aspen_wood" }, 
+		output = "technic:common_tree_grindings",
+	},
+	{
+		recipe = { "default:junglewood" },
+		output = "technic:common_tree_grindings",
+	},
+	{
+		recipe = { "default:pine_wood" }, 
+		output = "technic:common_tree_grindings",
+	},
+	{
+		recipe = { "technic:copper_plate" },
+		output = "technic:copper_dust 5",
+		time   = 9,
+	},
+	{
+		recipe = { "stairs:slab_cobble 2" },
+		output = "default:gravel",
+	},
+	{
+		recipe = { "technic:lead_lump" },
+		output = "technic:lead_dust 2",
+		time   = 6,
+	},
+	{
+		recipe = { "technic:lead_ingot" },
+		output = "technic:lead_dust",
+	},
+	{
+		recipe = { "technic:lead_block" },
+		output = "technic:lead_dust 9",
+		time   = 13,
+	},
+	{
+		recipe = { "moretrees:rubber_tree_trunk" },
+		output = "technic:rubber_tree_grindings 4",
+		time   = 8,
+	},
+	{
+		recipe = { "technic:common_tree_grindings" },
+		output = "technic:sawdust",
+	},
+	{
+		recipe = { "technic:rubber_tree_grindings" },
+		output = "technic:sawdust 4",
+		time   = 8,
+	},
+	{
+		recipe = { "default:ice" },
+		output = "default:snowblock",
+		time   = 8,
+	},
+	{
+		recipe = { "technic:stainless_steel_ingot" },
+		output = "technic:stainless_steel_dust",
+	},
+	{
+		recipe = { "technic:stainless_steel_block" },
+		output = "technic:stainless_steel_dust 9",
+		time   = 13,
+	},
+	{
+		recipe = { "default:stone" },
+		output = "technic:stone_dust",
+		time   = 8,
+	},
+	{
+		recipe = { "default:silver_sand" },
+		output = "technic:stone_dust",
+		time   = 8,
+	},
+	{
+		recipe = { "technic:sulfur_lump" },
+		output = "technic:sulfur_dust 2",
+		time   = 6,
+	},
+	{
+		recipe = { "technic:uranium_lump" },
+		output = "technic:uranium_dust 2",
+		time   = 6,
+	},
+	{
+		recipe = { "technic:uranium_ingot" },
+		output = "technic:uranium_dust",
+	},
+	{
+		recipe = { "technic:uranium_block" },
+		output = "technic:uranium_dust 9",
+		time   = 13,
+	},
+	{
+		recipe = { "technic:uranium0_ingot" },
+		output = "technic:uranium0_dust",
+	},
+	{
+		recipe = { "technic:uranium0_block" },
+		output = "technic:uranium0_dust 9",
+		time   = 13,
+	},
+	{
+		recipe = { "technic:uranium35_ingot" },
+		output = "technic:uranium35_dust",
+	},
+	{
+		recipe = { "technic:uranium35_block" },
+		output = "technic:uranium35_dust 9",
+		time   = 13,
+	},
+	{
+		recipe = { "technic:zinc_lump" },
+		output = "technic:zinc_dust 2",
+		time   = 6,
+	},
+	{
+		recipe = { "technic:zinc_ingot" },
+		output = "technic:zinc_dust",
+	},
+	{
+		recipe = { "technic:zinc_block" },
+		output = "technic:zinc_dust 9",
+		time   = 13,
+	}
 }
 
 if minetest.get_modpath("farming") then
-	table.insert(elepower_grinding, {"farming:seed_wheat", "farming:flour 1"})
+	table.insert(elepower_grinding, {recipe = {"farming:seed_wheat"}, output = "farming:flour 1", time = 4})
 end
 
 if minetest.get_modpath("elepower_nuclear") then
-	table.insert(elepower_grinding, {"elepower_nuclear:uranium_lump", "technic:uranium_dust 2"})
+	table.insert(elepower_grinding, {recipe = {"elepower_nuclear:uranium_lump"}, output = "technic:uranium_dust 2"})
 end
 
-for _,data in pairs(elepower_grinding) do
+for _,i in pairs(elepower_grinding) do
 	elepm.register_craft({
 		type   = "grind",
-		recipe = {data[1]},
-		output = data[2],
-		time   = data.time or 5,
+		recipe = i.recipe,
+		output = i.output,
+		time   = i.time or 5,
 	})
 end
