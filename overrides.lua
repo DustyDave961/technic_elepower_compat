@@ -78,6 +78,13 @@ minetest.clear_craft({
 	}
 })
 
+--Coal dust
+minetest.clear_craft({
+	type = "fuel",
+	recipe = "technic:coal_dust",
+	burntime = 50,
+})
+
 --Conduit
 minetest.clear_craft({
 	recipe = {
@@ -133,13 +140,6 @@ minetest.clear_craft({
 		{"elepower_dynamics:steel_gear", "elepower_machines:machine_block", "elepower_dynamics:steel_gear"},
 		{"elepower_dynamics:lead_ingot", "elepower_dynamics:diamond_gear", "elepower_dynamics:lead_ingot"},
 	}
-})
-
---Smelting
-minetest.clear_craft({
-	type = "fuel",
-	recipe = "technic:coal_dust",
-	burntime = 50,
 })
 
 --Tools
