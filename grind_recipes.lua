@@ -63,6 +63,10 @@ if minetest.get_modpath("elepower_nuclear") then
 	table.insert(technic_grinding, {"elepower_nuclear:fuel_rod_depleted", "elepower_nuclear:depleted_uranium_dust 3"})
 end
 
+if minetest.get_modpath("farming") then
+	table.insert(technic_grinding, {"farming:wheat", "farming:flour 2"})
+end
+
 for _, data in pairs(technic_grinding) do
 	technic.register_grinder_recipe({input = {data[1]}, output = data[2], time = data[3] or 3})
 end
