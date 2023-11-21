@@ -1,12 +1,70 @@
+--Elepower Battery
 minetest.register_craft({
-	output = "elepower_machines:sawmill",
+	output = "elepower_dynamics:battery 2",
 	recipe = {
-		{"", "elepower_dynamics:integrated_circuit", ""},
-		{"elepower_dynamics:steel_gear", "elepower_machines:machine_block", "elepower_dynamics:steel_gear"},
-		{"group:lead_ingot", "elepower_dynamics:diamond_gear", "group:lead_ingot"},
+		{"group:zinc_dust", "elepower_dynamics:graphite_rod", "group:lead_dust"},
+		{"elepower_dynamics:tin_plate", "default:mese_crystal_fragment", "elepower_dynamics:tin_plate"},
+		{"elepower_dynamics:tin_plate", "default:mese_crystal_fragment", "elepower_dynamics:tin_plate"},
 	}
 })
 
+--Conduit
+minetest.register_craft({
+	output = "elepower_dynamics:conduit 8",
+	recipe = {
+		{"group:lead_ingot",  "group:lead_ingot",  "group:lead_ingot"},
+		{"basic_materials:copper_wire", "basic_materials:copper_wire", "basic_materials:copper_wire"},
+		{"group:lead_ingot",  "group:lead_ingot",  "group:lead_ingot"},
+	},
+	replacements = {
+		{"basic_materials:copper_wire", "basic_materials:empty_spool"},
+		{"basic_materials:copper_wire", "basic_materials:empty_spool"},
+		{"basic_materials:copper_wire", "basic_materials:empty_spool"},
+	}
+})
+
+--Gears
+minetest.register_craft({
+	output = "elepower_dynamics:iron_gear",
+	recipe = {
+		{"", "group:iron_ingot", ""},
+		{"group:iron_ingot", "", "group:iron_ingot"},
+		{"", "group:iron_ingot", ""},
+	}
+})
+
+minetest.register_craft({
+	output = "elepower_dynamics:lead_gear",
+	recipe = {
+		{"", "group:lead_ingot", ""},
+		{"group:lead_ingot", "", "group:lead_ingot"},
+		{"", "group:lead_ingot", ""},
+	}
+})
+
+--Machine block
+if minetest.get_modpath("elepower_nuclear") then
+	minetest.register_craft({
+	output = "elepower_nuclear:machine_block",
+	recipe = {
+		{"elepower_dynamics:induction_coil_advanced", "elepower_dynamics:graphite_ingot", "elepower_dynamics:induction_coil_advanced"},
+		{"elepower_dynamics:graphite_ingot", "technic:lead_block", "elepower_dynamics:graphite_ingot"},
+		{"technic:lead_block", "elepower_dynamics:graphite_ingot", "technic:lead_block"},
+	}
+	})
+end
+
+-- Opaque Fluid Duct
+minetest.register_craft({
+	output = "elepower_dynamics:opaque_duct 3",
+	recipe = {
+		{"group:lead_ingot",  "group:lead_ingot",  "group:lead_ingot"},
+		{"fluid_transfer:fluid_duct", "fluid_transfer:fluid_duct", "fluid_transfer:fluid_duct"},
+		{"group:lead_ingot",  "group:lead_ingot",  "group:lead_ingot"},
+	}
+})
+
+--Power cell
 minetest.register_craft({
 	output = "elepower_machines:power_cell_0",
 	recipe = {
@@ -16,19 +74,14 @@ minetest.register_craft({
 	}
 })
 
---Soldering
-elepm.register_craft({
-	type   = "solder",
-	recipe = {"elepower_dynamics:induction_coil 4", "basic_materials:copper_wire", "technic:zinc_dust 2"},
-	output = "elepower_dynamics:induction_coil_advanced",
-	time   = 18
-})
-
-elepm.register_craft({
-	type   = "solder",
-	recipe = { "elepower_dynamics:silicon_wafer_doped", "elepower_dynamics:chip 4", "technic:lead_ingot 2" },
-	output = "elepower_dynamics:microcontroller",
-	time   = 8,
+--Sawmill
+minetest.register_craft({
+	output = "elepower_machines:sawmill",
+	recipe = {
+		{"", "elepower_dynamics:integrated_circuit", ""},
+		{"elepower_dynamics:steel_gear", "elepower_machines:machine_block", "elepower_dynamics:steel_gear"},
+		{"group:lead_ingot", "elepower_dynamics:diamond_gear", "group:lead_ingot"},
+	}
 })
 
 --Smelting
@@ -86,22 +139,13 @@ minetest.register_craft({
 	recipe = "elepower_dynamics:zinc_ingot"
 })
 
---Lead tools
+--Tools
 minetest.register_craft({
-	output = 'elepower_dynamics:pick_lead',
+	output = 'elepower_dynamics:axe_iron',
 	recipe = {
-		{'group:lead_ingot', 'group:lead_ingot', 'group:lead_ingot'},
-		{'', 'group:stick', ''},
-		{'', 'group:stick', ''},
-	}
-})
-
-minetest.register_craft({
-	output = 'elepower_dynamics:shovel_lead',
-	recipe = {
-		{'group:lead_ingot'},
-		{'group:stick'},
-		{'group:stick'},
+		{'group:iron_ingot', 'group:iron_ingot'},
+		{'group:iron_ingot', 'group:stick'},
+		{'', 'group:stick'},
 	}
 })
 
@@ -115,6 +159,59 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
+	output = 'bucket:bucket_empty',
+	recipe = {
+		{'group:iron_ingot', '', 'group:iron_ingot'},
+		{'', 'group:iron_ingot', ''},
+	}
+})
+
+minetest.register_craft({
+	output = 'elepower_dynamics:pick_iron',
+	recipe = {
+		{'group:iron_ingot', 'group:iron_ingot', 'group:iron_ingot'},
+		{'', 'group:stick', ''},
+		{'', 'group:stick', ''},
+	}
+})
+
+minetest.register_craft({
+	output = 'elepower_dynamics:pick_lead',
+	recipe = {
+		{'group:lead_ingot', 'group:lead_ingot', 'group:lead_ingot'},
+		{'', 'group:stick', ''},
+		{'', 'group:stick', ''},
+	}
+})
+
+minetest.register_craft({
+	output = 'elepower_dynamics:shovel_iron',
+	recipe = {
+		{'group:iron_ingot'},
+		{'group:stick'},
+		{'group:stick'},
+	}
+})
+
+minetest.register_craft({
+	output = 'elepower_dynamics:shovel_lead',
+	recipe = {
+		{'group:lead_ingot'},
+		{'group:stick'},
+		{'group:stick'},
+	}
+})
+
+minetest.register_craft({
+	output = 'elepower_dynamics:sword_iron',
+	recipe = {
+		{'group:iron_ingot'},
+		{'group:iron_ingot'},
+		{'group:stick'},
+	}
+})
+
+minetest.register_craft({
 	output = 'elepower_dynamics:sword_lead',
 	recipe = {
 		{'group:lead_ingot'},
@@ -123,28 +220,98 @@ minetest.register_craft({
 	}
 })
 
---Conduit
+if minetest.get_modpath ("elepower_tools") then	
+	minetest.register_craft({
+		output = "elepower_tools:boots_carbon",
+		recipe = {
+			{"technic:carbon_cloth", "", "technic:carbon_cloth"},
+			{"technic:carbon_cloth", "", "technic:carbon_cloth"},
+		}
+	})
+	
+	minetest.register_craft({
+		output = "elepower_tools:boots_iron",
+		recipe = {
+			{"group:iron_ingot", "", "group:iron_ingot"},
+			{"group:iron_ingot", "", "group:iron_ingot"},
+		}
+	})
+	
+	minetest.register_craft({
+		output = "elepower_tools:chestplate_carbon",
+		recipe = {
+			{"technic:carbon_cloth", "", "technic:carbon_cloth"},
+			{"technic:carbon_cloth", "technic:carbon_cloth", "technic:carbon_cloth"},
+			{"technic:carbon_cloth", "technic:carbon_cloth", "technic:carbon_cloth"},
+		}
+	})
+	
+	minetest.register_craft({
+		output = "elepower_tools:chestplate_iron",
+		recipe = {
+			{"group:iron_ingot", "", "group:iron_ingot"},
+			{"group:iron_ingot", "group:iron_ingot", "group:iron_ingot"},
+			{"group:iron_ingot", "group:iron_ingot", "group:iron_ingot"},
+		}
+	})
+	
+	minetest.register_craft({
+		output = "elepower_tools:helmet_carbon",
+		recipe = {
+			{"technic:carbon_cloth", "technic:carbon_cloth", "technic:carbon_cloth"},
+			{"technic:carbon_cloth", "", "technic:carbon_cloth"},
+		}
+	})
+	
+	minetest.register_craft({
+		output = "elepower_tools:helmet_iron",
+		recipe = {
+			{"group:iron_ingot", "group:iron_ingot", "group:iron_ingot"},
+			{"group:iron_ingot", "", "group:iron_ingot"},
+		}
+	})
+	
+	minetest.register_craft({
+		output = "elepower_tools:leggings_carbon",
+		recipe = {
+			{"technic:carbon_cloth", "technic:carbon_cloth", "technic:carbon_cloth"},
+			{"technic:carbon_cloth", "", "technic:carbon_cloth"},
+			{"technic:carbon_cloth", "", "technic:carbon_cloth"},
+		}
+	})
+	
+	minetest.register_craft({
+		output = "elepower_tools:leggings_iron",
+		recipe = {
+			{"group:iron_ingot", "group:iron_ingot", "group:iron_ingot"},
+			{"group:iron_ingot", "", "group:iron_ingot"},
+			{"group:iron_ingot", "", "group:iron_ingot"},
+		}
+	})
+end
+
+--Wound coils
 minetest.register_craft({
-	output = "elepower_dynamics:conduit 8",
+	output = "elepower_dynamics:wound_copper_coil",
 	recipe = {
-		{"group:lead_ingot",  "group:lead_ingot",  "group:lead_ingot"},
-		{"basic_materials:copper_wire", "basic_materials:copper_wire", "basic_materials:copper_wire"},
-		{"group:lead_ingot",  "group:lead_ingot",  "group:lead_ingot"},
+		{"", "default:copper_ingot", ""},
+		{"default:copper_ingot", "group:iron_ingot", "default:copper_ingot"},
+		{"", "default:copper_ingot", ""}
+	}
+})
+
+minetest.register_craft({
+	output = "elepower_dynamics:wound_copper_coil",
+	recipe = {
+		{"", "basic_materials:copper_wire", ""},
+		{"basic_materials:copper_wire", "group:iron_ingot", "basic_materials:copper_wire"},
+		{"", "basic_materials:copper_wire", ""}
 	},
 	replacements = {
 		{"basic_materials:copper_wire", "basic_materials:empty_spool"},
 		{"basic_materials:copper_wire", "basic_materials:empty_spool"},
 		{"basic_materials:copper_wire", "basic_materials:empty_spool"},
-	}
-})
-
--- Opaque Fluid Duct
-minetest.register_craft({
-	output = "elepower_dynamics:opaque_duct 3",
-	recipe = {
-		{"group:lead_ingot",  "group:lead_ingot",  "group:lead_ingot"},
-		{"fluid_transfer:fluid_duct", "fluid_transfer:fluid_duct", "fluid_transfer:fluid_duct"},
-		{"group:lead_ingot",  "group:lead_ingot",  "group:lead_ingot"},
+		{"basic_materials:copper_wire", "basic_materials:empty_spool"},
 	}
 })
 
@@ -172,24 +339,6 @@ minetest.register_craft({
 	}
 })
 
-minetest.register_craft({
-	output = "elepower_dynamics:battery 2",
-	recipe = {
-		{"group:zinc_dust", "elepower_dynamics:graphite_rod", "group:lead_dust"},
-		{"elepower_dynamics:tin_plate", "default:mese_crystal_fragment", "elepower_dynamics:tin_plate"},
-		{"elepower_dynamics:tin_plate", "default:mese_crystal_fragment", "elepower_dynamics:tin_plate"},
-	}
-})
-
-minetest.register_craft({
-	output = "elepower_dynamics:lead_gear",
-	recipe = {
-		{"", "group:lead_ingot", ""},
-		{"group:lead_ingot", "", "group:lead_ingot"},
-		{"", "group:lead_ingot", ""},
-	}
-})
-
 --Compression
 elepm.register_craft({
 	type   = "compress",
@@ -205,14 +354,17 @@ elepm.register_craft({
 	time   = 4
 })
 
---Machine block
-if minetest.get_modpath("elepower_nuclear") then
-	minetest.register_craft({
-	output = "elepower_nuclear:machine_block",
-	recipe = {
-		{"elepower_dynamics:induction_coil_advanced", "elepower_dynamics:graphite_ingot", "elepower_dynamics:induction_coil_advanced"},
-		{"elepower_dynamics:graphite_ingot", "technic:lead_block", "elepower_dynamics:graphite_ingot"},
-		{"technic:lead_block", "elepower_dynamics:graphite_ingot", "technic:lead_block"},
-	}
-	})
-end
+--Soldering
+elepm.register_craft({
+	type   = "solder",
+	recipe = {"elepower_dynamics:induction_coil 4", "basic_materials:copper_wire", "technic:zinc_dust 2"},
+	output = "elepower_dynamics:induction_coil_advanced",
+	time   = 18
+})
+
+elepm.register_craft({
+	type   = "solder",
+	recipe = { "elepower_dynamics:silicon_wafer_doped", "elepower_dynamics:chip 4", "technic:lead_ingot 2" },
+	output = "elepower_dynamics:microcontroller",
+	time   = 8,
+})
