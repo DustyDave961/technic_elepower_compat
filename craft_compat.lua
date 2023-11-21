@@ -106,18 +106,6 @@ minetest.register_craft({
 
 minetest.register_craft({
 	type   = "cooking",
-	output = "technic:lead_ingot",
-	recipe = "group:lead_lump"
-})
-
-minetest.register_craft({
-	type   = "cooking",
-	output = "technic:lead_ingot",
-	recipe = "group:lead_dust"
-})
-
-minetest.register_craft({
-	type   = "cooking",
 	output = "elepower_dynamics:lead_ingot",
 	recipe = "technic:lead_ingot"
 })
@@ -126,18 +114,6 @@ minetest.register_craft({
 	type   = "cooking",
 	output = "technic:lead_ingot",
 	recipe = "elepower_dynamics:lead_ingot"
-})
-
-minetest.register_craft({
-	type   = "cooking",
-	output = "technic:zinc_ingot",
-	recipe = "group:zinc_lump"
-})
-
-minetest.register_craft({
-	type   = "cooking",
-	output = "technic:zinc_ingot",
-	recipe = "group:zinc_dust"
 })
 
 minetest.register_craft({
