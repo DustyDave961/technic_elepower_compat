@@ -35,14 +35,6 @@ minetest.override_item("elepower_dynamics:iron_ingot", {
 	groups = {iron_ingot = 1},
 })
 
-minetest.override_item("technic:cast_iron_dust", {
-	groups = {iron_dust = 1},
-})
-
-minetest.override_item("elepower_dynamics:iron_dust", {
-	groups = {iron_dust = 1},
-})
-
 --Lead
 minetest.override_item("technic:lead_ingot", {
 	groups = {lead_ingot = 1},
@@ -60,14 +52,6 @@ minetest.override_item("elepower_dynamics:lead_dust", {
 	groups = {lead_dust = 1},
 })
 
-minetest.override_item("technic:lead_lump", {
-	groups = {lead_lump = 1},
-})
-
-minetest.override_item("elepower_dynamics:lead_lump", {
-	groups = {lead_lump = 1},
-})
-
 --Zinc
 minetest.override_item("technic:zinc_ingot", {
 	groups = {zinc_ingot = 1},
@@ -83,14 +67,6 @@ minetest.override_item("technic:zinc_dust", {
 
 minetest.override_item("elepower_dynamics:zinc_dust", {
 	groups = {zinc_dust = 1},
-})
-
-minetest.override_item("technic:zinc_lump", {
-	groups = {zinc_lump = 1},
-})
-
-minetest.override_item("elepower_dynamics:zinc_lump", {
-	groups = {zinc_lump = 1},
 })
 
 --Elepower Battery
@@ -160,46 +136,6 @@ minetest.clear_craft({
 })
 
 --Smelting
-minetest.clear_craft({
-	type   = "cooking",
-	recipe = "elepower_dynamics:lead_lump"
-})
-
-minetest.clear_craft({
-	type   = "cooking",
-	recipe = "technic:lead_lump"
-})
-
-minetest.clear_craft({
-	type   = "cooking",
-	recipe = "elepower_dynamics:lead_dust"
-})
-
-minetest.clear_craft({
-	type   = "cooking",
-	recipe = "technic:lead_dust"
-})
-
-minetest.clear_craft({
-	type   = "cooking",
-	recipe = "elepower_dynamics:zinc_lump"
-})
-
-minetest.clear_craft({
-	type   = "cooking",
-	recipe = "technic:zinc_lump"
-})
-
-minetest.clear_craft({
-	type   = "cooking",
-	recipe = "elepower_dynamics:zinc_dust"
-})
-
-minetest.clear_craft({
-	type   = "cooking",
-	recipe = "technic:zinc_dust"
-})
-
 minetest.clear_craft({
 	type = "fuel",
 	recipe = "technic:coal_dust",
