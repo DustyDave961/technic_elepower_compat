@@ -1,3 +1,16 @@
+--Acidic Compound
+minetest.register_craft({
+	type = "shapeless",
+	output = "elepower_dynamics:acidic_compound",
+	recipe = {
+		"technic:copper_dust",
+		"technic:copper_dust",
+		"technic:copper_dust",
+		"technic:copper_dust",
+		"farming:seed_wheat",
+	}
+})
+
 --Elepower Battery
 minetest.register_craft({
 	output = "elepower_dynamics:battery 2",
