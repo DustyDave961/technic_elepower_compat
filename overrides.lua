@@ -162,49 +162,41 @@ minetest.clear_craft({
 --Smelting
 minetest.clear_craft({
 	type   = "cooking",
-	output = "elepower_dynamics:lead_ingot",
 	recipe = "elepower_dynamics:lead_lump"
 })
 
 minetest.clear_craft({
 	type   = "cooking",
-	output = "technic:lead_ingot",
 	recipe = "technic:lead_lump"
 })
 
 minetest.clear_craft({
 	type   = "cooking",
-	output = "elepower_dynamics:lead_ingot",
 	recipe = "elepower_dynamics:lead_dust"
 })
 
 minetest.clear_craft({
 	type   = "cooking",
-	output = "technic:lead_ingot",
 	recipe = "technic:lead_dust"
 })
 
 minetest.clear_craft({
 	type   = "cooking",
-	output = "elepower_dynamics:zinc_ingot",
 	recipe = "elepower_dynamics:zinc_lump"
 })
 
 minetest.clear_craft({
 	type   = "cooking",
-	output = "technic:zinc_ingot",
 	recipe = "technic:zinc_lump"
 })
 
 minetest.clear_craft({
 	type   = "cooking",
-	output = "elepower_dynamics:zinc_ingot",
 	recipe = "elepower_dynamics:zinc_dust"
 })
 
 minetest.clear_craft({
 	type   = "cooking",
-	output = "technic:zinc_ingot",
 	recipe = "technic:zinc_dust"
 })
 
