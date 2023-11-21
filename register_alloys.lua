@@ -140,10 +140,14 @@ function register_alloy_recipe(input1, input2, output1, time1, time2)
 	})
 end
 
+register_alloy_recipe("default:coal_lump", "technic:coal_dust 4", "elepower_dynamics:graphite_ingot")
+
+register_alloy_recipe("default:obsidian_glass", "technic:lead_ingot 4", "elepower_dynamics:hardened_glass 4", 7.5, 8)
+
+register_alloy_recipe("technic:cast_iron_ingot 3", "elepower_dynamics:nickel_ingot", "elepower_dynamics:invar_ingot 4")
+
 register_alloy_recipe("default:desert_sand 2", "technic:coal_dust 2", "elepower_dynamics:silicon_wafer")
 
 register_alloy_recipe("basic_materials:silicon", "technic:coal_dust 2", "elepower_dynamics:silicon_wafer")
 
 register_alloy_recipe("default:sand 2", "elepower_dynamics:coal_dust 2", "technic:silicon_wafer")
-
-register_alloy_recipe("default:obsidian_glass", "technic:lead_ingot 4", "elepower_dynamics:hardened_glass 4", 7.5, 8)
