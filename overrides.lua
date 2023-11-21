@@ -17,7 +17,7 @@ minetest.register_abm({
     end,
 })
 
---Coal
+--Adding dust and ingot groups
 minetest.override_item("technic:coal_dust", {
 	groups = {coal_dust = 1},
 })
@@ -26,22 +26,12 @@ minetest.override_item("elepower_dynamics:coal_dust", {
 	groups = {coal_dust = 1},
 })
 
---Iron
 minetest.override_item("technic:cast_iron_ingot", {
 	groups = {iron_ingot = 1},
 })
 
 minetest.override_item("elepower_dynamics:iron_ingot", {
 	groups = {iron_ingot = 1},
-})
-
---Lead
-minetest.override_item("technic:lead_ingot", {
-	groups = {lead_ingot = 1},
-})
-
-minetest.override_item("elepower_dynamics:lead_ingot", {
-	groups = {lead_ingot = 1},
 })
 
 minetest.override_item("technic:lead_dust", {
@@ -52,13 +42,12 @@ minetest.override_item("elepower_dynamics:lead_dust", {
 	groups = {lead_dust = 1},
 })
 
---Zinc
-minetest.override_item("technic:zinc_ingot", {
-	groups = {zinc_ingot = 1},
+minetest.override_item("technic:lead_ingot", {
+	groups = {lead_ingot = 1},
 })
 
-minetest.override_item("elepower_dynamics:zinc_ingot", {
-	groups = {zinc_ingot = 1},
+minetest.override_item("elepower_dynamics:lead_ingot", {
+	groups = {lead_ingot = 1},
 })
 
 minetest.override_item("technic:zinc_dust", {
@@ -69,7 +58,15 @@ minetest.override_item("elepower_dynamics:zinc_dust", {
 	groups = {zinc_dust = 1},
 })
 
---Elepower Battery
+minetest.override_item("technic:zinc_ingot", {
+	groups = {zinc_ingot = 1},
+})
+
+minetest.override_item("elepower_dynamics:zinc_ingot", {
+	groups = {zinc_ingot = 1},
+})
+
+--Battery
 minetest.clear_craft({
 	recipe = {
 		{"elepower_dynamics:zinc_dust", "elepower_dynamics:graphite_rod", "elepower_dynamics:lead_dust"},
