@@ -189,7 +189,6 @@ minetest.clear_craft({
 
 --Conduit
 minetest.clear_craft({
-	output = "elepower_dynamics:conduit 8",
 	recipe = {
 		{"elepower_dynamics:lead_ingot",  "elepower_dynamics:lead_ingot",  "elepower_dynamics:lead_ingot"},
 		{"basic_materials:copper_wire", "basic_materials:copper_wire", "basic_materials:copper_wire"},
@@ -208,26 +207,6 @@ minetest.clear_craft({
 
 minetest.clear_craft({
 	output = "elepower_dynamics:wound_silver_coil",
-	recipe = {
-		{"", "moreores:silver_ingot", ""},
-		{"moreores:silver_ingot", "elepower_dynamics:zinc_ingot", "moreores:silver_ingot"},
-		{"", "moreores:silver_ingot", ""}
-	}
-})
-
-minetest.clear_craft({
-	output = "elepower_dynamics:wound_silver_coil",
-	recipe = {
-		{"", "basic_materials:silver_wire", ""},
-		{"basic_materials:silver_wire", "elepower_dynamics:zinc_ingot", "basic_materials:silver_wire"},
-		{"", "basic_materials:silver_wire", ""}
-	},
-	replacements = {
-		{"basic_materials:silver_wire", "basic_materials:empty_spool"},
-		{"basic_materials:silver_wire", "basic_materials:empty_spool"},
-		{"basic_materials:silver_wire", "basic_materials:empty_spool"},
-		{"basic_materials:silver_wire", "basic_materials:empty_spool"},
-	}
 })
 
 --Elepower Battery
