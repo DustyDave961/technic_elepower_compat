@@ -1,1 +1,2 @@
 enable_power_converter (Adds beta power converter.) bool false
+enable_on_join_player_message (Setting for the chat message about converter.) bool true
