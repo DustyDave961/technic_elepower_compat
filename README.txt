@@ -2,4 +2,4 @@ A collaboration project with Bob64, also known as DustyBagel, to help Technic an
 
 IMPORTANT INFORMATION
 
-Please note that the power converter developed by Bob64 is not fully complete. Bugs are possible, so please report any issues on GitHub. There are also some duplication glitches from having Elepower and Technic modpacks together. There are plans to fix these if it is possible to do so.
+Please note that the power converter developed by Bob64 is not fully complete. Bugs are still possible, so please report any issues on GitHub. There are also some duplication glitches from having Elepower and Technic modpacks together. There are plans to fix these if it is possible to do so.
