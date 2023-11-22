@@ -219,28 +219,11 @@ if minetest.get_modpath ("elepower_tools") then
 	})
 	
 	minetest.register_craft({
-		output = "elepower_tools:boots_iron",
-		recipe = {
-			{"group:iron_ingot", "", "group:iron_ingot"},
-			{"group:iron_ingot", "", "group:iron_ingot"},
-		}
-	})
-	
-	minetest.register_craft({
 		output = "elepower_tools:chestplate_carbon",
 		recipe = {
 			{"technic:carbon_cloth", "", "technic:carbon_cloth"},
 			{"technic:carbon_cloth", "technic:carbon_cloth", "technic:carbon_cloth"},
 			{"technic:carbon_cloth", "technic:carbon_cloth", "technic:carbon_cloth"},
-		}
-	})
-	
-	minetest.register_craft({
-		output = "elepower_tools:chestplate_iron",
-		recipe = {
-			{"group:iron_ingot", "", "group:iron_ingot"},
-			{"group:iron_ingot", "group:iron_ingot", "group:iron_ingot"},
-			{"group:iron_ingot", "group:iron_ingot", "group:iron_ingot"},
 		}
 	})
 	
@@ -253,28 +236,11 @@ if minetest.get_modpath ("elepower_tools") then
 	})
 	
 	minetest.register_craft({
-		output = "elepower_tools:helmet_iron",
-		recipe = {
-			{"group:iron_ingot", "group:iron_ingot", "group:iron_ingot"},
-			{"group:iron_ingot", "", "group:iron_ingot"},
-		}
-	})
-	
-	minetest.register_craft({
 		output = "elepower_tools:leggings_carbon",
 		recipe = {
 			{"technic:carbon_cloth", "technic:carbon_cloth", "technic:carbon_cloth"},
 			{"technic:carbon_cloth", "", "technic:carbon_cloth"},
 			{"technic:carbon_cloth", "", "technic:carbon_cloth"},
-		}
-	})
-	
-	minetest.register_craft({
-		output = "elepower_tools:leggings_iron",
-		recipe = {
-			{"group:iron_ingot", "group:iron_ingot", "group:iron_ingot"},
-			{"group:iron_ingot", "", "group:iron_ingot"},
-			{"group:iron_ingot", "", "group:iron_ingot"},
 		}
 	})
 end
