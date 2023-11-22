@@ -1,1 +1,1 @@
-enable_power_converter (Adds currently very broken beta power converter.) bool false
+enable_power_converter (Adds beta power converter.) bool false
