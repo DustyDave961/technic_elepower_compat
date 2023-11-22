@@ -219,42 +219,6 @@ minetest.clear_craft({
 	}
 })
 
-if minetest.get_modpath ("elepower_tools") then
-	minetest.clear_craft({
-		output = "elepower_tools:boots_iron",
-		recipe = {
-			{"elepower_dynamics:iron_ingot", "", "elepower_dynamics:iron_ingot"},
-			{"elepower_dynamics:iron_ingot", "", "elepower_dynamics:iron_ingot"},
-		}
-	})
-	
-	minetest.clear_craft({
-		output = "elepower_tools:chestplate_iron",
-		recipe = {
-			{"elepower_dynamics:iron_ingot", "", "elepower_dynamics:iron_ingot"},
-			{"elepower_dynamics:iron_ingot", "elepower_dynamics:iron_ingot", "elepower_dynamics:iron_ingot"},
-			{"elepower_dynamics:iron_ingot", "elepower_dynamics:iron_ingot", "elepower_dynamics:iron_ingot"},
-		}
-	})
-	
-	minetest.clear_craft({
-		output = "elepower_tools:helmet_iron",
-		recipe = {
-			{"elepower_dynamics:iron_ingot", "elepower_dynamics:iron_ingot", "elepower_dynamics:iron_ingot"},
-			{"elepower_dynamics:iron_ingot", "", "elepower_dynamics:iron_ingot"},
-		}
-	})
-	
-	minetest.clear_craft({
-		output = "elepower_tools:leggings_iron",
-		recipe = {
-			{"elepower_dynamics:iron_ingot", "elepower_dynamics:iron_ingot", "elepower_dynamics:iron_ingot"},
-			{"elepower_dynamics:iron_ingot", "", "elepower_dynamics:iron_ingot"},
-			{"elepower_dynamics:iron_ingot", "", "elepower_dynamics:iron_ingot"},
-		}
-	})
-end
-
 --Wound coils
 minetest.clear_craft({
 	output = "elepower_dynamics:wound_copper_coil",
