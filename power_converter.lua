@@ -17,20 +17,27 @@ minetest.register_on_player_receive_fields(function(player, formname, fields)
         local current_direction = meta:get_string("conversion_direction")
         if current_direction == "technic_to_elepower" then
             meta:set_string("conversion_direction", "elepower_to_technic")
+            minetest.chat_send_player(player:get_player_name(), "Power converter conversion direction set to elepower_to_technic.")
         else
             meta:set_string("conversion_direction", "technic_to_elepower")
+            minetest.chat_send_player(player:get_player_name(), "Power converter conversion direction set to technic_to_elepower.")
         end
     elseif fields.toggle_on_off then
         local current_state = meta:get_string("state")
         if current_state == "on" then
             meta:set_string("state", "off")
+            minetest.chat_send_player(player:get_player_name(), "Power converter was turned off.")
         else
             meta:set_string("state", "on")
+            minetest.chat_send_player(player:get_player_name(), "Power converter was turned on.")
         end
     elseif fields.set_en_input then
         meta:set_string("en_input", fields.en_input)
+        -- Send a chat message to the player
+        minetest.chat_send_player(player:get_player_name(), "Power converter Energy Input set to " .. fields.en_input .. ".")
     end
 end)
+
 
 function get_formspec(pow_buffer)
     return "size[5,4]" ..
@@ -52,10 +59,10 @@ ele.register_machine("technic_elepower_compat:power_converter", {
 
         -- Create the formspec
         local formspec = "size[5,4]" ..
-            "button[0.5,0.5;4,1;toggle_direction;Toggle Conversion Direction]" ..
-            "button[0.5,1.5;4,1;toggle_on_off;Toggle On/Off]" ..
-            "field[0.5,2.5;4,1;en_input;EU Input;" .. meta:get_string("en_input") .. "]" ..
-            "button[0.5,3.5;4,1;set_en_input;Set EU Input]"
+            "button[0.5,-0.1;4,1;toggle_direction;Toggle Conversion Direction]" ..
+            "button[0.5,0.8;4,1;toggle_on_off;Toggle On/Off]" ..
+            "field[0.79,2.65;4,1;en_input;EU Input;" .. meta:get_string("en_input") .. "]" ..
+            "button[0.5,3.15;4,1;set_en_input;Set EU Input]"
 
         -- Show the formspec to the player
         minetest.show_formspec(clicker:get_player_name(), "technic_elepower_compat:power_converter", formspec)
@@ -109,9 +116,9 @@ ele.register_machine("technic_elepower_compat:power_converter", {
                     -- If storage is greater than en_input, output power
                     meta:set_int("usage", en_input - (en_input + en_input))
                     meta:set_int("inrush", en_input)
-                    meta:set_int("output", 0)
-                    meta:set_int("LV_EU_supply", en_input)
-	       	    meta:set_int("LV_EU_demand", 0)
+                    meta:set_int("output", 0) 
+					meta:set_int("LV_EU_supply", en_input)
+	       	        meta:set_int("LV_EU_demand", 0)
                     status = "Active"
                 else
                     -- If storage is not greater than en_input, stop outputting power
@@ -119,24 +126,24 @@ ele.register_machine("technic_elepower_compat:power_converter", {
                     meta:set_int("output", 0)
                     meta:set_int("inrush", en_input)
                     meta:set_int("LV_EU_supply", 0)
-		    meta:set_int("LV_EU_demand", 0)
+		            meta:set_int("LV_EU_demand", 0)
                     status = "Unpowered"
                 end
             elseif direction == "technic_to_elepower" then
-		if eu_input >= en_input then
+		        if eu_input >= en_input then
                     meta:set_int("inrush", en_input)
                     meta:set_int("output", en_input)
                     meta:set_int("usage", en_input)
                     meta:set_int("LV_EU_demand", en_input)
                     meta:set_int("LV_EU_supply", 0)
-		    status = "Active"
+		            status = "Active"
                 else
-		    meta:set_int("inrush", 0)
+		            meta:set_int("inrush", 0)
                     meta:set_int("output", en_input)
                     meta:set_int("usage", 0)
                     meta:set_int("LV_EU_demand", en_input)
                     meta:set_int("LV_EU_supply", 0)
-		    status = "Unpowered"
+		        status = "Unpowered"
 	        end
 		--[[if eu_input < en_input and storage >= 2*(en_input) then
                     meta:set_int("inrush", 0)
