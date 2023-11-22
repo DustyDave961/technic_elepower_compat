@@ -180,8 +180,18 @@ ele.register_machine("technic_elepower_compat:power_converter", {
     ele_usage = 0,
     ele_inrush = 0,
     ele_output = 0,
-    
-    connect_sides = {"right", "left", "top", "bottom"}
+    connect_sides = {"right", "left", "back", "front", "bottom"},
+    sounds = default.node_sound_metal_defaults(),
 })
 
 technic.register_machine("LV", "technic_elepower_compat:power_converter", technic.producer_receiver)
+
+minetest.register_craft({
+    output = "technic_elepower_compat:power_converter",
+    recipe = {
+        {"", "elepower_dynamics:conduit", ""},
+        {"elepower_dynamics:wound_copper_coil", "technic:supply_converter", "elepower_dynamics:wound_copper_coil"},
+        {"", "elepower_dynamics:conduit", ""}
+    }
+})
+    
