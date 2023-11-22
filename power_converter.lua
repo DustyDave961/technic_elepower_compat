@@ -17,18 +17,23 @@ minetest.register_on_player_receive_fields(function(player, formname, fields)
         local current_direction = meta:get_string("conversion_direction")
         if current_direction == "technic_to_elepower" then
             meta:set_string("conversion_direction", "elepower_to_technic")
+	    minetest.chat_send_player(player:get_player_name(), "Power converter conversion direction set to elepower_to_technic.")
         else
             meta:set_string("conversion_direction", "technic_to_elepower")
+	    minetest.chat_send_player(player:get_player_name(), "Power converter conversion direction set to technic_to_elepower.")
         end
     elseif fields.toggle_on_off then
         local current_state = meta:get_string("state")
         if current_state == "on" then
             meta:set_string("state", "off")
+	    minetest.chat_send_player(player:get_player_name(), "Power converter was turned off.")
         else
             meta:set_string("state", "on")
+	    minetest.chat_send_player(player:get_player_name(), "Power converter was turned on.")
         end
     elseif fields.set_en_input then
         meta:set_string("en_input", fields.en_input)
+	minetest.chat_send_player(player:get_player_name(), "Power converter Energy Input set to " .. fields.en_input .. ".")
     end
 end)
 
@@ -54,7 +59,7 @@ ele.register_machine("technic_elepower_compat:power_converter", {
         local formspec = "size[5,4]" ..
             "button[0.5,0.5;4,1;toggle_direction;Toggle Conversion Direction]" ..
             "button[0.5,1.5;4,1;toggle_on_off;Toggle On/Off]" ..
-            "field[0.5,2.5;4,1;en_input;EU Input;" .. meta:get_string("en_input") .. "]" ..
+            "field[0.79,3.0;4,1;en_input;EU Input;" .. meta:get_string("en_input") .. "]" ..
             "button[0.5,3.5;4,1;set_en_input;Set EU Input]"
 
         -- Show the formspec to the player
