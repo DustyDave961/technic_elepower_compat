@@ -1,2 +1,16 @@
 enable_power_converter (Adds beta power converter.) bool false
 enable_on_join_player_message (Setting for the chat message about converter.) bool true
+
+[**Ore Selection]
+
+#	Lead used:
+#	-	Technic:  Elepower lead replaced with stone.
+#	-	Elepower: Technic lead replaced with stone.
+#	-	Both:     Technic and Elepower lead unchanged.
+lead_used (Lead used) enum technic technic,elepower,both
+
+#	Zinc used:
+#	-	Technic:  Elepower zinc replaced with stone.
+#	-	Elepower: Technic zinc replaced with stone.
+#	-	Both:     Technic and Elepower zinc unchanged.
+zinc_used (Zinc used) enum technic technic,elepower,both
