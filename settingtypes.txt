@@ -1,8 +1,6 @@
 enable_power_converter (Adds beta power converter.) bool false
 enable_on_join_player_message (Setting for the chat message about converter.) bool true
 
-[**Ore Selection]
-
 #	Lead used:
 #	-	Technic:  Elepower lead replaced with stone.
 #	-	Elepower: Technic lead replaced with stone.
