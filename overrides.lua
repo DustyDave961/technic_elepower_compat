@@ -1,6 +1,4 @@
---This needs to clear the unneeded ores
-
---Ore overrides
+--Ore overrides to clear unneeded ores.
 minetest.register_abm({
     nodenames = {"elepower_dynamics:stone_with_lead"}, -- replace with the name of the ore
     interval = 1, -- runs every 1 second
@@ -19,7 +17,7 @@ minetest.register_abm({
     end,
 })
 
---Override ingots and dust, and add groups for each.
+--Adding dust and ingot groups
 minetest.override_item("technic:coal_dust", {
 	groups = {coal_dust = 1},
 })
@@ -28,12 +26,12 @@ minetest.override_item("elepower_dynamics:coal_dust", {
 	groups = {coal_dust = 1},
 })
 
-minetest.override_item("technic:lead_ingot", {
-	groups = {lead_ingot = 1},
+minetest.override_item("technic:cast_iron_ingot", {
+	groups = {iron_ingot = 1},
 })
 
-minetest.override_item("elepower_dynamics:lead_ingot", {
-	groups = {lead_ingot = 1},
+minetest.override_item("elepower_dynamics:iron_ingot", {
+	groups = {iron_ingot = 1},
 })
 
 minetest.override_item("technic:lead_dust", {
@@ -44,20 +42,12 @@ minetest.override_item("elepower_dynamics:lead_dust", {
 	groups = {lead_dust = 1},
 })
 
-minetest.override_item("technic:lead_lump", {
-	groups = {lead_lump = 1},
+minetest.override_item("technic:lead_ingot", {
+	groups = {lead_ingot = 1},
 })
 
-minetest.override_item("elepower_dynamics:lead_lump", {
-	groups = {lead_lump = 1},
-})
-
-minetest.override_item("technic:zinc_ingot", {
-	groups = {zinc_ingot = 1},
-})
-
-minetest.override_item("elepower_dynamics:zinc_ingot", {
-	groups = {zinc_ingot = 1},
+minetest.override_item("elepower_dynamics:lead_ingot", {
+	groups = {lead_ingot = 1},
 })
 
 minetest.override_item("technic:zinc_dust", {
@@ -68,24 +58,68 @@ minetest.override_item("elepower_dynamics:zinc_dust", {
 	groups = {zinc_dust = 1},
 })
 
-minetest.override_item("technic:zinc_lump", {
-	groups = {zinc_lump = 1},
+minetest.override_item("technic:zinc_ingot", {
+	groups = {zinc_ingot = 1},
 })
 
-minetest.override_item("elepower_dynamics:zinc_lump", {
-	groups = {zinc_lump = 1},
+minetest.override_item("elepower_dynamics:zinc_ingot", {
+	groups = {zinc_ingot = 1},
 })
 
---Clear duplicate recipes.
+--Battery
 minetest.clear_craft({
-	output = "elepower_machines:sawmill",
 	recipe = {
-		{"", "elepower_dynamics:integrated_circuit", ""},
-		{"elepower_dynamics:steel_gear", "elepower_machines:machine_block", "elepower_dynamics:steel_gear"},
-		{"elepower_dynamics:lead_ingot", "elepower_dynamics:diamond_gear", "elepower_dynamics:lead_ingot"},
+		{"elepower_dynamics:zinc_dust", "elepower_dynamics:graphite_rod", "elepower_dynamics:lead_dust"},
+		{"elepower_dynamics:tin_plate", "default:mese_crystal_fragment", "elepower_dynamics:tin_plate"},
+		{"elepower_dynamics:tin_plate", "default:mese_crystal_fragment", "elepower_dynamics:tin_plate"},
 	}
 })
 
+--Coal dust
+minetest.clear_craft({
+	type = "fuel",
+	recipe = "technic:coal_dust",
+	burntime = 50,
+})
+
+--Conduit
+minetest.clear_craft({
+	recipe = {
+		{"elepower_dynamics:lead_ingot",  "elepower_dynamics:lead_ingot",  "elepower_dynamics:lead_ingot"},
+		{"basic_materials:copper_wire", "basic_materials:copper_wire", "basic_materials:copper_wire"},
+		{"elepower_dynamics:lead_ingot",  "elepower_dynamics:lead_ingot",  "elepower_dynamics:lead_ingot"},
+	}
+})
+
+--Gears
+minetest.clear_craft({
+	output = "elepower_dynamics:iron_gear",
+	recipe = {
+		{"", "elepower_dynamics:iron_ingot", ""},
+		{"elepower_dynamics:iron_ingot", "", "elepower_dynamics:iron_ingot"},
+		{"", "elepower_dynamics:iron_ingot", ""},
+	}
+})
+
+minetest.clear_craft({
+	output = "elepower_dynamics:lead_gear",
+	recipe = {
+		{"", "elepower_dynamics:lead_ingot", ""},
+		{"elepower_dynamics:lead_ingot", "", "elepower_dynamics:lead_ingot"},
+		{"", "elepower_dynamics:lead_ingot", ""},
+	}
+})
+
+--Opaque Fluid Duct
+minetest.clear_craft({
+	recipe = {
+		{"elepower_dynamics:lead_ingot",  "elepower_dynamics:lead_ingot",  "elepower_dynamics:lead_ingot"},
+		{"fluid_transfer:fluid_duct", "fluid_transfer:fluid_duct", "fluid_transfer:fluid_duct"},
+		{"elepower_dynamics:lead_ingot",  "elepower_dynamics:lead_ingot",  "elepower_dynamics:lead_ingot"},
+	}
+})
+
+--Power cell
 minetest.clear_craft({
 	output = "elepower_machines:power_cell_0",
 	recipe = {
@@ -95,77 +129,23 @@ minetest.clear_craft({
 	}
 })
 
---Smelting
+--Sawmill
 minetest.clear_craft({
-	type   = "cooking",
-	output = "elepower_dynamics:lead_ingot",
-	recipe = "elepower_dynamics:lead_lump"
-})
-
-minetest.clear_craft({
-	type   = "cooking",
-	output = "technic:lead_ingot",
-	recipe = "technic:lead_lump"
-})
-
-minetest.clear_craft({
-	type   = "cooking",
-	output = "elepower_dynamics:lead_ingot",
-	recipe = "elepower_dynamics:lead_dust"
-})
-
-minetest.clear_craft({
-	type   = "cooking",
-	output = "technic:lead_ingot",
-	recipe = "technic:lead_dust"
-})
-
-minetest.clear_craft({
-	type   = "cooking",
-	output = "elepower_dynamics:zinc_ingot",
-	recipe = "elepower_dynamics:zinc_lump"
-})
-
-minetest.clear_craft({
-	type   = "cooking",
-	output = "technic:zinc_ingot",
-	recipe = "technic:zinc_lump"
-})
-
-minetest.clear_craft({
-	type   = "cooking",
-	output = "elepower_dynamics:zinc_ingot",
-	recipe = "elepower_dynamics:zinc_dust"
-})
-
-minetest.clear_craft({
-	type   = "cooking",
-	output = "technic:zinc_ingot",
-	recipe = "technic:zinc_dust"
-})
-
-minetest.clear_craft({
-	type = "fuel",
-	recipe = "technic:coal_dust",
-	burntime = 50,
-})
-
---Lead tools
-minetest.clear_craft({
-	output = 'elepower_dynamics:pick_lead',
+	output = "elepower_machines:sawmill",
 	recipe = {
-		{'elepower_dynamics:lead_ingot', 'elepower_dynamics:lead_ingot', 'elepower_dynamics:lead_ingot'},
-		{'', 'group:stick', ''},
-		{'', 'group:stick', ''},
+		{"", "elepower_dynamics:integrated_circuit", ""},
+		{"elepower_dynamics:steel_gear", "elepower_machines:machine_block", "elepower_dynamics:steel_gear"},
+		{"elepower_dynamics:lead_ingot", "elepower_dynamics:diamond_gear", "elepower_dynamics:lead_ingot"},
 	}
 })
 
+--Tools
 minetest.clear_craft({
-	output = 'elepower_dynamics:shovel_lead',
+	output = 'elepower_dynamics:axe_iron',
 	recipe = {
-		{'elepower_dynamics:lead_ingot'},
-		{'group:stick'},
-		{'group:stick'},
+		{'elepower_dynamics:iron_ingot', 'elepower_dynamics:iron_ingot'},
+		{'elepower_dynamics:iron_ingot', 'group:stick'},
+		{'', 'group:stick'},
 	}
 })
 
@@ -179,6 +159,58 @@ minetest.clear_craft({
 })
 
 minetest.clear_craft({
+	recipe = {
+		{'elepower_dynamics:iron_ingot', '', 'elepower_dynamics:iron_ingot'},
+		{'', 'elepower_dynamics:iron_ingot', ''},
+	}
+})
+
+minetest.clear_craft({
+	output = 'elepower_dynamics:pick_iron',
+	recipe = {
+		{'elepower_dynamics:iron_ingot', 'elepower_dynamics:iron_ingot', 'elepower_dynamics:iron_ingot'},
+		{'', 'group:stick', ''},
+		{'', 'group:stick', ''},
+	}
+})
+
+minetest.clear_craft({
+	output = 'elepower_dynamics:pick_lead',
+	recipe = {
+		{'elepower_dynamics:lead_ingot', 'elepower_dynamics:lead_ingot', 'elepower_dynamics:lead_ingot'},
+		{'', 'group:stick', ''},
+		{'', 'group:stick', ''},
+	}
+})
+
+minetest.clear_craft({
+	output = 'elepower_dynamics:shovel_iron',
+	recipe = {
+		{'elepower_dynamics:iron_ingot'},
+		{'group:stick'},
+		{'group:stick'},
+	}
+})
+
+minetest.clear_craft({
+	output = 'elepower_dynamics:shovel_lead',
+	recipe = {
+		{'elepower_dynamics:lead_ingot'},
+		{'group:stick'},
+		{'group:stick'},
+	}
+})
+
+minetest.clear_craft({
+	output = 'elepower_dynamics:sword_iron',
+	recipe = {
+		{'elepower_dynamics:iron_ingot'},
+		{'elepower_dynamics:iron_ingot'},
+		{'group:stick'},
+	}
+})
+
+minetest.clear_craft({
 	output = 'elepower_dynamics:sword_lead',
 	recipe = {
 		{'elepower_dynamics:lead_ingot'},
@@ -187,63 +219,11 @@ minetest.clear_craft({
 	}
 })
 
---Conduit
+--Wound coils
 minetest.clear_craft({
-	output = "elepower_dynamics:conduit 8",
-	recipe = {
-		{"elepower_dynamics:lead_ingot",  "elepower_dynamics:lead_ingot",  "elepower_dynamics:lead_ingot"},
-		{"basic_materials:copper_wire", "basic_materials:copper_wire", "basic_materials:copper_wire"},
-		{"elepower_dynamics:lead_ingot",  "elepower_dynamics:lead_ingot",  "elepower_dynamics:lead_ingot"},
-	}
-})
-
--- Opaque Fluid Duct
-minetest.clear_craft({
-	recipe = {
-		{"elepower_dynamics:lead_ingot",  "elepower_dynamics:lead_ingot",  "elepower_dynamics:lead_ingot"},
-		{"fluid_transfer:fluid_duct", "fluid_transfer:fluid_duct", "fluid_transfer:fluid_duct"},
-		{"elepower_dynamics:lead_ingot",  "elepower_dynamics:lead_ingot",  "elepower_dynamics:lead_ingot"},
-	}
+	output = "elepower_dynamics:wound_copper_coil",
 })
 
 minetest.clear_craft({
 	output = "elepower_dynamics:wound_silver_coil",
-	recipe = {
-		{"", "moreores:silver_ingot", ""},
-		{"moreores:silver_ingot", "elepower_dynamics:zinc_ingot", "moreores:silver_ingot"},
-		{"", "moreores:silver_ingot", ""}
-	}
-})
-
-minetest.clear_craft({
-	output = "elepower_dynamics:wound_silver_coil",
-	recipe = {
-		{"", "basic_materials:silver_wire", ""},
-		{"basic_materials:silver_wire", "elepower_dynamics:zinc_ingot", "basic_materials:silver_wire"},
-		{"", "basic_materials:silver_wire", ""}
-	},
-	replacements = {
-		{"basic_materials:silver_wire", "basic_materials:empty_spool"},
-		{"basic_materials:silver_wire", "basic_materials:empty_spool"},
-		{"basic_materials:silver_wire", "basic_materials:empty_spool"},
-		{"basic_materials:silver_wire", "basic_materials:empty_spool"},
-	}
-})
-
---Elepower Battery
-minetest.clear_craft({
-	recipe = {
-		{"elepower_dynamics:zinc_dust", "elepower_dynamics:graphite_rod", "elepower_dynamics:lead_dust"},
-		{"elepower_dynamics:tin_plate", "default:mese_crystal_fragment", "elepower_dynamics:tin_plate"},
-		{"elepower_dynamics:tin_plate", "default:mese_crystal_fragment", "elepower_dynamics:tin_plate"},
-	}
-})
-
-minetest.clear_craft({
-	output = "elepower_dynamics:lead_gear",
-	recipe = {
-		{"", "elepower_dynamics:lead_ingot", ""},
-		{"elepower_dynamics:lead_ingot", "", "elepower_dynamics:lead_ingot"},
-		{"", "elepower_dynamics:lead_ingot", ""},
-	}
 })
