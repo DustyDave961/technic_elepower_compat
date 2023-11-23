@@ -227,3 +227,33 @@ minetest.clear_craft({
 minetest.clear_craft({
 	output = "elepower_dynamics:wound_silver_coil",
 })
+
+--TO DO:Add one of these functions for elepower.
+--Override fucntion to clear the recipes for technic machines
+function clear_technic_recipe(recipe_type, recipe_input_name)
+	minetest.after(0.1, function() --This has to be called with a delay for the table to load in.
+	    technic.recipes[recipe_type]["recipes"][recipe_input_name] = nil
+	end)
+end
+
+--[[This function accepts two peramiters, the recipe type and
+the name of the input of the recipe you want to clear
+available recipe types:
+    "grinding"
+    "alloy"
+    "extracting"
+    "freezing"
+    "separating" This one is for the centrifuge.
+    "compressing"
+    "cooking" This one is for the cooking recipes for the electric furnace but you should just be able to use the minetest.clear_craft to do it too.
+The secound peramiter is the name of the recipe you want to override. This is the item name of the item you
+put into the machine i.e "default:silver_sandstone" which will clear the recipe that uses the silver sandstone as an input.
+Example: 
+    clear_technic_recipe("grinding", "defualt:silver_sandstone") 
+This will clear the grinding recipe that usese the "defualt:silver_sandstone" item as an input.
+For alloy recipes this is different as you need to have as the names of the inputs like this:
+    clear_technic_recipe("alloy", "input1/input2") 
+Example:
+    clear_technic_recipe("alloy", "technic:coal_dust/technic:raw_latex") 
+This will clear the alloy recipe with the inputs of technic:coal_dust and technic:raw_latex
+]]
