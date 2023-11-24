@@ -98,11 +98,7 @@ minetest.override_item("elepower_dynamics:zinc_ingot", {
 
 --Batteries
 minetest.clear_craft({
-	recipe = {
-		{"elepower_dynamics:zinc_dust", "elepower_dynamics:graphite_rod", "elepower_dynamics:lead_dust"},
-		{"elepower_dynamics:tin_plate", "default:mese_crystal_fragment", "elepower_dynamics:tin_plate"},
-		{"elepower_dynamics:tin_plate", "default:mese_crystal_fragment", "elepower_dynamics:tin_plate"},
-	}
+	output = "elepower_dynamics:battery",
 })
 
 minetest.clear_craft({
@@ -118,30 +114,16 @@ minetest.clear_craft({
 
 --Conduit
 minetest.clear_craft({
-	recipe = {
-		{"elepower_dynamics:lead_ingot",  "elepower_dynamics:lead_ingot",  "elepower_dynamics:lead_ingot"},
-		{"basic_materials:copper_wire", "basic_materials:copper_wire", "basic_materials:copper_wire"},
-		{"elepower_dynamics:lead_ingot",  "elepower_dynamics:lead_ingot",  "elepower_dynamics:lead_ingot"},
-	}
+	output = "elepower_dynamics:conduit",
 })
 
 --Gears
 minetest.clear_craft({
 	output = "elepower_dynamics:iron_gear",
-	recipe = {
-		{"", "elepower_dynamics:iron_ingot", ""},
-		{"elepower_dynamics:iron_ingot", "", "elepower_dynamics:iron_ingot"},
-		{"", "elepower_dynamics:iron_ingot", ""},
-	}
 })
 
 minetest.clear_craft({
 	output = "elepower_dynamics:lead_gear",
-	recipe = {
-		{"", "elepower_dynamics:lead_ingot", ""},
-		{"elepower_dynamics:lead_ingot", "", "elepower_dynamics:lead_ingot"},
-		{"", "elepower_dynamics:lead_ingot", ""},
-	}
 })
 
 --Lead strip
@@ -151,50 +133,26 @@ minetest.clear_craft({
 
 --Opaque Fluid Duct
 minetest.clear_craft({
-	recipe = {
-		{"elepower_dynamics:lead_ingot",  "elepower_dynamics:lead_ingot",  "elepower_dynamics:lead_ingot"},
-		{"fluid_transfer:fluid_duct", "fluid_transfer:fluid_duct", "fluid_transfer:fluid_duct"},
-		{"elepower_dynamics:lead_ingot",  "elepower_dynamics:lead_ingot",  "elepower_dynamics:lead_ingot"},
-	}
+	output = "elepower_dynamics:opaque_duct",
 })
 
 --Power cell
 minetest.clear_craft({
 	output = "elepower_machines:power_cell_0",
-	recipe = {
-		{"elepower_dynamics:lead_ingot", "elepower_dynamics:control_circuit", "elepower_dynamics:lead_ingot"},
-		{"elepower_dynamics:wound_copper_coil", "elepower_machines:machine_block", "elepower_dynamics:wound_copper_coil"},
-		{"elepower_dynamics:lead_ingot", "elepower_dynamics:battery", "elepower_dynamics:lead_ingot"},
-	}
 })
 
 --Sawmill
 minetest.clear_craft({
 	output = "elepower_machines:sawmill",
-	recipe = {
-		{"", "elepower_dynamics:integrated_circuit", ""},
-		{"elepower_dynamics:steel_gear", "elepower_machines:machine_block", "elepower_dynamics:steel_gear"},
-		{"elepower_dynamics:lead_ingot", "elepower_dynamics:diamond_gear", "elepower_dynamics:lead_ingot"},
-	}
 })
 
 --Tools
 minetest.clear_craft({
 	output = 'elepower_dynamics:axe_iron',
-	recipe = {
-		{'elepower_dynamics:iron_ingot', 'elepower_dynamics:iron_ingot'},
-		{'elepower_dynamics:iron_ingot', 'group:stick'},
-		{'', 'group:stick'},
-	}
 })
 
 minetest.clear_craft({
 	output = 'elepower_dynamics:axe_lead',
-	recipe = {
-		{'elepower_dynamics:lead_ingot', 'elepower_dynamics:lead_ingot'},
-		{'elepower_dynamics:lead_ingot', 'group:stick'},
-		{'', 'group:stick'},
-	}
 })
 
 minetest.clear_craft({
@@ -206,56 +164,26 @@ minetest.clear_craft({
 
 minetest.clear_craft({
 	output = 'elepower_dynamics:pick_iron',
-	recipe = {
-		{'elepower_dynamics:iron_ingot', 'elepower_dynamics:iron_ingot', 'elepower_dynamics:iron_ingot'},
-		{'', 'group:stick', ''},
-		{'', 'group:stick', ''},
-	}
 })
 
 minetest.clear_craft({
 	output = 'elepower_dynamics:pick_lead',
-	recipe = {
-		{'elepower_dynamics:lead_ingot', 'elepower_dynamics:lead_ingot', 'elepower_dynamics:lead_ingot'},
-		{'', 'group:stick', ''},
-		{'', 'group:stick', ''},
-	}
 })
 
 minetest.clear_craft({
 	output = 'elepower_dynamics:shovel_iron',
-	recipe = {
-		{'elepower_dynamics:iron_ingot'},
-		{'group:stick'},
-		{'group:stick'},
-	}
 })
 
 minetest.clear_craft({
 	output = 'elepower_dynamics:shovel_lead',
-	recipe = {
-		{'elepower_dynamics:lead_ingot'},
-		{'group:stick'},
-		{'group:stick'},
-	}
 })
 
 minetest.clear_craft({
 	output = 'elepower_dynamics:sword_iron',
-	recipe = {
-		{'elepower_dynamics:iron_ingot'},
-		{'elepower_dynamics:iron_ingot'},
-		{'group:stick'},
-	}
 })
 
 minetest.clear_craft({
 	output = 'elepower_dynamics:sword_lead',
-	recipe = {
-		{'elepower_dynamics:lead_ingot'},
-		{'elepower_dynamics:lead_ingot'},
-		{'group:stick'},
-	}
 })
 
 --Wound coils
