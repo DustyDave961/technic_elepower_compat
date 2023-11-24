@@ -96,13 +96,17 @@ minetest.override_item("elepower_dynamics:zinc_ingot", {
 	groups = {zinc_ingot = 1},
 })
 
---Battery
+--Batteries
 minetest.clear_craft({
 	recipe = {
 		{"elepower_dynamics:zinc_dust", "elepower_dynamics:graphite_rod", "elepower_dynamics:lead_dust"},
 		{"elepower_dynamics:tin_plate", "default:mese_crystal_fragment", "elepower_dynamics:tin_plate"},
 		{"elepower_dynamics:tin_plate", "default:mese_crystal_fragment", "elepower_dynamics:tin_plate"},
 	}
+})
+
+minetest.clear_craft({
+	output = "technic:battery",
 })
 
 --Coal dust
