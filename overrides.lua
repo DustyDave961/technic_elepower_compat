@@ -140,6 +140,11 @@ minetest.clear_craft({
 	}
 })
 
+--Lead strip
+minetest.clear_craft({
+	output = "basic_materials:lead_strip",
+})
+
 --Opaque Fluid Duct
 minetest.clear_craft({
 	recipe = {
