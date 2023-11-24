@@ -11,13 +11,64 @@ minetest.register_craft({
 	}
 })
 
---Elepower Battery
+--Batteries
 minetest.register_craft({
 	output = "elepower_dynamics:battery 2",
 	recipe = {
 		{"group:zinc_dust", "elepower_dynamics:graphite_rod", "group:lead_dust"},
 		{"elepower_dynamics:tin_plate", "default:mese_crystal_fragment", "elepower_dynamics:tin_plate"},
 		{"elepower_dynamics:tin_plate", "default:mese_crystal_fragment", "elepower_dynamics:tin_plate"},
+	}
+})
+
+minetest.register_craft({
+	output = "technic:battery",
+	recipe = {
+		{"group:wood", "technic:sulfur_lump", "group:wood"},
+		{"group:lead_ingot", "basic_materials:oil_extract", "group:lead_ingot"},
+		{"group:wood", "technic:sulfur_lump", "group:wood"},
+	}
+})
+
+minetest.register_craft({
+	output = "technic:battery",
+	recipe = {
+		{"group:wood", "technic:sulfur_lump", "group:wood"},
+		{"group:lead_ingot", "bucket:bucket_water", "group:lead_ingot"},
+		{"group:wood", "technic:sulfur_lump", "group:wood"},
+	},
+	replacements = {
+		{"bucket:bucket_water", "bucket:empty"},
+	}
+})
+
+minetest.register_craft({
+	output = "technic:battery",
+	recipe = {
+		{"group:wood", "technic:sulfur_dust", "group:wood"},
+		{"group:lead_ingot", "basic_materials:oil_extract", "group:lead_ingot"},
+		{"group:wood", "technic:sulfur_dust", "group:wood"},
+	}
+})
+
+minetest.register_craft({
+	output = "technic:battery",
+	recipe = {
+		{"group:wood", "technic:sulfur_dust", "group:wood"},
+		{"group:lead_ingot", "bucket:bucket_water", "group:lead_ingot"},
+		{"group:wood", "technic:sulfur_dust", "group:wood"},
+	},
+	replacements = {
+		{"bucket:bucket_water", "bucket:empty"},
+	}
+})
+
+minetest.register_craft({
+	output = "technic:battery",
+	recipe = {
+		{"group:wood", "default:copper_ingot", "group:wood"},
+		{"group:wood", "default:tin_ingot", "group:wood"},
+		{"group:wood", "default:copper_ingot", "group:wood"},
 	}
 })
 
@@ -316,6 +367,12 @@ elepm.register_craft({
 	recipe = {"technic:zinc_ingot", "technic:zinc_ingot"},
 	output = "elepower_dynamics:zinc_plate 2",
 	time   = 4
+})
+
+elepm.register_craft({
+	type   = "compress",
+	recipe = {"technic:cast_iron_ingot", "technic:cast_iron_ingot"},
+	output = "elepower_dynamics:iron_plate 2",
 })
 
 --Soldering
