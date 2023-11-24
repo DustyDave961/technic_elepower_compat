@@ -55,6 +55,15 @@ minetest.register_craft({
 	}
 })
 
+--Lead strip
+minetest.register_craft({
+	output = "basic_materials:lead_strip 12",
+	recipe = {
+		{"", "group:lead_ingot"},
+		{"group:lead_ingot", ""},
+	}
+})
+
 --Machine block
 if minetest.get_modpath("elepower_nuclear") then
 	minetest.register_craft({
