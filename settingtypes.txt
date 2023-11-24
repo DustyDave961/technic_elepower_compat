@@ -5,10 +5,10 @@ enable_on_join_player_message (Setting for the chat message about converter.) bo
 #	-	Technic:  Elepower lead ore nodes permanently replaced with stone.
 #	-	Elepower: Technic lead ore nodes permanently replaced with stone.
 #	-	Both:     Technic and Elepower lead unchanged.
-lead_used (Lead used) enum technic technic,elepower,both
+lead_used (Which lead to use.) enum technic technic,elepower,both
 
 #	Zinc used:
 #	-	Technic:  Elepower zinc ore nodes permanently replaced with stone.
 #	-	Elepower: Technic zinc ore nodes permanently replaced with stone.
 #	-	Both:     Technic and Elepower zinc unchanged.
-zinc_used (Zinc used) enum technic technic,elepower,both
+zinc_used (Which zinc to use.) enum technic technic,elepower,both
