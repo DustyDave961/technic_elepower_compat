@@ -1,52 +1,3 @@
---Ore overrides to clear unneeded ores.
-local lead_to_use = minetest.settings:get("lead_used")
-
-if lead_to_use == "technic" then
-    minetest.register_abm({
-        nodenames = {"elepower_dynamics:stone_with_lead"}, -- replace with the name of the ore
-        interval = 1, -- runs every 1 second
-        chance = 1, -- always fires
-        action = function(pos)
-            minetest.swap_node(pos, {name = "default:stone"})
-        end,
-    })
-elseif lead_to_use == "elepower" then
-    minetest.register_abm({
-        nodenames = {"technic:mineral_lead"}, -- replace with the name of the ore
-	interval = 1, -- runs every 1 second
-    	chance = 1, -- always fires
-  	action = function(pos)
-        	minetest.swap_node(pos, {name = "default:stone"})
-    	end,
-    })
-elseif lead_to_use == "both" then
-	return false
-end
-
-local zinc_to_use = minetest.settings:get("zinc_used")
-
-if zinc_to_use == "technic" then
-    minetest.register_abm({
-    	nodenames = {"elepower_dynamics:stone_with_zinc"}, -- replace with the name of the ore
-    	interval = 1, -- runs every 1 second
-    	chance = 1, -- always fires
-    	action = function(pos)
-        	minetest.swap_node(pos, {name = "default:stone"})
-    	end,
-    })
-elseif zinc_to_use == "elepower" then 
-    minetest.register_abm({
-        nodenames = {"technic:mineral_zinc"}, -- replace with the name of the ore
-	interval = 1, -- runs every 1 second
-    	chance = 1, -- always fires
-  	action = function(pos)
-        	minetest.swap_node(pos, {name = "default:stone"})
-    	end,
-    })
-elseif zinc_to_use == "both" then
-    return false
-end
-
 --Adding dust and ingot groups
 minetest.override_item("technic:coal_dust", {
 	groups = {coal_dust = 1},
@@ -78,6 +29,14 @@ minetest.override_item("technic:lead_ingot", {
 
 minetest.override_item("elepower_dynamics:lead_ingot", {
 	groups = {lead_ingot = 1},
+})
+
+minetest.override_item("technic:sulfur_lump", {
+	groups = {sulfur = 1},
+})
+
+minetest.override_item("technic:sulfur_dust", {
+	groups = {sulfur = 1},
 })
 
 minetest.override_item("technic:zinc_dust", {
@@ -257,3 +216,52 @@ This example function goes into the table compress and gets the first thing in t
 the specified output if it does it removes the item with that index number. If not then it goes to the next item in the list and checks again.
 This function doesn't clear recipes with multiple outputs because it only tests for one input.
 ]]
+
+--Ore overrides to clear unneeded ores.
+local lead_to_use = minetest.settings:get("lead_used")
+
+if lead_to_use == "technic" then
+    minetest.register_abm({
+        nodenames = {"elepower_dynamics:stone_with_lead"}, -- replace with the name of the ore
+        interval = 1, -- runs every 1 second
+        chance = 1, -- always fires
+        action = function(pos)
+            minetest.swap_node(pos, {name = "default:stone"})
+        end,
+    })
+elseif lead_to_use == "elepower" then
+    minetest.register_abm({
+        nodenames = {"technic:mineral_lead"}, -- replace with the name of the ore
+	interval = 1, -- runs every 1 second
+    	chance = 1, -- always fires
+  	action = function(pos)
+        	minetest.swap_node(pos, {name = "default:stone"})
+    	end,
+    })
+elseif lead_to_use == "both" then
+	return false
+end
+
+local zinc_to_use = minetest.settings:get("zinc_used")
+
+if zinc_to_use == "technic" then
+    minetest.register_abm({
+    	nodenames = {"elepower_dynamics:stone_with_zinc"}, -- replace with the name of the ore
+    	interval = 1, -- runs every 1 second
+    	chance = 1, -- always fires
+    	action = function(pos)
+        	minetest.swap_node(pos, {name = "default:stone"})
+    	end,
+    })
+elseif zinc_to_use == "elepower" then 
+    minetest.register_abm({
+        nodenames = {"technic:mineral_zinc"}, -- replace with the name of the ore
+	interval = 1, -- runs every 1 second
+    	chance = 1, -- always fires
+  	action = function(pos)
+        	minetest.swap_node(pos, {name = "default:stone"})
+    	end,
+    })
+elseif zinc_to_use == "both" then
+    return false
+end
