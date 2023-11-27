@@ -52,6 +52,12 @@ minetest.register_craft({
 })
 
 --Compression
+elepm.register_craft({
+	type   = "compress",
+	recipe = {"technic:cast_iron_ingot", "technic:cast_iron_ingot"},
+	output = "elepower_dynamics:iron_plate 2",
+})
+
 technic.register_compressor_recipe({
 	input  = {"elepower_dynamics:diamond_dust"},
 	output = "default:diamond",
@@ -64,17 +70,17 @@ elepm.register_craft({
 	time   = 4
 })
 
+technic.register_compressor_recipe({
+	input  = {"elepower_dynamics:mese_dust"},
+	output = "default:mese_crystal_fragment",
+	time   = 1
+})
+
 elepm.register_craft({
 	type   = "compress",
 	recipe = {"technic:zinc_ingot", "technic:zinc_ingot"},
 	output = "elepower_dynamics:zinc_plate 2",
 	time   = 4
-})
-
-elepm.register_craft({
-	type   = "compress",
-	recipe = {"technic:cast_iron_ingot", "technic:cast_iron_ingot"},
-	output = "elepower_dynamics:iron_plate 2",
 })
 
 --Conduit
