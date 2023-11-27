@@ -10,7 +10,6 @@ local technic_grinding = {
 	{"default:copperblock",      	       "technic:copper_dust 9", 10},
 	{"elepower_dynamics:graphite_rod",     "technic:coal_dust 2"},
 	{"elepower_dynamics:copper_plate",     "technic:copper_dust"},
-	{"default:diamond",                    "elepower_dynamics:diamond_dust"},
 	{"default:diamondblock",               "elepower_dynamics:diamond_dust 9", 10},
 	{"elepower_dynamics:electrum_ingot",   "elepower_dynamics:electrum_dust"},
 	{"elepower_dynamics:electrum_plate",   "elepower_dynamics:electrum_dust"},
