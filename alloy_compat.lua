@@ -1,45 +1,18 @@
 --Elepower Recipes for Technic Furnaces
-technic.register_alloy_recipe({
-	input  = {"default:copper_ingot 2", "moreores:silver_ingot"},
-	output = "basic_materials:brass_ingot 3",
-})
+local technic_alloying = {
+	{"default:copper_ingot 2",          "moreores:silver_ingot",          "basic_materials:brass_ingot 3"},
+	{"default:gold_ingot 2",            "elepower_dynamics:invar_ingot",  "elepower_dynamics:electrum_ingot 3"},
+	{"default:coal_lump",               "elepower_dynamics:coal_dust 4",  "elepower_dynamics:graphite_ingot"},
+	{"default:obsidian_glass",          "elepower_dynamics:lead_ingot 4", "elepower_dynamics:hardened_glass 4", 8},
+	{"default:bronze_ingot",            "default:steel_ingot 4",          "elepower_machines:heat_casing 4"},
+	{"elepower_dynamics:iron_ingot 3",  "elepower_dynamics:nickel_ingot", "elepower_dynamics:invar_ingot 4"},
+	{"elepower_dynamics:silicon_wafer", "elepower_dynamics:gold_dust 4",  "elepower_dynamics:silicon_wafer_doped", 8},
+	{"basic_materials:silicon",         "elepower_dynamics:coal_dust 2",  "elepower_dynamics:silicon_wafer"},
+}
 
-technic.register_alloy_recipe({
-	input  = {"default:gold_ingot 2", "elepower_dynamics:invar_ingot"},
-	output = "elepower_dynamics:electrum_ingot 3",
-})
-
-technic.register_alloy_recipe({
-	input  = {"default:coal_lump", "elepower_dynamics:coal_dust 4"},
-	output = "elepower_dynamics:graphite_ingot",
-})
-
-technic.register_alloy_recipe({
-	input  = {"default:obsidian_glass", "elepower_dynamics:lead_ingot 4"},
-	output = "elepower_dynamics:hardened_glass 4",
-	time   = 8
-})
-
-technic.register_alloy_recipe({
-	input  = {"default:bronze_ingot", "default:steel_ingot 4"},
-	output = "elepower_machines:heat_casing 4",
-})
-
-technic.register_alloy_recipe({
-	input  = {"elepower_dynamics:iron_ingot 3", "elepower_dynamics:nickel_ingot"},
-	output = "elepower_dynamics:invar_ingot 4",
-})
-
-technic.register_alloy_recipe({
-	input  = {"basic_materials:silicon", "elepower_dynamics:coal_dust 2"},
-	output = "elepower_dynamics:silicon_wafer",
-})
-
-technic.register_alloy_recipe({
-	input  = {"elepower_dynamics:silicon_wafer", "elepower_dynamics:gold_dust 4"},
-	output = "elepower_dynamics:silicon_wafer_doped",
-	time   = 8
-})
+for _, data in pairs(technic_alloying) do
+	technic.register_alloy_recipe({input = {data[1], data[2]}, output = data[3], time = data[4]})
+end
 
 --Technic Recipes for Elepower Furnaces
 elepm.register_craft({
