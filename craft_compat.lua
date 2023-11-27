@@ -52,6 +52,11 @@ minetest.register_craft({
 })
 
 --Compression
+technic.register_compressor_recipe({
+	input  = {"elepower_dynamics:diamond_dust"},
+	output = "default:diamond",
+})
+
 elepm.register_craft({
 	type   = "compress",
 	recipe = {"technic:lead_ingot", "technic:lead_ingot"},
@@ -162,6 +167,12 @@ minetest.register_craft({
 	type   = "cooking",
 	output = "basic_materials:brass_ingot",
 	recipe = "elepower_dynamics:brass_dust"
+})
+
+minetest.register_craft({
+	type   = "cooking",
+	output = "default:bronze_ingot",
+	recipe = "elepower_dynamics:bronze_dust"
 })
 
 minetest.register_craft({
