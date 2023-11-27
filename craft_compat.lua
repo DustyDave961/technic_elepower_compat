@@ -24,39 +24,18 @@ minetest.register_craft({
 minetest.register_craft({
 	output = "technic:battery",
 	recipe = {
-		{"group:wood", "technic:sulfur_lump", "group:wood"},
+		{"group:wood", "group:sulfur", "group:wood"},
 		{"group:lead_ingot", "basic_materials:oil_extract", "group:lead_ingot"},
-		{"group:wood", "technic:sulfur_lump", "group:wood"},
+		{"group:wood", "group:sulfur", "group:wood"},
 	}
 })
 
 minetest.register_craft({
 	output = "technic:battery",
 	recipe = {
-		{"group:wood", "technic:sulfur_lump", "group:wood"},
+		{"group:wood", "group:sulfur", "group:wood"},
 		{"group:lead_ingot", "bucket:bucket_water", "group:lead_ingot"},
-		{"group:wood", "technic:sulfur_lump", "group:wood"},
-	},
-	replacements = {
-		{"bucket:bucket_water", "bucket:empty"},
-	}
-})
-
-minetest.register_craft({
-	output = "technic:battery",
-	recipe = {
-		{"group:wood", "technic:sulfur_dust", "group:wood"},
-		{"group:lead_ingot", "basic_materials:oil_extract", "group:lead_ingot"},
-		{"group:wood", "technic:sulfur_dust", "group:wood"},
-	}
-})
-
-minetest.register_craft({
-	output = "technic:battery",
-	recipe = {
-		{"group:wood", "technic:sulfur_dust", "group:wood"},
-		{"group:lead_ingot", "bucket:bucket_water", "group:lead_ingot"},
-		{"group:wood", "technic:sulfur_dust", "group:wood"},
+		{"group:wood", "group:sulfur", "group:wood"},
 	},
 	replacements = {
 		{"bucket:bucket_water", "bucket:empty"},
@@ -70,6 +49,27 @@ minetest.register_craft({
 		{"group:wood", "default:tin_ingot", "group:wood"},
 		{"group:wood", "default:copper_ingot", "group:wood"},
 	}
+})
+
+--Compression
+elepm.register_craft({
+	type   = "compress",
+	recipe = {"technic:lead_ingot", "technic:lead_ingot"},
+	output = "elepower_dynamics:lead_plate 2",
+	time   = 4
+})
+
+elepm.register_craft({
+	type   = "compress",
+	recipe = {"technic:zinc_ingot", "technic:zinc_ingot"},
+	output = "elepower_dynamics:zinc_plate 2",
+	time   = 4
+})
+
+elepm.register_craft({
+	type   = "compress",
+	recipe = {"technic:cast_iron_ingot", "technic:cast_iron_ingot"},
+	output = "elepower_dynamics:iron_plate 2",
 })
 
 --Conduit
@@ -159,6 +159,12 @@ minetest.register_craft({
 
 --Smelting
 minetest.register_craft({
+	type   = "cooking",
+	output = "basic_materials:brass_ingot",
+	recipe = "elepower_dynamics:brass_dust"
+})
+
+minetest.register_craft({
 	type = "fuel",
 	recipe = "group:coal_dust",
 	burntime = 50,
@@ -186,6 +192,21 @@ minetest.register_craft({
 	type   = "cooking",
 	output = "technic:zinc_ingot",
 	recipe = "elepower_dynamics:zinc_ingot"
+})
+
+--Soldering
+elepm.register_craft({
+	type   = "solder",
+	recipe = {"elepower_dynamics:induction_coil 4", "basic_materials:copper_wire", "technic:zinc_dust 2"},
+	output = "elepower_dynamics:induction_coil_advanced",
+	time   = 18
+})
+
+elepm.register_craft({
+	type   = "solder",
+	recipe = { "elepower_dynamics:silicon_wafer_doped", "elepower_dynamics:chip 4", "technic:lead_ingot 2" },
+	output = "elepower_dynamics:microcontroller",
+	time   = 8,
 })
 
 --Tools
@@ -352,40 +373,4 @@ minetest.register_craft({
 		{"basic_materials:silver_wire", "basic_materials:empty_spool"},
 		{"basic_materials:silver_wire", "basic_materials:empty_spool"},
 	}
-})
-
---Compression
-elepm.register_craft({
-	type   = "compress",
-	recipe = {"technic:lead_ingot", "technic:lead_ingot"},
-	output = "elepower_dynamics:lead_plate 2",
-	time   = 4
-})
-
-elepm.register_craft({
-	type   = "compress",
-	recipe = {"technic:zinc_ingot", "technic:zinc_ingot"},
-	output = "elepower_dynamics:zinc_plate 2",
-	time   = 4
-})
-
-elepm.register_craft({
-	type   = "compress",
-	recipe = {"technic:cast_iron_ingot", "technic:cast_iron_ingot"},
-	output = "elepower_dynamics:iron_plate 2",
-})
-
---Soldering
-elepm.register_craft({
-	type   = "solder",
-	recipe = {"elepower_dynamics:induction_coil 4", "basic_materials:copper_wire", "technic:zinc_dust 2"},
-	output = "elepower_dynamics:induction_coil_advanced",
-	time   = 18
-})
-
-elepm.register_craft({
-	type   = "solder",
-	recipe = { "elepower_dynamics:silicon_wafer_doped", "elepower_dynamics:chip 4", "technic:lead_ingot 2" },
-	output = "elepower_dynamics:microcontroller",
-	time   = 8,
 })
