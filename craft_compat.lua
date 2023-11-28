@@ -223,6 +223,13 @@ if minetest.get_modpath ("elepower_tools") then
 	})
 end
 
+--Extractor recipes
+technic.register_extractor_recipe({
+	input  = {"elepower_dynamics:coal_dust"},
+	output = "dye:black 2",
+})
+
+--Machine block and nuclear waste
 if minetest.get_modpath("elepower_nuclear") then
 	minetest.register_craft({output = "elepower_nuclear:machine_block", recipe = {
 			{"elepower_dynamics:induction_coil_advanced", "elepower_dynamics:graphite_ingot", "elepower_dynamics:induction_coil_advanced"},
