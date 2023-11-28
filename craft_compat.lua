@@ -217,12 +217,19 @@ if minetest.get_modpath ("elepower_tools") then
 	})
 end
 
---Machine block
 if minetest.get_modpath("elepower_nuclear") then
 	minetest.register_craft({output = "elepower_nuclear:machine_block", recipe = {
 			{"elepower_dynamics:induction_coil_advanced", "elepower_dynamics:graphite_ingot", "elepower_dynamics:induction_coil_advanced"},
 			{"elepower_dynamics:graphite_ingot", "technic:lead_block", "elepower_dynamics:graphite_ingot"},
 			{"technic:lead_block", "elepower_dynamics:graphite_ingot", "technic:lead_block"},
+		}
+	})
+	
+	minetest.register_craft({output = "elepower_nuclear:nuclear_waste 5", recipe = {
+			{"elepower_nuclear:fuel_rod_depleted"}
+		},
+		replacements = {
+			{"elepower_nuclear:fuel_rod_depleted", "elepower_nuclear:fuel_rod_empty"},
 		}
 	})
 end
