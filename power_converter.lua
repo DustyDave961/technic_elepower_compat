@@ -520,4 +520,3 @@ minetest.register_craft({
         {"", "elepower_dynamics:conduit", ""}
     }
 })
-    
