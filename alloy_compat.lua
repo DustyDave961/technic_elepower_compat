@@ -41,13 +41,13 @@ local register_alloy_recipes = {
 	{"default:coal_lump",         "technic:coal_dust 4",            "elepower_dynamics:graphite_ingot"},
 	{"default:obsidian_glass",    "technic:lead_ingot 4",           "elepower_dynamics:hardened_glass 4", 7.5, 8},
 	{"technic:cast_iron_ingot 3", "elepower_dynamics:nickel_ingot", "elepower_dynamics:invar_ingot 4"},
+	{"technic:raw_latex 4",       "elepower_dynamics:coal_dust 2",  "technic:rubber 6", 1, 1},
 	{"default:desert_sand 2",     "technic:coal_dust 2",            "elepower_dynamics:silicon_wafer"},
 	{"basic_materials:silicon",   "technic:coal_dust 2",            "elepower_dynamics:silicon_wafer"},
 	{"default:sand 2",            "elepower_dynamics:coal_dust 2",  "technic:silicon_wafer"},
 }
 
 for _, data in pairs(register_alloy_recipes) do
-	technic.register_alloy_recipe({input = {data[1], data[2]}, output = data[3], time = data[4] or 6})
-	
+	technic.register_alloy_recipe({input = {data[1], data[2]}, output = data[3], time = data[4] or 6})	
 	elepm.register_craft({type = "alloy", recipe = {data[1], data[2]}, output = data[3], time = data[5] or 4})
 end
