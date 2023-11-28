@@ -50,6 +50,12 @@ local recipes = {
 			{"basic_materials:copper_wire", "basic_materials:empty_spool"},
 		}
 	},
+	{output = "elepower_machines:heavy_filter",	recipe = {
+			{"elepower_dynamics:steel_plate", "fluid_transfer:fluid_duct", "elepower_dynamics:steel_plate"},
+			{"basic_materials:silicon", "elepower_dynamics:servo_valve", "basic_materials:silicon"},
+			{"technic:carbon_cloth", "fluid_transfer:fluid_duct", "technic:carbon_cloth"}
+		}
+	},
 	{output = 'elepower_dynamics:axe_iron', recipe = {
 			{'group:iron_ingot', 'group:iron_ingot'},
 			{'group:iron_ingot', 'group:stick'},
