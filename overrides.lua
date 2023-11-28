@@ -76,6 +76,12 @@ minetest.clear_craft({
 	output = "elepower_dynamics:conduit",
 })
 
+--iron lump
+minetest.clear_craft({
+	type = "cooking",
+	recipe = "default:iron_lump",
+})
+
 --Gears
 minetest.clear_craft({
 	output = "elepower_dynamics:iron_gear",
