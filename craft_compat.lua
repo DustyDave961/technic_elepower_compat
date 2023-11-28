@@ -16,7 +16,7 @@ local recipes = {
 			{"group:wood", "group:sulfur", "group:wood"},
 		},
 	replacements = {
-			{"bucket:bucket_water", "bucket:bucket_empty"},
+			{"group:water_bucket", "bucket:bucket_empty"},
 		}
 	},
 	{output = "technic:battery", recipe = {
