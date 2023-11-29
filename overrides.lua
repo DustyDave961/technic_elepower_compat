@@ -1,4 +1,12 @@
---Adding dust and ingot groups
+--Adding groups
+minetest.override_item("elepower_dynamics:battery", {
+	groups = {battery = 1},
+})
+
+minetest.override_item("technic:battery", {
+	groups = {battery = 1},
+})
+
 minetest.override_item("technic:coal_dust", {
 	groups = {coal_dust = 1},
 })
@@ -71,24 +79,10 @@ minetest.clear_craft({
 	burntime = 50,
 })
 
---Conduit
-minetest.clear_craft({
-	output = "elepower_dynamics:conduit",
-})
-
 --iron lump
 minetest.clear_craft({
-	type = "cooking",
+	type   = "cooking",
 	recipe = "default:iron_lump",
-})
-
---Gears
-minetest.clear_craft({
-	output = "elepower_dynamics:iron_gear",
-})
-
-minetest.clear_craft({
-	output = "elepower_dynamics:lead_gear",
 })
 
 --Lead strip
@@ -96,59 +90,9 @@ minetest.clear_craft({
 	output = "basic_materials:lead_strip",
 })
 
---Opaque Fluid Duct
-minetest.clear_craft({
-	output = "elepower_dynamics:opaque_duct",
-})
-
 --Power cell
 minetest.clear_craft({
 	output = "elepower_machines:power_cell_0",
-})
-
---Sawmill
-minetest.clear_craft({
-	output = "elepower_machines:sawmill",
-})
-
---Tools
-minetest.clear_craft({
-	output = 'elepower_dynamics:axe_iron',
-})
-
-minetest.clear_craft({
-	output = 'elepower_dynamics:axe_lead',
-})
-
-minetest.clear_craft({
-	recipe = {
-		{'elepower_dynamics:iron_ingot', '', 'elepower_dynamics:iron_ingot'},
-		{'', 'elepower_dynamics:iron_ingot', ''},
-	}
-})
-
-minetest.clear_craft({
-	output = 'elepower_dynamics:pick_iron',
-})
-
-minetest.clear_craft({
-	output = 'elepower_dynamics:pick_lead',
-})
-
-minetest.clear_craft({
-	output = 'elepower_dynamics:shovel_iron',
-})
-
-minetest.clear_craft({
-	output = 'elepower_dynamics:shovel_lead',
-})
-
-minetest.clear_craft({
-	output = 'elepower_dynamics:sword_iron',
-})
-
-minetest.clear_craft({
-	output = 'elepower_dynamics:sword_lead',
 })
 
 --Wound coils
