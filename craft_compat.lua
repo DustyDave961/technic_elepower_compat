@@ -33,16 +33,16 @@ local recipes = {
 	},
 	{type = "cooking", output = "basic_materials:brass_ingot", recipe = "elepower_dynamics:brass_dust"},
 	{type = "cooking", output = "default:bronze_ingot", recipe = "elepower_dynamics:bronze_dust"},
-	{output = 'bucket:bucket_empty', recipe = {
-			{'group:iron_ingot', '', 'group:iron_ingot'},
-			{'', 'group:iron_ingot', ''},
+	{output = "bucket:bucket_empty", recipe = {
+			{"technic:cast_iron_ingot", "", "technic:cast_iron_ingot"},
+			{"", "technic:cast_iron_ingot", ""},
 		}
 	},
 	{type = "fuel",	recipe = "group:coal_dust",	time = 50},
 	{output = "elepower_dynamics:conduit 8", recipe = {
-			{"group:lead_ingot",  "group:lead_ingot",  "group:lead_ingot"},
+			{"technic:lead_ingot", "technic:lead_ingot", "technic:lead_ingot"},
 			{"basic_materials:copper_wire", "basic_materials:copper_wire", "basic_materials:copper_wire"},
-			{"group:lead_ingot",  "group:lead_ingot",  "group:lead_ingot"},
+			{"technic:lead_ingot",  "technic:lead_ingot",  "technic:lead_ingot"},
 		},
 	replacements = {
 			{"basic_materials:copper_wire", "basic_materials:empty_spool"},
@@ -56,61 +56,67 @@ local recipes = {
 			{"technic:carbon_cloth", "fluid_transfer:fluid_duct", "technic:carbon_cloth"}
 		}
 	},
-	{output = 'elepower_dynamics:axe_iron', recipe = {
-			{'group:iron_ingot', 'group:iron_ingot'},
-			{'group:iron_ingot', 'group:stick'},
-			{'', 'group:stick'},
+	{output = "elepower_dynamics:axe_iron", recipe = {
+			{"technic:cast_iron_ingot", "technic:cast_iron_ingot"},
+			{"technic:cast_iron_ingot", "group:stick"},
+			{"", "group:stick"},
 		}
 	},
 	{output = "elepower_dynamics:iron_gear", recipe = {
-			{"", "group:iron_ingot", ""},
-			{"group:iron_ingot", "", "group:iron_ingot"},
-			{"", "group:iron_ingot", ""},
+			{"", "technic:cast_iron_ingot", ""},
+			{"technic:cast_iron_ingot", "", "technic:cast_iron_ingot"},
+			{"", "technic:cast_iron_ingot", ""},
 		}
 	},
 	{type = "cooking", output = "elepower_dynamics:iron_ingot", recipe = "default:iron_lump"},
-	{output = 'elepower_dynamics:pick_iron', recipe = {
-			{'group:iron_ingot', 'group:iron_ingot', 'group:iron_ingot'},
-			{'', 'group:stick', ''},
-			{'', 'group:stick', ''},
+	{output = "elepower_dynamics:pick_iron", recipe = {
+			{"technic:cast_iron_ingot", "technic:cast_iron_ingot", "technic:cast_iron_ingot"},
+			{"", "group:stick", ""},
+			{"", "group:stick", ""},
 		}
 	},
-	{output = 'elepower_dynamics:shovel_iron', recipe = {
-			{'group:iron_ingot'},
-			{'group:stick'},
-			{'group:stick'},
+	{output = "elepower_dynamics:shovel_iron", recipe = {
+			{"technic:cast_iron_ingot"},
+			{"group:stick"},
+			{"group:stick"},
 		}
 	},
-	{output = 'elepower_dynamics:sword_iron', recipe = {
-			{'group:iron_ingot'},
-			{'group:iron_ingot'},
-			{'group:stick'},
+	{output = "elepower_dynamics:sword_iron", recipe = {
+			{"technic:cast_iron_ingot"},
+			{"technic:cast_iron_ingot"},
+			{"group:stick"},
 		}
 	},
-	{output = 'elepower_dynamics:axe_lead', recipe = {
-			{'group:lead_ingot', 'group:lead_ingot'},
-			{'group:lead_ingot', 'group:stick'},
-			{'', 'group:stick'},
+	{output = "technic:lava_can", recipe = {
+			{"elepower_dynamics:zinc_ingot", "technic:stainless_steel_ingot", "elepower_dynamics:zinc_ingot"},
+			{"technic:stainless_steel_ingot", "", "technic:stainless_steel_ingot"},
+			{"elepower_dynamics:zinc_ingot", "technic:stainless_steel_ingot", "elepower_dynamics:zinc_ingot"},
+		}
+	},
+	{output = "elepower_dynamics:axe_lead", recipe = {
+			{"technic:lead_ingot", "technic:lead_ingot"},
+			{"technic:lead_ingot", "group:stick"},
+			{"", "group:stick"},
 		}
 	},
 	{output = "elepower_dynamics:lead_gear", recipe = {
-			{"", "group:lead_ingot", ""},
-			{"group:lead_ingot", "", "group:lead_ingot"},
-			{"", "group:lead_ingot", ""},
+			{"", "technic:lead_ingot", ""},
+			{"technic:lead_ingot", "", "technic:lead_ingot"},
+			{"", "technic:lead_ingot", ""},
 		}
 	},
 	{type = "cooking", output = "elepower_dynamics:lead_ingot", recipe = "technic:lead_ingot"},
 	{type = "cooking", output = "technic:lead_ingot", recipe = "elepower_dynamics:lead_ingot"},
-	{output = 'elepower_dynamics:pick_lead', recipe = {
-			{'group:lead_ingot', 'group:lead_ingot', 'group:lead_ingot'},
-			{'', 'group:stick', ''},
-			{'', 'group:stick', ''},
+	{output = "elepower_dynamics:pick_lead", recipe = {
+			{"technic:lead_ingot", "technic:lead_ingot", "technic:lead_ingot"},
+			{"", "group:stick", ""},
+			{"", "group:stick", ""},
 		}
 	},
-	{output = 'elepower_dynamics:shovel_lead', recipe = {
-			{'group:lead_ingot'},
-			{'group:stick'},
-			{'group:stick'},
+	{output = "elepower_dynamics:shovel_lead", recipe = {
+			{"technic:lead_ingot"},
+			{"group:stick"},
+			{"group:stick"},
 		}
 	},
 	{output = "basic_materials:lead_strip 12", recipe = {
@@ -118,28 +124,40 @@ local recipes = {
 			{"group:lead_ingot", ""},
 		}
 	},
-	{output = 'elepower_dynamics:sword_lead', recipe = {
-			{'group:lead_ingot'},
-			{'group:lead_ingot'},
-			{'group:stick'},
+	{output = "elepower_dynamics:sword_lead", recipe = {
+			{"technic:lead_ingot"},
+			{"technic:lead_ingot"},
+			{"group:stick"},
 		}
 	},
 	{output = "elepower_dynamics:opaque_duct 3", recipe = {
-			{"group:lead_ingot",  "group:lead_ingot",  "group:lead_ingot"},
+			{"technic:lead_ingot",  "technic:lead_ingot",  "technic:lead_ingot"},
 			{"fluid_transfer:fluid_duct", "fluid_transfer:fluid_duct", "fluid_transfer:fluid_duct"},
-			{"group:lead_ingot",  "group:lead_ingot",  "group:lead_ingot"},
+			{"technic:lead_ingot",  "technic:lead_ingot",  "technic:lead_ingot"},
 		}
 	},
 	{output = "elepower_machines:power_cell_0", recipe = {
 			{"group:lead_ingot", "elepower_dynamics:control_circuit", "group:lead_ingot"},
 			{"elepower_dynamics:wound_copper_coil", "elepower_machines:machine_block", "elepower_dynamics:wound_copper_coil"},
-			{"group:lead_ingot", "elepower_dynamics:battery", "group:lead_ingot"},
+			{"group:lead_ingot", "group:battery", "group:lead_ingot"},
+		}
+	},
+	{output = "technic:river_water_can", recipe = {
+			{"elepower_dynamics:zinc_ingot", "technic:rubber", "elepower_dynamics:zinc_ingot"},
+			{"default:steel_ingot", "", "default:steel_ingot"},
+			{"elepower_dynamics:zinc_ingot", "default:steel_ingot", "elepower_dynamics:zinc_ingot"},
 		}
 	},
 	{output = "elepower_machines:sawmill", recipe = {
 			{"", "elepower_dynamics:integrated_circuit", ""},
 			{"elepower_dynamics:steel_gear", "elepower_machines:machine_block", "elepower_dynamics:steel_gear"},
-			{"group:lead_ingot", "elepower_dynamics:diamond_gear", "group:lead_ingot"},
+			{"technic:lead_ingot", "elepower_dynamics:diamond_gear", "technic:lead_ingot"},
+		}
+	},
+	{output = "technic:water_can", recipe = {
+			{"elepower_dynamics:zinc_ingot", "technic:rubber", "elepower_dynamics:zinc_ingot"},
+			{"technic:carbon_steel_ingot", "", "technic:carbon_steel_ingot"},
+			{"elepower_dynamics:zinc_ingot", "technic:carbon_steel_ingot", "elepower_dynamics:zinc_ingot"},
 		}
 	},
 	{output = "elepower_dynamics:wound_copper_coil", recipe = {
