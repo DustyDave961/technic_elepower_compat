@@ -515,8 +515,8 @@ technic.register_machine("LV", "technic_elepower_compat:power_converter", techni
 minetest.register_craft({
     output = "technic_elepower_compat:power_converter",
     recipe = {
-        {"", "elepower_dynamics:conduit", ""},
+        {"group:battery", "elepower_dynamics:conduit", "group:battery"},
         {"elepower_dynamics:wound_copper_coil", "technic:supply_converter", "elepower_dynamics:wound_copper_coil"},
-        {"", "elepower_dynamics:conduit", ""}
+        {"group:battery", "elepower_dynamics:conduit", "group:battery"}
     }
 })
