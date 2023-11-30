@@ -360,7 +360,6 @@ local function run_conversion_logic(pos)
 				status = "Active 6"
 				set_infotext()
 			elseif eu_input >= en_input then
-				print("Entering Active 3 state")
 				meta:set_int("LV_EU_supply", 0)
 				meta:set_int("LV_EU_demand", en_input)
 				meta:set_int("usage", en_input)
