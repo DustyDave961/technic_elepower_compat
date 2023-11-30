@@ -258,7 +258,6 @@ end
 
 local function run_conversion_logic(pos)
 	is_converting = true
-	minetest.chat_send_all("Conversion function started.")
 	
 			local meta = minetest.get_meta(pos)
 		local state = meta:get_string("state")
@@ -320,7 +319,7 @@ local function run_conversion_logic(pos)
 				meta:set_int("LV_EU_supply", 0)
 				meta:set_int("inrush", 0)
 				meta:set_int("output", 0) 
-				wmeta:set_int("usage", -en_input)
+				meta:set_int("usage", -en_input)
 				status = "Active 2"
 				set_infotext()
 			elseif storage < 2 * en_input then
@@ -345,7 +344,6 @@ local function run_conversion_logic(pos)
 	elseif direction == "technic_to_elepower" then
 		if is_connected_to_elepower_user(pos) then
 			if storage >= 2 * en_input and storage <= 10000 - en_input then
-				print("Entering Active 1 state")
 				meta:set_int("LV_EU_supply", 0)
 				meta:set_int("inrush", 0)
 				meta:set_int("LV_EU_demand", en_input)
@@ -354,7 +352,6 @@ local function run_conversion_logic(pos)
 				status = "Active 5"
 				set_infotext()
 			elseif storage >= 10000 - en_input then
-				print("Entering Active 2 state")
 				meta:set_int("usage", 0)
 				meta:set_int("LV_EU_demand", 0)
 				meta:set_int("LV_EU_supply", 0)
@@ -372,7 +369,6 @@ local function run_conversion_logic(pos)
 				status = "Active 7"
 				set_infotext()
 			elseif eu_input < en_input and storage < en_input then
-				print("Entering Unpowered 4 state")
 				meta:set_int("output", 0)
 				meta:set_int("inrush", 0)
 				meta:set_int("usage", 0)
@@ -397,7 +393,6 @@ local function run_conversion_logic(pos)
 		end
 	end
 	is_converting = false
-	minetest.chat_send_all("Conversion function ended.")
 end
 
 ele.register_machine("technic_elepower_compat:power_converter", {
@@ -499,14 +494,12 @@ ele.register_machine("technic_elepower_compat:power_converter", {
 			meta:set_int("LV_EU_demand", 0)
 			status = "Off 10"
 			set_infotext()
-			minetest.chat_send_all("Conversion set to off.")
 		elseif is_converting == true then
-		minetest.chat_send_all("Conversion in progress. Do nothing.")
 			return false
 		end
 		
 		local timer = minetest.get_node_timer(pos)
-        timer:start(1.0)
+        	timer:start(1.0)
 	end,
 })
 
