@@ -39,6 +39,14 @@ minetest.override_item("elepower_dynamics:lead_ingot", {
 	groups = {lead_ingot = 1},
 })
 
+minetest.override_item("technic:doped_silicon_wafer", {
+	groups = {doped_silicon = 1},
+})
+
+minetest.override_item("elepower_dynamics:silicon_wafer_doped", {
+	groups = {doped_silicon = 1},
+})
+
 minetest.override_item("technic:sulfur_lump", {
 	groups = {sulfur = 1},
 })
@@ -182,9 +190,9 @@ if lead_to_use == "technic" then
 elseif lead_to_use == "elepower" then
     minetest.register_abm({
         nodenames = {"technic:mineral_lead"}, -- replace with the name of the ore
-	interval = 1, -- runs every 1 second
+		interval = 1, -- runs every 1 second
     	chance = 1, -- always fires
-  	action = function(pos)
+		action = function(pos)
         	minetest.swap_node(pos, {name = "default:stone"})
     	end,
     })
