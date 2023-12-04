@@ -4,6 +4,7 @@ dofile(modpath .. "/overrides.lua")
 dofile(modpath .. "/grind_recipes.lua")
 dofile(modpath .. "/alloy_compat.lua")
 dofile(modpath .. "/craft_compat.lua")
+dofile(modpath .. "/compress_compat.lua")
 dofile(modpath .. "/manual.lua")
 
 if minetest.settings:get_bool("enable_power_converter") then
