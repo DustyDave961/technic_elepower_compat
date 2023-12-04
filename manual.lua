@@ -15,7 +15,7 @@ Table of Contents
 
 About this Mod
 	This mod's entire purpose is to make Technic and Elepower work together. Because of this, no new features will be added unless it is to make Technic and Elepower work together better. This mod is in its beta stages, and some features mentioned above may not be bug free or completely finished yet.
-We would greatly appreciate any feedback you could give us like bug reports or ideas you have for the mod. Please report bugs and feature requests to
+We would greatly appreciate any feedback you could give us like bug reports or ideas you have for the mod. Please send bug reports and feature requests to
 https://GitHub.com/DumbDave961/technic_elepower_compat/issues.
 
 Available or to be Added Features/Settings
