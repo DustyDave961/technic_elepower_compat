@@ -462,7 +462,7 @@ ele.register_machine("technic_elepower_compat:power_converter", {
 			meta:set_string("en_input", "0")
 		end
 
-		-- this is commented because it is a conversion limiter and I have it off right no
+		-- this is commented because it is a conversion limiter and is not currently ready to be used.
 		--[[if en_input > 1000  then
 			en_input = 1000
 			meta:set_string("en_input", "1000")
@@ -498,7 +498,7 @@ ele.register_machine("technic_elepower_compat:power_converter", {
 		end
 		
 		local timer = minetest.get_node_timer(pos)
-        	timer:start(1.0)
+        timer:start(1.0)
 	end,
 })
 
