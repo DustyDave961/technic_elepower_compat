@@ -6,4 +6,6 @@ Please note that the power converter developed by Bob64 is not fully complete. B
 
 Copyright Information
 
- All content contained within is licensed under the GNU Lesser General Public License version 2.1. If you have questions about the copyright of this mod, you can get into contack with us at aldoessoftwaredevelopment@gamil.com.
+All content contained within is licensed under the GNU Lesser General Public License version 2.1. If you have questions about the copyright of this mod, you can get into contack with us at aldoessoftwaredevelopment@gamil.com.
+
+Copyright (C) 2023 DumbDave961 and Bob64 aka DustyBagel ALdoessoftwaredevelopment@gmail.com
