@@ -38,7 +38,6 @@ local elepower_compress = {
 	{"technic:carbon_cloth",           "technic:carbon_plate 2", 6},
 	{"elepower_dynamics:carbon_sheet", "technic:carbon_plate 2", 6},
 	{"technic:mixed_metal_ingot",      "technic:composite_plate 2", 6},
-	{"default:copper_ingot 5",         "technic:copper_plate 2", 6},
 	{"technic:coal_dust 2",            "technic:graphite"},
 	{"default:snowblock",              "default:ice 2"},
 	{"technic:cast_iron_ingot",        "elepower_dynamics:iron_plate 2"},
