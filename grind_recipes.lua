@@ -96,16 +96,17 @@ end
 
 --Recipes for both technic and elepower grinding machines.
 local register_grinding_recipes = {
-	{"technic:stainless_steel_block", "technic:stainless_steel_dust 9"},
-	{"technic:carbon_steel_block",    "technic:carbon_steel_dust 9"},
-	{"technic:cast_iron_block",       "technic:cast_iron_dust 9"},
-	{"technic:chromium_block",        "technic:chromium_dust 9"},
-	{"stairs:slab_cobble 2",          "default:gravel"},
-	{"technic:lead_block", 	          "technic:lead_dust 9"},
-	{"technic:uranium_block",         "technic:uranium_dust 9"},
-	{"technic:uranium0_block",        "technic:uranium0_dust 9"},
-	{"technic:uranium35_block", 	  "technic:uranium35_dust 9"},
-	{"technic:zinc_block", 	          "technic:zinc_dust 9"},
+	{"technic:stainless_steel_block",   "technic:stainless_steel_dust 9"},
+	{"technic:carbon_steel_block",      "technic:carbon_steel_dust 9"},
+	{"technic:cast_iron_block",         "technic:cast_iron_dust 9"},
+	{"technic:chromium_block",          "technic:chromium_dust 9"},
+	{"elepower_dynamics:diamond_plate", "elepower_dynamics:diamond_dust 2", 6, 3},
+	{"stairs:slab_cobble 2",            "default:gravel", 5},
+	{"technic:lead_block", 	            "technic:lead_dust 9"},
+	{"technic:uranium_block",           "technic:uranium_dust 9"},
+	{"technic:uranium0_block",          "technic:uranium0_dust 9"},
+	{"technic:uranium35_block", 	    "technic:uranium35_dust 9"},
+	{"technic:zinc_block", 	            "technic:zinc_dust 9"},
 }
 
 if minetest.get_modpath("elepower_nuclear") then
@@ -114,6 +115,6 @@ if minetest.get_modpath("elepower_nuclear") then
 end
 
 for _, data in pairs(register_grinding_recipes) do
-	technic.register_grinder_recipe({input = {data[1]}, output = data[2], time = data.time or 10})	
 	elepm.register_craft({type = "grind", recipe = {data[1]}, output = data[2], time = data[3] or 13})
+	technic.register_grinder_recipe({input = {data[1]}, output = data[2], time = data[4] or 10})
 end
