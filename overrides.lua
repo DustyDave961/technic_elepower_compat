@@ -192,3 +192,17 @@ This example function goes into the table compress and gets the first thing in t
 the specified output. If it does, it removes the item with that index number. If not, then it goes to the next item in the list and checks again.
 This function doesn't clear recipes with multiple outputs because it only tests for one output.
 ]]
+
+clear_elepower_recipe("compress", "default:desert_sandstone")
+
+clear_elepower_recipe("grind", "default:desert_sand 4")
+
+clear_elepower_recipe("grind", "default:gravel 4")
+
+clear_elepower_recipe("compress", "default:sandstone")
+
+clear_elepower_recipe("grind", "default:sand 4")
+
+clear_elepower_recipe("compress", "default:silver_sandstone")
+
+clear_elepower_recipe("grind", "default:silver_sand 4")
