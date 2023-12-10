@@ -1,21 +1,36 @@
 --Recipes for technic compressors
 local technic_compress = {
-	{"elepower_dynamics:coal_dust 4",        "elepower_dynamics:carbon_fiber", 2},
-	{"elepower_dynamics:carbon_sheet",       "technic:carbon_plate"},
-	{"elepower_dynamics:carbon_fiber 4",     "elepower_dynamics:carbon_sheet", 2},
+	{"basic_materials:brass_ingot",          "elepower_dynamics:brass_plate"},
+	{"default:bronze_ingot",                 "elepower_dynamics:bronze_plate"},
+	{"elepower_dynamics:coal_dust 4",        "elepower_dynamics:carbon_fiber"},
+	{"elepower_dynamics:carbon_sheet",       "technic:carbon_plate", 4},
+	{"elepower_dynamics:carbon_fiber 4",     "elepower_dynamics:carbon_sheet"},
+	{"default:copper_ingot",                 "elepower_dynamics:copper_plate"},
 	{"elepower_dynamics:diamond_dust",       "default:diamond"},
-	{"technic:cast_iron_ingot",              "elepower_dynamics:iron_plate", 2},
-	{"elepower_dynamics:iron_ingot",         "elepower_dynamics:iron_plate", 2},
-	{"technic:lead_ingot",                   "elepower_dynamics:lead_plate", 2},
-	{"default:mese_crystal 8",               "default:mese"},
-	{"default:mese_crystal_fragment 8",      "default:mese_crystal", 2},
+	{"default:diamond",                      "elepower_dynamics:diamond_plate"},
+	{"elepower_dynamics:electrum_ingot",     "elepower_dynamics:electrum_plate"},
+	{"default:gold_ingot",                   "elepower_dynamics:gold_plate"},
+	{"elepower_dynamics:invar_ingot",        "elepower_dynamics:invar_plate"},
+	{"technic:cast_iron_ingot",              "elepower_dynamics:iron_plate"},
+	{"elepower_dynamics:iron_ingot",         "elepower_dynamics:iron_plate"},
+	{"technic:lead_ingot",                   "elepower_dynamics:lead_plate"},
+	{"elepower_dynamics:lead_ingot",         "elepower_dynamics:lead_plate"},
+	{"default:mese_crystal 8",               "default:mese", 4},
+	{"default:mese_crystal_fragment 8",      "default:mese_crystal"},
 	{"elepower_dynamics:mese_dust",          "default:mese_crystal_fragment", 1},
+	{"moreores:mithril_ingot",               "elepower_dynamics:mithril_plate"},
+	{"elepower_dynamics:nickel_ingot",       "elepower_dynamics:nickel_plate"},
+	{"moreores:silver_ingot",                "elepower_dynamics:silver_plate"},
+	{"default:steel_ingot",                  "elepower_dynamics:steel_plate"},
+	{"default:tin_ingot",                    "elepower_dynamics:tin_plate"},
+	{"elepower_dynamics:viridisium_ingot",   "elepower_dynamics:viridisium_plate"},
 	{"elepower_dynamics:viridisium_block 8", "elepower_dynamics:xycrone_lump", 20},
-	{"technic:zinc_ingot",                   "elepower_dynamics:zinc_plate", 2},
+	{"technic:zinc_ingot",                   "elepower_dynamics:zinc_plate"},
+	{"elepower_dynamics:zinc_ingot",         "elepower_dynamics:zinc_plate"},
 }
 
 for _, data in pairs(technic_compress) do
-	technic.register_compressor_recipe({input = {data[1]}, output = data[2], time = data[3] or 4})
+	technic.register_compressor_recipe({input = {data[1]}, output = data[2], time = data[3] or 3})
 end
 
 --Recipes for elepower compressors
