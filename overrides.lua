@@ -112,7 +112,9 @@ minetest.clear_craft({
 	output = "elepower_dynamics:wound_silver_coil",
 })
 
---Override fucntion to clear the recipes for technic machines
+--[[Override fucntion to clear the recipes for technic machines 
+(It may only work for the first recipe with that input naem that
+it finds so we may need ot add a better function that removes all the inputs instead.)]]
 function clear_technic_recipe(recipe_type, recipe_input_name)
 	minetest.after(0.1, function() --This has to be called with a delay for the table to load in.
 	    technic.recipes[recipe_type]["recipes"][recipe_input_name] = nil
@@ -141,22 +143,38 @@ Example:
 This will clear the alloy recipe with the inputs of technic:coal_dust and technic:raw_latex
 ]]
 
---Ovverrides elpower machine recipes
-function clear_elepower_recipe(craft_type, output_to_remove)
-    minetest.after(0.5, function()
-        local craft_table = elepm.craft[craft_type]
-        local output_to_remove_itemstack = ItemStack(output_to_remove)
-        for i = 1, #craft_table do
-            -- Check if the output of the recipe at index i matches with output_to_remove
-            if craft_table[i].output == output_to_remove_itemstack then
-                -- Remove the recipe from the table
-                table.remove(craft_table, i)
-                -- Since we've modified the table, break the loop to avoid skipping the next element
-                break
+--[[New function that does what the abouve one does but for all inputs in the
+given table name and not just the first one it finds.]]
+
+--TO DO:This function needs to be tested.
+function clear_technic_recipe_all_inputs(recipe_type, recipe_input_name)
+    minetest.after(0.1, function()
+        local recipe_table = technic.recipes[recipe_type]["recipes"]
+        for key, recipe in pairs(recipe_table) do
+            if recipe.input == recipe_input_name then
+                recipe_table[key] = nil
             end
         end
     end)
 end
+
+--Ovverrides elpower machine recipes
+function clear_elepower_recipe(craft_type, output_to_remove)
+    minetest.after(0.5, function() --TO DO:Find out if this function will still work if we set it to run at 0.1 instead of 0.5 to prevent unwanted recipes from being used when a player first joins a world.
+        local craft_table = elepm.craft[craft_type]
+        local output_to_remove_itemstack = ItemStack(output_to_remove)
+        for i = #craft_table, 1, -1 do
+            -- Check if the output of the recipe at index i matches with output_to_remove
+            local output_itemstack = ItemStack(craft_table[i].output)
+            if output_itemstack:get_name() == output_to_remove_itemstack:get_name() and output_itemstack:get_count() == output_to_remove_itemstack:get_count() then
+                -- Remove the recipe from the table
+                table.remove(craft_table, i)
+            end
+        end
+    end)
+end
+
+
 
 --[[
 This function accepts two parameters, the recipe type and the output of the recipe you want to clear.
@@ -174,52 +192,3 @@ This example function goes into the table compress and gets the first thing in t
 the specified output if it does it removes the item with that index number. If not then it goes to the next item in the list and checks again.
 This function doesn't clear recipes with multiple outputs because it only tests for one input.
 ]]
-
---Ore overrides to clear unneeded ores.
-local lead_to_use = minetest.settings:get("lead_used")
-
-if lead_to_use == "technic" then
-    minetest.register_abm({
-        nodenames = {"elepower_dynamics:stone_with_lead"}, -- replace with the name of the ore
-        interval = 1, -- runs every 1 second
-        chance = 1, -- always fires
-        action = function(pos)
-            minetest.swap_node(pos, {name = "default:stone"})
-        end,
-    })
-elseif lead_to_use == "elepower" then
-    minetest.register_abm({
-        nodenames = {"technic:mineral_lead"}, -- replace with the name of the ore
-		interval = 1, -- runs every 1 second
-    	chance = 1, -- always fires
-		action = function(pos)
-        	minetest.swap_node(pos, {name = "default:stone"})
-    	end,
-    })
-elseif lead_to_use == "both" then
-	return false
-end
-
-local zinc_to_use = minetest.settings:get("zinc_used")
-
-if zinc_to_use == "technic" then
-    minetest.register_abm({
-    	nodenames = {"elepower_dynamics:stone_with_zinc"}, -- replace with the name of the ore
-    	interval = 1, -- runs every 1 second
-    	chance = 1, -- always fires
-    	action = function(pos)
-        	minetest.swap_node(pos, {name = "default:stone"})
-    	end,
-    })
-elseif zinc_to_use == "elepower" then 
-    minetest.register_abm({
-        nodenames = {"technic:mineral_zinc"}, -- replace with the name of the ore
-	interval = 1, -- runs every 1 second
-    	chance = 1, -- always fires
-  	action = function(pos)
-        	minetest.swap_node(pos, {name = "default:stone"})
-    	end,
-    })
-elseif zinc_to_use == "both" then
-    return false
-end
