@@ -98,11 +98,6 @@ minetest.clear_craft({
 	output = "basic_materials:lead_strip",
 })
 
---Power cell
-minetest.clear_craft({
-	output = "elepower_machines:power_cell_0",
-})
-
 --Wound coils
 minetest.clear_craft({
 	output = "elepower_dynamics:wound_copper_coil",
