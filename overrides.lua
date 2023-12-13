@@ -99,7 +99,6 @@ minetest.clear_craft({
 })
 
 --Sawdust
-minetest.
 minetest.clear_craft({
 	type = "fuel",
 	recipe = "technic:sawdust",
