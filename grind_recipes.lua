@@ -1,10 +1,9 @@
---Elepower Recipes for Technic Grinders
+--elepower recipes for technic grinders
 local technic_grinding = {
 	{"elepower_dynamics:brass_plate",      "technic:brass_dust"},
 	{"basic_materials:brass_block",        "technic:brass_dust 9", 10},
 	{"default:bronzeblock",	               "technic:bronze_dust 9", 10},
 	{"elepower_dynamics:bronze_plate",     "technic:bronze_dust"},
-	{"elepower_dynamics:graphite_rod",     "technic:coal_dust 2"},
 	{"default:copperblock",      	       "technic:copper_dust 9", 10},
 	{"elepower_dynamics:copper_plate",     "technic:copper_dust"},
 	{"default:diamondblock",               "elepower_dynamics:diamond_dust 9", 10},
@@ -48,12 +47,12 @@ local technic_grinding = {
 }
 
 for _, data in pairs(technic_grinding) do
-	technic.register_grinder_recipe({input = {data[1]}, output = data[2], time = data[3]})
+	technic.register_grinder_recipe({input = {data[1]}, output = data[2], time = data[3] or 3})
 end
 
---Technic recipes for Elepower grindstone and pulverizer. For grinding ore materials, time = output + 4. The default time is 8.
+--technic recipes for elepower grindstone and pulverizer. For grinding ore materials, time = output + 4. The default time is 8.
 local elepower_grinding = {
-	{"basic_materials:chain_brass 3",     "technic:brass_dust"},
+	{"basic_materials:chain_brass 4",     "technic:brass_dust 3", 7},
 	{"basic_materials:chainlink_brass 2", "technic:brass_dust"},
 	{"technic:carbon_steel_ingot",        "technic:carbon_steel_dust"},
 	{"technic:cast_iron_ingot",           "technic:cast_iron_dust"},
@@ -61,29 +60,27 @@ local elepower_grinding = {
 	{"technic:chromium_lump",             "technic:chromium_dust 2", 6},
 	{"technic:chromium_ingot",            "technic:chromium_dust"},
 	{"technic:carbon_plate",              "technic:coal_dust 12", 16},
-	{"elepower_dynamics:graphite_rod",    "elepower_dynamics:coal_dust 2", 6},
 	{"default:wood",                      "technic:common_tree_grindings"},
 	{"default:acacia_wood",               "technic:common_tree_grindings"},
 	{"default:aspen_wood",                "technic:common_tree_grindings"},
 	{"default:junglewood",                "technic:common_tree_grindings"},
 	{"default:pine_wood",                 "technic:common_tree_grindings"},
+	{"basic_materials:copper_strip 6",    "technic:copper_dust"},
 	{"technic:copper_plate",              "technic:copper_dust 5", 9},
 	{"default:desert_stone",              "default:desert_sand"},
-	{"default:desert_sandstone",          "default:desert_sand 2"},
+	{"default:desert_sandstone",          "default:desert_sand 2", 6},
 	{"farming:seed_wheat",                "farming:flour 1", 4},
 	{"default:cobble",                    "default:gravel"},
 	{"technic:lead_lump",	              "technic:lead_dust 2", 6},
 	{"technic:lead_ingot",	              "technic:lead_dust"},
-	{"technic:lead_block", 	              "technic:lead_dust 9", 13},
 	{"moretrees:rubber_tree_trunk",       "technic:rubber_tree_grindings 4", 8},
 	{"default:gravel",                    "default:sand"},
-	{"default:sandstone",                 "default:sand 2"},
-	{"default:silver_sandstone",          "default:silver_sand 2"},
+	{"default:sandstone",                 "default:sand 2", 6},
+	{"default:silver_sandstone",          "default:silver_sand 2", 6},
 	{"technic:common_tree_grindings",     "technic:sawdust 4", 8},
 	{"technic:rubber_tree_grindings",     "technic:sawdust 4", 8},
 	{"default:ice",	                      "default:snowblock", 8},
 	{"technic:stainless_steel_ingot",     "technic:stainless_steel_dust"},
-	{"technic:stainless_steel_block",     "technic:stainless_steel_dust 9", 13},
 	{"default:stone",                     "technic:stone_dust", 8},
 	{"default:silver_sand",               "technic:stone_dust", 8},
 	{"technic:sulfur_lump",               "technic:sulfur_dust 2", 6},
@@ -91,9 +88,17 @@ local elepower_grinding = {
 	{"technic:uranium_ingot",             "technic:uranium_dust"},
 	{"technic:uranium0_ingot",            "technic:uranium0_dust"},
 	{"technic:uranium35_ingot",           "technic:uranium35_dust"},
+	{"xpanes:bar_flat 8",                 "technic:wrought_iron_dust 3", 7},
+	{"basic_materials:chain_steel 4",     "technic:wrought_iron_dust 3", 7},
+	{"basic_materials:chainlink_steel 2", "technic:wrought_iron_dust"},
+	{"doors:door_steel",                  "technic:wrought_iron_dust 6", 10},
+	{"pipeworks:pipe_1_empty 2",          "technic:wrought_iron_dust"},
+	{"basic_materials:steel_bar 2",       "technic:wrought_iron_dust"},
+	{"basic_materials:steel_strip 6",     "technic:wrought_iron_dust"},
+	{"default:sign_wall_steel",           "technic:wrought_iron_dust 2", 6},
+	{"doors:trapdoor_steel",              "technic:wrought_iron_dust 4", 8},
 	{"technic:zinc_lump", 	              "technic:zinc_dust 2", 6},
 	{"technic:zinc_ingot", 	              "technic:zinc_dust"},
-	{"technic:zinc_block", 	              "technic:zinc_dust 9", 13},
 }
 
 for _,data in pairs(elepower_grinding) do
@@ -106,6 +111,7 @@ local register_grinding_recipes = {
 	{"technic:carbon_steel_block",      "technic:carbon_steel_dust 9"},
 	{"technic:cast_iron_block",         "technic:cast_iron_dust 9"},
 	{"technic:chromium_block",          "technic:chromium_dust 9"},
+	{"elepower_dynamics:graphite_rod",  "elepower_dynamics:coal_dust 2", 6, 3},
 	{"elepower_dynamics:diamond_plate", "elepower_dynamics:diamond_dust 2", 6, 3},
 	{"technic:lead_block", 	            "technic:lead_dust 9"},
 	{"technic:uranium_block",           "technic:uranium_dust 9"},
@@ -115,8 +121,8 @@ local register_grinding_recipes = {
 }
 
 if minetest.get_modpath("elepower_nuclear") then
-	table.insert(register_grinding_recipes, {"elepower_nuclear:nuclear_waste", "elepower_nuclear:depleted_uranium_dust 2"})
-	table.insert(register_grinding_recipes, {"elepower_nuclear:uranium_lump", "technic:uranium_dust 2"})
+	table.insert(register_grinding_recipes, {"elepower_nuclear:nuclear_waste", "elepower_nuclear:depleted_uranium_dust 2", 6, 3})
+	table.insert(register_grinding_recipes, {"elepower_nuclear:uranium_lump", "technic:uranium_dust 2", 6, 3})
 end
 
 for _, data in pairs(register_grinding_recipes) do
