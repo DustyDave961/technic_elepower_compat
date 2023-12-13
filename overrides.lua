@@ -39,12 +39,12 @@ minetest.override_item("elepower_dynamics:lead_ingot", {
 	groups = {lead_ingot = 1},
 })
 
-minetest.override_item("technic:doped_silicon_wafer", {
-	groups = {doped_silicon = 1},
+minetest.override_item("technic:sawdust", {
+	groups = {sawdust = 1},
 })
 
-minetest.override_item("elepower_dynamics:silicon_wafer_doped", {
-	groups = {doped_silicon = 1},
+minetest.override_item("elepower_dynamics:wood_dust", {
+	groups = {sawdust = 1},
 })
 
 minetest.override_item("technic:sulfur_lump", {
@@ -96,6 +96,14 @@ minetest.clear_craft({
 --Lead strip
 minetest.clear_craft({
 	output = "basic_materials:lead_strip",
+})
+
+--Sawdust
+minetest.
+minetest.clear_craft({
+	type = "fuel",
+	recipe = "technic:sawdust",
+	burntime = 6
 })
 
 --Wound coils
@@ -180,7 +188,7 @@ Recipe types:
     "can"
     "solder"
     "alloy"
-The secound parameter is the output of the recipe that you want to use i.e 
+The secound parameter is the output of the recipe that you want to use i.e
 Example:
     clear_elepower_recipe("compress", "elepower_dynamics:zinc_plate 2")
 This example function goes into the table compress and gets the first thing in the table with an index number of 1 and checks if it has
