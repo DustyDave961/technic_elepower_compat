@@ -15,7 +15,7 @@ local recipes = {
 			{"group:lead_ingot", "group:water_bucket", "group:lead_ingot"},
 			{"group:wood", "group:sulfur", "group:wood"},
 		},
-	replacements = {
+		replacements = {
 			{"group:water_bucket", "bucket:bucket_empty"},
 		}
 	},
@@ -44,10 +44,19 @@ local recipes = {
 			{"basic_materials:copper_wire", "basic_materials:copper_wire", "basic_materials:copper_wire"},
 			{"technic:lead_ingot",  "technic:lead_ingot",  "technic:lead_ingot"},
 		},
-	replacements = {
+		replacements = {
 			{"basic_materials:copper_wire", "basic_materials:empty_spool"},
 			{"basic_materials:copper_wire", "basic_materials:empty_spool"},
 			{"basic_materials:copper_wire", "basic_materials:empty_spool"},
+		}
+	},
+	{output = "technic:control_logic_unit", recipe = {
+			{"", "basic_materials:gold_wire", ""},
+			{"default:copper_ingot", "elepower_dynamics:silicon_wafer", "default:copper_ingot"},
+			{"", "technic:chromium_ingot", ""},
+		},
+		replacements = {
+			{"basic_materials:gold_wire", "basic_materials:empty_spool"},
 		}
 	},
 	{output = "elepower_machines:heavy_filter",	recipe = {
@@ -130,6 +139,15 @@ local recipes = {
 			{"group:stick"},
 		}
 	},
+	{output = "technic:lv_led 2", recipe = {
+			{"", "basic_materials:plastic_sheet", ""},
+			{"basic_materials:plastic_sheet", "elepower_dynamics:silicon_wafer_doped", "basic_materials:plastic_sheet"},
+			{"", "basic_materials:silver_wire", ""},
+		},
+		replacements = {
+			{"basic_materials:silver_wire", "basic_materials:empty_spool"},
+		}
+	},
 	{output = "elepower_dynamics:opaque_duct 3", recipe = {
 			{"technic:lead_ingot",  "technic:lead_ingot",  "technic:lead_ingot"},
 			{"fluid_transfer:fluid_duct", "fluid_transfer:fluid_duct", "fluid_transfer:fluid_duct"},
@@ -137,9 +155,15 @@ local recipes = {
 		}
 	},
 	{output = "elepower_machines:power_cell_0", recipe = {
-			{"group:lead_ingot", "elepower_dynamics:control_circuit", "group:lead_ingot"},
+			{"technic:lead_ingot", "elepower_dynamics:control_circuit", "technic:lead_ingot"},
 			{"elepower_dynamics:wound_copper_coil", "elepower_machines:machine_block", "elepower_dynamics:wound_copper_coil"},
-			{"group:lead_ingot", "group:battery", "group:lead_ingot"},
+			{"technic:lead_ingot", "elepower_dynamics:battery", "technic:lead_ingot"},
+		}
+	},
+	{output = "elepower_dynamics:pv_cell", recipe = {
+			{"default:glass", "default:glass", "default:glass"},
+			{"group:color_blue", "technic:doped_silicon_wafer", "group:color_blue"},
+			{"default:mese_crystal_fragment", "elepower_dynamics:wound_copper_coil", "default:mese_crystal_fragment"}
 		}
 	},
 	{output = "technic:river_water_can", recipe = {
@@ -148,10 +172,20 @@ local recipes = {
 			{"elepower_dynamics:zinc_ingot", "default:steel_ingot", "elepower_dynamics:zinc_ingot"},
 		}
 	},
+	{type = "fuel",	recipe = "group:sawdust", time = 6},
 	{output = "elepower_machines:sawmill", recipe = {
 			{"", "elepower_dynamics:integrated_circuit", ""},
 			{"elepower_dynamics:steel_gear", "elepower_machines:machine_block", "elepower_dynamics:steel_gear"},
 			{"technic:lead_ingot", "elepower_dynamics:diamond_gear", "technic:lead_ingot"},
+		}
+	},
+	{output = "technic:supply_converter 1",	recipe = {
+			{"basic_materials:gold_wire", "technic:rubber", "elepower_dynamics:silicon_wafer_doped"},
+			{"technic:mv_transformer", "technic:machine_casing", "technic:lv_transformer"},
+			{"technic:mv_cable", "technic:rubber", "technic:lv_cable"},
+		},
+		replacements = {
+			{"basic_materials:gold_wire", "basic_materials:empty_spool"},
 		}
 	},
 	{output = "technic:water_can", recipe = {
@@ -171,7 +205,7 @@ local recipes = {
 			{"basic_materials:copper_wire", "group:iron_ingot", "basic_materials:copper_wire"},
 			{"", "basic_materials:copper_wire", ""}
 		},
-	replacements = {
+		replacements = {
 			{"basic_materials:copper_wire", "basic_materials:empty_spool"},
 			{"basic_materials:copper_wire", "basic_materials:empty_spool"},
 			{"basic_materials:copper_wire", "basic_materials:empty_spool"},
@@ -189,7 +223,7 @@ local recipes = {
 			{"basic_materials:silver_wire", "group:zinc_ingot", "basic_materials:silver_wire"},
 			{"", "basic_materials:silver_wire", ""}
 		},
-	replacements = {
+		replacements = {
 			{"basic_materials:silver_wire", "basic_materials:empty_spool"},
 			{"basic_materials:silver_wire", "basic_materials:empty_spool"},
 			{"basic_materials:silver_wire", "basic_materials:empty_spool"},
@@ -206,34 +240,26 @@ end
 
 --Carbon fiber armor
 if minetest.get_modpath ("elepower_tools") then
-	minetest.register_craft({
-		output = "elepower_tools:boots_carbon",
-		recipe = {
+	minetest.register_craft({output = "elepower_tools:boots_carbon", recipe = {
 			{"technic:carbon_cloth", "", "technic:carbon_cloth"},
 			{"technic:carbon_cloth", "", "technic:carbon_cloth"},
 		}
 	})
 	
-	minetest.register_craft({
-		output = "elepower_tools:chestplate_carbon",
-		recipe = {
+	minetest.register_craft({output = "elepower_tools:chestplate_carbon", recipe = {
 			{"technic:carbon_cloth", "", "technic:carbon_cloth"},
 			{"technic:carbon_cloth", "technic:carbon_cloth", "technic:carbon_cloth"},
 			{"technic:carbon_cloth", "technic:carbon_cloth", "technic:carbon_cloth"},
 		}
 	})
 	
-	minetest.register_craft({
-		output = "elepower_tools:helmet_carbon",
-		recipe = {
+	minetest.register_craft({output = "elepower_tools:helmet_carbon", recipe = {
 			{"technic:carbon_cloth", "technic:carbon_cloth", "technic:carbon_cloth"},
 			{"technic:carbon_cloth", "", "technic:carbon_cloth"},
 		}
 	})
 	
-	minetest.register_craft({
-		output = "elepower_tools:leggings_carbon",
-		recipe = {
+	minetest.register_craft({ output = "elepower_tools:leggings_carbon", recipe = {
 			{"technic:carbon_cloth", "technic:carbon_cloth", "technic:carbon_cloth"},
 			{"technic:carbon_cloth", "", "technic:carbon_cloth"},
 			{"technic:carbon_cloth", "", "technic:carbon_cloth"},
@@ -241,11 +267,8 @@ if minetest.get_modpath ("elepower_tools") then
 	})
 end
 
---Extractor recipes
-technic.register_extractor_recipe({
-	input  = {"elepower_dynamics:coal_dust"},
-	output = "dye:black 2",
-})
+--Extracting
+technic.register_extractor_recipe({input = {"elepower_dynamics:coal_dust"},	output = "dye:black 2",})
 
 --Machine block and nuclear waste
 if minetest.get_modpath("elepower_nuclear") then
@@ -265,6 +288,27 @@ if minetest.get_modpath("elepower_nuclear") then
 	})
 end
 
+--Solar panel
+if minetest.get_modpath("mesecons_materials") then
+	minetest.register_craft({output = "technic:solar_panel", recipe = {
+			{"elepower_dynamics:silicon_wafer_doped", "elepower_dynamics:silicon_wafer_doped", "elepower_dynamics:silicon_wafer_doped"},
+			{"basic_materials:silver_wire", "technic:lv_cable", "mesecons_materials:glue"},
+		},
+		replacements = {
+			{"basic_materials:silver_wire", "basic_materials:empty_spool"},
+		}
+	})
+else
+	minetest.register_craft({output = "technic:solar_panel", recipe = {
+			{"elepower_dynamics:silicon_wafer_doped", "elepower_dynamics:silicon_wafer_doped", "elepower_dynamics:silicon_wafer_doped"},
+			{"basic_materials:silver_wire", "technic:lv_cable", "technic:raw_latex"},
+		},
+		replacements = {
+			{"basic_materials:silver_wire", "basic_materials:empty_spool"},
+		}
+	})
+end
+
 --Soldering
 elepm.register_craft({
 	type   = "solder",
@@ -275,7 +319,21 @@ elepm.register_craft({
 
 elepm.register_craft({
 	type   = "solder",
-	recipe = { "elepower_dynamics:silicon_wafer_doped", "elepower_dynamics:chip 4", "technic:lead_ingot 2" },
+	recipe = {"elepower_dynamics:silicon_wafer_doped", "elepower_dynamics:chip 4", "technic:lead_ingot 2"},
+	output = "elepower_dynamics:microcontroller",
+	time   = 8,
+})
+
+elepm.register_craft({
+	type   = "solder",
+	recipe = {"technic:doped_silicon_wafer", "elepower_dynamics:chip 4", "elepower_dynamics:lead_ingot 2"},
+	output = "elepower_dynamics:microcontroller",
+	time   = 8,
+})
+
+elepm.register_craft({
+	type   = "solder",
+	recipe = {"technic:doped_silicon_wafer", "elepower_dynamics:chip 4", "technic:lead_ingot 2"},
 	output = "elepower_dynamics:microcontroller",
 	time   = 8,
 })

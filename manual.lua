@@ -24,7 +24,7 @@ Available or to be Added Features/Settings
 Planned Future Features:
 - Make power converter work for all Technic tiers.
 - Add efficiency variable to conversion logic.
-- Fix duplication glitches that result from having Technic an Elepower together.
+- Fix duplication glitches that result from having Technic and Elepower together.
 ]],
         owner = "Bob64 and DumbDave961 as the editor",
     }))
