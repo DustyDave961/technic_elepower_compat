@@ -112,7 +112,7 @@ local register_grinding_recipes = {
 	{"technic:cast_iron_block",         "technic:cast_iron_dust 9"},
 	{"technic:chromium_block",          "technic:chromium_dust 9"},
 	{"elepower_dynamics:graphite_rod",  "elepower_dynamics:coal_dust 2", 6, 3},
-	{"elepower_dynamics:diamond_plate", "elepower_dynamics:diamond_dust 2", 6, 3},
+	{"elepower_dynamics:diamond_plate", "elepower_dynamics:diamond_dust", 5, 3},
 	{"technic:lead_block", 	            "technic:lead_dust 9"},
 	{"technic:uranium_block",           "technic:uranium_dust 9"},
 	{"technic:uranium0_block",          "technic:uranium0_dust 9"},
