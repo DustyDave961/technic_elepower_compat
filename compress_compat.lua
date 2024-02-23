@@ -46,6 +46,8 @@ local elepower_compress = {
 	{"default:sand 2",                 "default:sandstone 2", 1},
 	{"default:silver_sand 2",          "default:silver_sandstone 2", 1},
 	{"technic:uranium35_ingot 5",      "technic:uranium_fuel 2", 6},
+	{"technic:sawdust 2",              "default:wood"},
+	{"elepower_dynamics:wood_dust 2",  "default:wood"},
 	{"technic:zinc_ingot",             "elepower_dynamics:zinc_plate 2"},
 }
 
