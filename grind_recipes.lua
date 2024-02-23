@@ -60,11 +60,13 @@ local elepower_grinding = {
 	{"technic:chromium_lump",             "technic:chromium_dust 2", 6},
 	{"technic:chromium_ingot",            "technic:chromium_dust"},
 	{"technic:carbon_plate",              "technic:coal_dust 12", 16},
-	{"default:wood",                      "technic:common_tree_grindings"},
-	{"default:acacia_wood",               "technic:common_tree_grindings"},
+	{"default:aspen_tree",                "technic:common_tree_grindings 4", 8},
 	{"default:aspen_wood",                "technic:common_tree_grindings"},
+	{"default:jungletree",                "technic:common_tree_grindings 4", 8},
 	{"default:junglewood",                "technic:common_tree_grindings"},
+	{"default:pine_tree",                 "technic:common_tree_grindings 4", 8},
 	{"default:pine_wood",                 "technic:common_tree_grindings"},
+	{"moretrees:rubber_tree_trunk_empty", "technic:common_tree_grindings 4", 8},
 	{"basic_materials:copper_strip 6",    "technic:copper_dust"},
 	{"technic:copper_plate",              "technic:copper_dust 5", 9},
 	{"default:desert_stone",              "default:desert_sand"},
@@ -79,10 +81,12 @@ local elepower_grinding = {
 	{"default:silver_sandstone",          "default:silver_sand 2", 6},
 	{"technic:common_tree_grindings",     "technic:sawdust 4", 8},
 	{"technic:rubber_tree_grindings",     "technic:sawdust 4", 8},
-	{"default:ice",	                      "default:snowblock", 8},
+	{"default:ice",	                      "default:snowblock"},
 	{"technic:stainless_steel_ingot",     "technic:stainless_steel_dust"},
-	{"default:stone",                     "technic:stone_dust", 8},
-	{"default:silver_sand",               "technic:stone_dust", 8},
+	{"default:stone",                     "technic:stone_dust"},
+	{"default:stone_block",               "technic:stone_dust"},
+	{"default:stonebrick",                "technic:stone_dust"},
+	{"default:silver_sand",               "technic:stone_dust"},
 	{"technic:sulfur_lump",               "technic:sulfur_dust 2", 6},
 	{"technic:uranium_lump",              "technic:uranium_dust 2", 6},
 	{"technic:uranium_ingot",             "technic:uranium_dust"},
@@ -100,6 +104,39 @@ local elepower_grinding = {
 	{"technic:zinc_lump", 	              "technic:zinc_dust 2", 6},
 	{"technic:zinc_ingot", 	              "technic:zinc_dust"},
 }
+
+if minetest.get_modpath("moretrees") then
+	table.insert(elepower_grinding, {"moretrees:apple_tree_trunk",   "technic:common_tree_grindings 4", 8})
+	table.insert(elepower_grinding, {"moretrees:apple_tree_planks",  "technic:common_tree_grindings"})
+	table.insert(elepower_grinding, {"moretrees:beech_trunk",        "technic:common_tree_grindings 4", 8})
+	table.insert(elepower_grinding, {"moretrees:beech_planks",       "technic:common_tree_grindings"})
+	table.insert(elepower_grinding, {"moretrees:birch_trunk",        "technic:common_tree_grindings 4", 8})
+	table.insert(elepower_grinding, {"moretrees:birch_planks",       "technic:common_tree_grindings"})
+	table.insert(elepower_grinding, {"moretrees:cedar_trunk",        "technic:common_tree_grindings 4", 8})
+	table.insert(elepower_grinding, {"moretrees:cedar_planks",       "technic:common_tree_grindings"})
+	table.insert(elepower_grinding, {"moretrees:date_palm_trunk",    "technic:common_tree_grindings 4", 8})
+	table.insert(elepower_grinding, {"moretrees:date_palm_planks",   "technic:common_tree_grindings"})
+	table.insert(elepower_grinding, {"moretrees:fir_trunk",          "technic:common_tree_grindings 4", 8})
+	table.insert(elepower_grinding, {"moretrees:fir_planks",         "technic:common_tree_grindings"})
+	table.insert(elepower_grinding, {"moretrees:oak_trunk",          "technic:common_tree_grindings 4", 8})
+	table.insert(elepower_grinding, {"moretrees:oak_planks",         "technic:common_tree_grindings"})
+	table.insert(elepower_grinding, {"moretrees:palm_trunk",         "technic:common_tree_grindings 4", 8})
+	table.insert(elepower_grinding, {"moretrees:palm_planks",        "technic:common_tree_grindings"})
+	table.insert(elepower_grinding, {"moretrees:sequoia_trunk",      "technic:common_tree_grindings 4", 8})
+	table.insert(elepower_grinding, {"moretrees:sequoia_planks",     "technic:common_tree_grindings"})
+	table.insert(elepower_grinding, {"moretrees:spruce_trunk",       "technic:common_tree_grindings 4", 8})
+	table.insert(elepower_grinding, {"moretrees:spruce_planks",      "technic:common_tree_grindings"})
+	table.insert(elepower_grinding, {"moretrees:willow_trunk",       "technic:common_tree_grindings 4", 8})
+	table.insert(elepower_grinding, {"moretrees:willow_planks",      "technic:common_tree_grindings"})
+	table.insert(elepower_grinding, {"moretrees:rubber_tree_planks", "technic:rubber_tree_grindings"})
+	if minetest.get_modpath("dye") then
+		table.insert(elepower_grinding, {"default:acacia_tree", "technic:acacia_grindings 4", 8})
+		table.insert(elepower_grinding, {"default:acacia_wood", "technic:acacia_grindings"})
+	else
+		table.insert(elepower_grinding, {"default:acacia_tree", "technic:common_tree_grindings 4", 8})
+		table.insert(elepower_grinding, {"default:acacia_wood", "technic:common_tree_grindings"})
+	end
+end
 
 for _,data in pairs(elepower_grinding) do
 	elepm.register_craft({type = "grind", recipe = {data[1]}, output = data[2],	time = data[3] or 5})
