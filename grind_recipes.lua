@@ -9,7 +9,6 @@ local technic_grinding = {
 	{"default:diamondblock",               "elepower_dynamics:diamond_dust 9", 10},
 	{"elepower_dynamics:electrum_ingot",   "elepower_dynamics:electrum_dust"},
 	{"elepower_dynamics:electrum_plate",   "elepower_dynamics:electrum_dust"},
-	{"farming:wheat",                      "farming:flour 2"},
 	{"default:goldblock",                  "technic:gold_dust 9", 10},
 	{"elepower_dynamics:gold_plate",       "technic:gold_dust"},
 	{"elepower_dynamics:graphite_ingot",   "elepower_dynamics:graphite_rod 3"},
@@ -55,7 +54,6 @@ local elepower_grinding = {
 	{"basic_materials:chain_brass 4",           "technic:brass_dust 3", 7},
 	{"basic_materials:chainlink_brass 2",       "technic:brass_dust"},
 	{"technic:carbon_steel_ingot",              "technic:carbon_steel_dust"},
-	{"basic_materials:carbon_steel_bar 2",      "technic:carbon_steel_dust"},
 	{"technic:cast_iron_ingot",                 "technic:cast_iron_dust"},
 	{"technic:chernobylite_block",              "technic:chernobylite_dust"},
 	{"technic:chromium_lump",                   "technic:chromium_dust 2", 6},
@@ -77,7 +75,6 @@ local elepower_grinding = {
 	{"basic_materials:gold_strip 6",            "technic:gold_dust"},
 	{"technic:lead_lump",	                    "technic:lead_dust 2", 6},
 	{"technic:lead_ingot",	                    "technic:lead_dust"},
-	{"basic_materials:lead_strip 6",            "technic:lead_dust"},
 	{"moretrees:rubber_tree_trunk",             "technic:rubber_tree_grindings 4", 8},
 	{"default:gravel",                          "default:sand"},
 	{"default:sandstone",                       "default:sand 2", 6},
@@ -86,8 +83,6 @@ local elepower_grinding = {
 	{"technic:rubber_tree_grindings",           "technic:sawdust 4", 8},
 	{"default:ice",	                            "default:snowblock"},
 	{"technic:stainless_steel_ingot",           "technic:stainless_steel_dust"},
-	{"basic_materials:stainless_steel_bar 2",   "technic:stainless_steel_dust"},
-	{"basic_materials:stainless_steel_strip 6", "technic:stainless_steel_dust"},
 	{"default:stone",                           "technic:stone_dust"},
 	{"default:stone_block",                     "technic:stone_dust"},
 	{"default:stonebrick",                      "technic:stone_dust"},
@@ -97,15 +92,10 @@ local elepower_grinding = {
 	{"technic:uranium_ingot",                   "technic:uranium_dust"},
 	{"technic:uranium0_ingot",                  "technic:uranium0_dust"},
 	{"technic:uranium35_ingot",                 "technic:uranium35_dust"},
-	{"xpanes:bar_flat 8",                       "technic:wrought_iron_dust 3", 7},
 	{"basic_materials:chain_steel 4",           "technic:wrought_iron_dust 3", 7},
 	{"basic_materials:chainlink_steel 2",       "technic:wrought_iron_dust"},
-	{"doors:door_steel",                        "technic:wrought_iron_dust 6", 10},
 	{"pipeworks:pipe_1_empty 2",                "technic:wrought_iron_dust"},
-	{"basic_materials:steel_bar 2",             "technic:wrought_iron_dust"},
-	{"basic_materials:steel_strip 6",           "technic:wrought_iron_dust"},
 	{"default:sign_wall_steel",                 "technic:wrought_iron_dust 2", 6},
-	{"doors:trapdoor_steel",                    "technic:wrought_iron_dust 4", 8},
 	{"technic:zinc_lump", 	                    "technic:zinc_dust 2", 6},
 	{"technic:zinc_ingot", 	                    "technic:zinc_dust"},
 }
@@ -141,6 +131,21 @@ if minetest.get_modpath("moretrees") then
 		table.insert(elepower_grinding, {"default:acacia_tree", "technic:common_tree_grindings 4", 8})
 		table.insert(elepower_grinding, {"default:acacia_wood", "technic:common_tree_grindings"})
 	end
+end
+
+if minetest.get_modpath("technic_recipes") then
+	table.insert(elepower_grinding, {"farming:wheat 4", "farming:flour"})
+	table.insert(elepower_grinding, {"doors:door_glass",          "vessels:glass_fragments 6", 10})
+	table.insert(elepower_grinding, {"doors:door_obsidian_glass", "default:obsidian_shard 6", 10})
+	table.insert(elepower_grinding, {"xpanes:bar_flat 8",         "technic:wrought_iron_dust 3", 7})
+	table.insert(elepower_grinding, {"doors:door_steel",          "technic:wrought_iron_dust 6", 10})
+	table.insert(elepower_grinding, {"doors:trapdoor_steel",      "technic:wrought_iron_dust 4", 8})
+	if minetest.get_modpath("bonemeal") then
+		table.insert(elepower_grinding, {"bonemeal:bone", "bonemeal:bonemeal 3", 7})
+		table.insert(elepower_grinding, {"bones:bones",   "bonemeal:bonemeal 6", 10})
+	end
+else
+	table.insert(technic_grinding, {"farming:wheat", "farming:flour 2"})
 end
 
 for _,data in pairs(elepower_grinding) do
