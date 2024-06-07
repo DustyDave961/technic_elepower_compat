@@ -1,18 +1,10 @@
 --Adding groups
-minetest.override_item("elepower_dynamics:battery", {
-	groups = {battery = 1},
-})
-
 minetest.override_item("technic:battery", {
 	groups = {battery = 1},
 })
 
 minetest.override_item("technic:coal_dust", {
-	groups = {coal_dust = 1},
-})
-
-minetest.override_item("elepower_dynamics:coal_dust", {
-	groups = {coal_dust = 1},
+	groups = {dust_coal = 1},
 })
 
 minetest.override_item("technic:cast_iron_ingot", {
@@ -20,15 +12,11 @@ minetest.override_item("technic:cast_iron_ingot", {
 })
 
 minetest.override_item("elepower_dynamics:iron_ingot", {
-	groups = {iron_ingot = 1},
+	groups = {iron = 1, ingot = 1, iron_ingot = 1},
 })
 
 minetest.override_item("technic:lead_dust", {
-	groups = {lead_dust = 1},
-})
-
-minetest.override_item("elepower_dynamics:lead_dust", {
-	groups = {lead_dust = 1},
+	groups = {dust_lead = 1},
 })
 
 minetest.override_item("technic:lead_ingot", {
@@ -36,7 +24,7 @@ minetest.override_item("technic:lead_ingot", {
 })
 
 minetest.override_item("elepower_dynamics:lead_ingot", {
-	groups = {lead_ingot = 1},
+	groups = {lead = 1, ingot = 1, lead_ingot = 1},
 })
 
 minetest.override_item("technic:sawdust", {
@@ -44,7 +32,7 @@ minetest.override_item("technic:sawdust", {
 })
 
 minetest.override_item("elepower_dynamics:wood_dust", {
-	groups = {sawdust = 1},
+	groups = {dust_wood = 1, dust = 1, sawdust = 1},
 })
 
 minetest.override_item("technic:sulfur_lump", {
@@ -56,11 +44,7 @@ minetest.override_item("technic:sulfur_dust", {
 })
 
 minetest.override_item("technic:zinc_dust", {
-	groups = {zinc_dust = 1},
-})
-
-minetest.override_item("elepower_dynamics:zinc_dust", {
-	groups = {zinc_dust = 1},
+	groups = {dust_zinc = 1},
 })
 
 minetest.override_item("technic:zinc_ingot", {
@@ -68,7 +52,7 @@ minetest.override_item("technic:zinc_ingot", {
 })
 
 minetest.override_item("elepower_dynamics:zinc_ingot", {
-	groups = {zinc_ingot = 1},
+	groups = {zinc = 1, ingot = 1, zinc_ingot = 1},
 })
 
 --Batteries
@@ -208,3 +192,7 @@ clear_elepower_recipe("grind", "default:sand 4")
 clear_elepower_recipe("compress", "default:silver_sandstone")
 
 clear_elepower_recipe("grind", "default:silver_sand 4")
+
+if minetest.get_modpath("technic_recipes") then
+	clear_elepower_recipe("grind", "farming:flour 2")
+end
