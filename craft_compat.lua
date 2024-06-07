@@ -5,7 +5,7 @@ local recipes = {
 		}
 	},
 	{output = "elepower_dynamics:battery 2", recipe = {
-			{"group:zinc_dust", "elepower_dynamics:graphite_rod", "group:lead_dust"},
+			{"group:dust_zinc", "elepower_dynamics:graphite_rod", "group:dust_lead"},
 			{"elepower_dynamics:tin_plate", "default:mese_crystal_fragment", "elepower_dynamics:tin_plate"},
 			{"elepower_dynamics:tin_plate", "default:mese_crystal_fragment", "elepower_dynamics:tin_plate"},
 		}
@@ -38,7 +38,7 @@ local recipes = {
 			{"", "technic:cast_iron_ingot", ""},
 		}
 	},
-	{type = "fuel",	recipe = "group:coal_dust",	time = 50},
+	{type = "fuel",	recipe = "group:dust_coal",	time = 50},
 	{output = "elepower_dynamics:conduit 8", recipe = {
 			{"technic:lead_ingot", "technic:lead_ingot", "technic:lead_ingot"},
 			{"basic_materials:copper_wire", "basic_materials:copper_wire", "basic_materials:copper_wire"},
