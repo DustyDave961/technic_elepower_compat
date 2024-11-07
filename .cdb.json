@@ -10,8 +10,8 @@
 	"media_license": "LGPL-2.1-only",
 	"long_description": "A collaboration project with Bob64, also known as DustyBagel, to help Technic and Elepower work together. Recipes were added for Technic machines to make some items from Elepower, and for Elepower machines to make some items from Technic. A new converter developed by Bob64 connects Technic cables to Elepower conduits when enabled. This is an expanded replacement of Grinder Compatibility. All content contained within is licensed under the GNU Lesser General Public License version 2.1.",
 	"website": null,
-	"repo": "https://github.com/DumbDave961/technic_elepower_compat",
-	"issue_tracker": "https://github.com/DumbDave961/technic_elepower_compat/issues",
+	"repo": "https://github.com/DustyDave961/technic_elepower_compat",
+	"issue_tracker": "https://github.com/DustyDave961/technic_elepower_compat/issues",
 	"forums": null,
 	"video_url": "https://www.youtube.com/watch?v=TnQ-NytAK10",
 	"donate_url": null
