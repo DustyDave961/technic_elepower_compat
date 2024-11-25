@@ -100,7 +100,7 @@ local elepower_grinding = {
 	{"technic:zinc_ingot", 	                    "technic:zinc_dust"},
 }
 
-if minetest.get_modpath("moretrees") then
+if core.get_modpath("moretrees") then
 	table.insert(elepower_grinding, {"moretrees:apple_tree_trunk",   "technic:common_tree_grindings 4", 8})
 	table.insert(elepower_grinding, {"moretrees:apple_tree_planks",  "technic:common_tree_grindings"})
 	table.insert(elepower_grinding, {"moretrees:beech_trunk",        "technic:common_tree_grindings 4", 8})
@@ -124,7 +124,7 @@ if minetest.get_modpath("moretrees") then
 	table.insert(elepower_grinding, {"moretrees:willow_trunk",       "technic:common_tree_grindings 4", 8})
 	table.insert(elepower_grinding, {"moretrees:willow_planks",      "technic:common_tree_grindings"})
 	table.insert(elepower_grinding, {"moretrees:rubber_tree_planks", "technic:rubber_tree_grindings"})
-	if minetest.get_modpath("dye") then
+	if core.get_modpath("dye") then
 		table.insert(elepower_grinding, {"default:acacia_tree", "technic:acacia_grindings 4", 8})
 		table.insert(elepower_grinding, {"default:acacia_wood", "technic:acacia_grindings"})
 	else
@@ -133,14 +133,14 @@ if minetest.get_modpath("moretrees") then
 	end
 end
 
-if minetest.get_modpath("technic_recipes") then
+if core.get_modpath("technic_recipes") then
 	table.insert(elepower_grinding, {"farming:wheat 4", "farming:flour"})
 	table.insert(elepower_grinding, {"doors:door_glass",          "vessels:glass_fragments 6", 10})
 	table.insert(elepower_grinding, {"doors:door_obsidian_glass", "default:obsidian_shard 6", 10})
 	table.insert(elepower_grinding, {"xpanes:bar_flat 8",         "technic:wrought_iron_dust 3", 7})
 	table.insert(elepower_grinding, {"doors:door_steel",          "technic:wrought_iron_dust 6", 10})
 	table.insert(elepower_grinding, {"doors:trapdoor_steel",      "technic:wrought_iron_dust 4", 8})
-	if minetest.get_modpath("bonemeal") then
+	if core.get_modpath("bonemeal") then
 		table.insert(elepower_grinding, {"bonemeal:bone", "bonemeal:bonemeal 3", 7})
 		table.insert(elepower_grinding, {"bones:bones",   "bonemeal:bonemeal 6", 10})
 	end
@@ -167,7 +167,7 @@ local register_grinding_recipes = {
 	{"technic:zinc_block", 	            "technic:zinc_dust 9"},
 }
 
-if minetest.get_modpath("elepower_nuclear") then
+if core.get_modpath("elepower_nuclear") then
 	table.insert(register_grinding_recipes, {"elepower_nuclear:nuclear_waste", "elepower_nuclear:depleted_uranium_dust 2", 6, 3})
 	table.insert(register_grinding_recipes, {"elepower_nuclear:uranium_lump", "technic:uranium_dust 2", 6, 3})
 end
