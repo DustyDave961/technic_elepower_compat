@@ -153,7 +153,7 @@ local function is_connected_to_elepower_user(pos)
 
     -- Check each neighboring node
     for _, neighbor in ipairs(neighbors) do
-        local node = minetest.get_node(neighbor)
+        local node = core.get_node(neighbor)
         if is_elepower_user(node.name) then
             return true
         end
@@ -201,7 +201,7 @@ local function is_connected_to_elepower_producer(pos)
 
     -- Check each neighboring node
     for _, neighbor in ipairs(neighbors) do
-        local node = minetest.get_node(neighbor)
+        local node = core.get_node(neighbor)
         if is_elepower_producer(node.name) then
             return true
         end
@@ -211,7 +211,7 @@ local function is_connected_to_elepower_producer(pos)
     return false
 end
 
-minetest.register_on_player_receive_fields(function(player, formname, fields)
+core.register_on_player_receive_fields(function(player, formname, fields)
     if formname ~= "technic_elepower_compat:power_converter" then
         -- If the formname does not match, do nothing
         return
@@ -221,31 +221,31 @@ minetest.register_on_player_receive_fields(function(player, formname, fields)
     local pos = node_positions[player:get_player_name()]
 
     -- Get the metadata of the node
-    local meta = minetest.get_meta(pos)
+    local meta = core.get_meta(pos)
 
     -- Check which button was pressed and update the metadata accordingly
     if fields.toggle_direction then
         local current_direction = meta:get_string("conversion_direction")
         if current_direction == "technic_to_elepower" then
             meta:set_string("conversion_direction", "elepower_to_technic")
-            minetest.chat_send_player(player:get_player_name(), "Power converter conversion direction set to elepower_to_technic.")
+            core.chat_send_player(player:get_player_name(), "Power converter conversion direction set to elepower_to_technic.")
         else
             meta:set_string("conversion_direction", "technic_to_elepower")
-            minetest.chat_send_player(player:get_player_name(), "Power converter conversion direction set to technic_to_elepower.")
+            core.chat_send_player(player:get_player_name(), "Power converter conversion direction set to technic_to_elepower.")
         end
     elseif fields.toggle_on_off then
         local current_state = meta:get_string("state")
         if current_state == "on" then
             meta:set_string("state", "off")
-            minetest.chat_send_player(player:get_player_name(), "Power converter was turned off.")
+            core.chat_send_player(player:get_player_name(), "Power converter was turned off.")
         else
             meta:set_string("state", "on")
-            minetest.chat_send_player(player:get_player_name(), "Power converter was turned on.")
+            core.chat_send_player(player:get_player_name(), "Power converter was turned on.")
         end
     elseif fields.set_en_input then
         meta:set_string("en_input", fields.en_input)
         -- Send a chat message to the player
-        minetest.chat_send_player(player:get_player_name(), "Power converter Energy Input set to " .. fields.en_input .. ".")
+        core.chat_send_player(player:get_player_name(), "Power converter Energy Input set to " .. fields.en_input .. ".")
     end
 end)
 
@@ -259,7 +259,7 @@ end
 local function run_conversion_logic(pos)
 	is_converting = true
 	
-			local meta = minetest.get_meta(pos)
+			local meta = core.get_meta(pos)
 		local state = meta:get_string("state")
 		local direction = meta:get_string("conversion_direction")
 		local en_input_str = meta:get_string("en_input")
@@ -403,7 +403,7 @@ ele.register_machine("technic_elepower_compat:power_converter", {
         node_positions[clicker:get_player_name()] = pos
 
         -- Get the metadata of the node
-        local meta = minetest.get_meta(pos)
+        local meta = core.get_meta(pos)
 
         -- Create the formspec
         local formspec = "size[5,4]" ..
@@ -413,18 +413,18 @@ ele.register_machine("technic_elepower_compat:power_converter", {
             "button[0.5,3.15;4,1;set_en_input;Set EU Input]"
 
         -- Show the formspec to the player
-        minetest.show_formspec(clicker:get_player_name(), "technic_elepower_compat:power_converter", formspec)
+        core.show_formspec(clicker:get_player_name(), "technic_elepower_compat:power_converter", formspec)
     end,
     on_construct = function(pos)
 		is_converting = false
-        local meta = minetest.get_meta(pos)
+        local meta = core.get_meta(pos)
         -- initialize en_input, state, and conversion_direction to default values
         meta:set_string("en_input", "0")
         meta:set_string("state", "off")
         meta:set_string("conversion_direction", "technic_to_elepower")
         -- start the timer
-        minetest.get_node_timer(pos):start(1.0)
-	    meta:set_string("pos", minetest.pos_to_string(pos))
+        core.get_node_timer(pos):start(1.0)
+	    meta:set_string("pos", core.pos_to_string(pos))
     end,
 
     ele_capacity = 8000,
@@ -439,7 +439,7 @@ ele.register_machine("technic_elepower_compat:power_converter", {
     end,
 	
 	on_timer = function(pos, elapsed)
-		local meta = minetest.get_meta(pos)
+		local meta = core.get_meta(pos)
 		local state = meta:get_string("state")
 		local direction = meta:get_string("conversion_direction")
 		local en_input_str = meta:get_string("en_input")
@@ -497,14 +497,14 @@ ele.register_machine("technic_elepower_compat:power_converter", {
 			return false
 		end
 		
-		local timer = minetest.get_node_timer(pos)
+		local timer = core.get_node_timer(pos)
         timer:start(1.0)
 	end,
 })
 
 technic.register_machine("LV", "technic_elepower_compat:power_converter", technic.producer_receiver)
 
-minetest.register_craft({
+core.register_craft({
     output = "technic_elepower_compat:power_converter",
     recipe = {
         {"group:battery", "elepower_dynamics:conduit", "group:battery"},
