@@ -235,31 +235,31 @@ local recipes = {
 }
 
 for _, data in pairs(recipes) do
-	minetest.register_craft({type = data.type or "shaped", output = data.output, recipe = data.recipe, replacements = data.replacements, cooktime = data.time, burntime = data.time})
+	core.register_craft({type = data.type or "shaped", output = data.output, recipe = data.recipe, replacements = data.replacements, cooktime = data.time, burntime = data.time})
 end
 
 --Carbon fiber armor
-if minetest.get_modpath ("elepower_tools") then
-	minetest.register_craft({output = "elepower_tools:boots_carbon", recipe = {
+if core.get_modpath ("elepower_tools") then
+	core.register_craft({output = "elepower_tools:boots_carbon", recipe = {
 			{"technic:carbon_cloth", "", "technic:carbon_cloth"},
 			{"technic:carbon_cloth", "", "technic:carbon_cloth"},
 		}
 	})
 	
-	minetest.register_craft({output = "elepower_tools:chestplate_carbon", recipe = {
+	core.register_craft({output = "elepower_tools:chestplate_carbon", recipe = {
 			{"technic:carbon_cloth", "", "technic:carbon_cloth"},
 			{"technic:carbon_cloth", "technic:carbon_cloth", "technic:carbon_cloth"},
 			{"technic:carbon_cloth", "technic:carbon_cloth", "technic:carbon_cloth"},
 		}
 	})
 	
-	minetest.register_craft({output = "elepower_tools:helmet_carbon", recipe = {
+	core.register_craft({output = "elepower_tools:helmet_carbon", recipe = {
 			{"technic:carbon_cloth", "technic:carbon_cloth", "technic:carbon_cloth"},
 			{"technic:carbon_cloth", "", "technic:carbon_cloth"},
 		}
 	})
 	
-	minetest.register_craft({ output = "elepower_tools:leggings_carbon", recipe = {
+	core.register_craft({ output = "elepower_tools:leggings_carbon", recipe = {
 			{"technic:carbon_cloth", "technic:carbon_cloth", "technic:carbon_cloth"},
 			{"technic:carbon_cloth", "", "technic:carbon_cloth"},
 			{"technic:carbon_cloth", "", "technic:carbon_cloth"},
@@ -271,15 +271,15 @@ end
 technic.register_extractor_recipe({input = {"elepower_dynamics:coal_dust"},	output = "dye:black 2",})
 
 --Machine block and nuclear waste
-if minetest.get_modpath("elepower_nuclear") then
-	minetest.register_craft({output = "elepower_nuclear:machine_block", recipe = {
+if core.get_modpath("elepower_nuclear") then
+	core.register_craft({output = "elepower_nuclear:machine_block", recipe = {
 			{"elepower_dynamics:induction_coil_advanced", "elepower_dynamics:graphite_ingot", "elepower_dynamics:induction_coil_advanced"},
 			{"elepower_dynamics:graphite_ingot", "technic:lead_block", "elepower_dynamics:graphite_ingot"},
 			{"technic:lead_block", "elepower_dynamics:graphite_ingot", "technic:lead_block"},
 		}
 	})
 	
-	minetest.register_craft({output = "elepower_nuclear:nuclear_waste 5", recipe = {
+	core.register_craft({output = "elepower_nuclear:nuclear_waste 5", recipe = {
 			{"elepower_nuclear:fuel_rod_depleted"}
 		},
 		replacements = {
@@ -289,8 +289,8 @@ if minetest.get_modpath("elepower_nuclear") then
 end
 
 --Solar panel
-if minetest.get_modpath("mesecons_materials") then
-	minetest.register_craft({output = "technic:solar_panel", recipe = {
+if core.get_modpath("mesecons_materials") then
+	core.register_craft({output = "technic:solar_panel", recipe = {
 			{"elepower_dynamics:silicon_wafer_doped", "elepower_dynamics:silicon_wafer_doped", "elepower_dynamics:silicon_wafer_doped"},
 			{"basic_materials:silver_wire", "technic:lv_cable", "mesecons_materials:glue"},
 		},
@@ -299,7 +299,7 @@ if minetest.get_modpath("mesecons_materials") then
 		}
 	})
 else
-	minetest.register_craft({output = "technic:solar_panel", recipe = {
+	core.register_craft({output = "technic:solar_panel", recipe = {
 			{"elepower_dynamics:silicon_wafer_doped", "elepower_dynamics:silicon_wafer_doped", "elepower_dynamics:silicon_wafer_doped"},
 			{"basic_materials:silver_wire", "technic:lv_cable", "technic:raw_latex"},
 		},
