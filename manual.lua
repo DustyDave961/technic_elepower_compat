@@ -1,7 +1,7 @@
-minetest.register_on_newplayer(function(player)
+core.register_on_newplayer(function(player)
 	local inv = player:get_inventory()
 	local stack = ItemStack("default:book_written")
-	stack:set_metadata(minetest.serialize({
+	stack:set_metadata(core.serialize({
 		title = "Technic Elepower Compat Manual",
 		text = [[Overview:
 
