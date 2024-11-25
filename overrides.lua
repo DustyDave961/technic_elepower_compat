@@ -1,100 +1,100 @@
 --Adding groups
-minetest.override_item("technic:battery", {
+core.override_item("technic:battery", {
 	groups = {battery = 1},
 })
 
-minetest.override_item("technic:coal_dust", {
+core.override_item("technic:coal_dust", {
 	groups = {dust_coal = 1},
 })
 
-minetest.override_item("technic:cast_iron_ingot", {
+core.override_item("technic:cast_iron_ingot", {
 	groups = {iron_ingot = 1},
 })
 
-minetest.override_item("elepower_dynamics:iron_ingot", {
+core.override_item("elepower_dynamics:iron_ingot", {
 	groups = {iron = 1, ingot = 1, iron_ingot = 1},
 })
 
-minetest.override_item("technic:lead_dust", {
+core.override_item("technic:lead_dust", {
 	groups = {dust_lead = 1},
 })
 
-minetest.override_item("technic:lead_ingot", {
+core.override_item("technic:lead_ingot", {
 	groups = {lead_ingot = 1},
 })
 
-minetest.override_item("elepower_dynamics:lead_ingot", {
+core.override_item("elepower_dynamics:lead_ingot", {
 	groups = {lead = 1, ingot = 1, lead_ingot = 1},
 })
 
-minetest.override_item("technic:sawdust", {
+core.override_item("technic:sawdust", {
 	groups = {sawdust = 1},
 })
 
-minetest.override_item("elepower_dynamics:wood_dust", {
+core.override_item("elepower_dynamics:wood_dust", {
 	groups = {dust_wood = 1, dust = 1, sawdust = 1},
 })
 
-minetest.override_item("technic:sulfur_lump", {
+core.override_item("technic:sulfur_lump", {
 	groups = {sulfur = 1},
 })
 
-minetest.override_item("technic:sulfur_dust", {
+core.override_item("technic:sulfur_dust", {
 	groups = {sulfur = 1},
 })
 
-minetest.override_item("technic:zinc_dust", {
+core.override_item("technic:zinc_dust", {
 	groups = {dust_zinc = 1},
 })
 
-minetest.override_item("technic:zinc_ingot", {
+core.override_item("technic:zinc_ingot", {
 	groups = {zinc_ingot = 1},
 })
 
-minetest.override_item("elepower_dynamics:zinc_ingot", {
+core.override_item("elepower_dynamics:zinc_ingot", {
 	groups = {zinc = 1, ingot = 1, zinc_ingot = 1},
 })
 
 --Batteries
-minetest.clear_craft({
+core.clear_craft({
 	output = "elepower_dynamics:battery",
 })
 
-minetest.clear_craft({
+core.clear_craft({
 	output = "technic:battery",
 })
 
 --Coal dust
-minetest.clear_craft({
+core.clear_craft({
 	type = "fuel",
 	recipe = "technic:coal_dust",
 	burntime = 50,
 })
 
 --iron lump
-minetest.clear_craft({
+core.clear_craft({
 	type   = "cooking",
 	recipe = "default:iron_lump",
 })
 
 --Lead strip
-minetest.clear_craft({
+core.clear_craft({
 	output = "basic_materials:lead_strip",
 })
 
 --Sawdust
-minetest.clear_craft({
+core.clear_craft({
 	type = "fuel",
 	recipe = "technic:sawdust",
 	burntime = 6
 })
 
 --Wound coils
-minetest.clear_craft({
+core.clear_craft({
 	output = "elepower_dynamics:wound_copper_coil",
 })
 
-minetest.clear_craft({
+core.clear_craft({
 	output = "elepower_dynamics:wound_silver_coil",
 })
 
@@ -102,7 +102,7 @@ minetest.clear_craft({
 (It may only work for the first recipe with that input name that
 it finds, so we may need to add a better function that removes all the inputs instead.)]]
 function clear_technic_recipe(recipe_type, recipe_input_name)
-	minetest.after(0.1, function() --This has to be called with a delay for the table to load in.
+	core.after(0.1, function() --This has to be called with a delay for the table to load in.
 	    technic.recipes[recipe_type]["recipes"][recipe_input_name] = nil
 	end)
 end
@@ -116,7 +116,7 @@ available recipe types:
     "freezing"
     "separating" This one is for the centrifuge.
     "compressing"
-    "cooking" This one is for the cooking recipes for the electric furnace but you should just be able to use the minetest.clear_craft to do it too.
+    "cooking" This one is for the cooking recipes for the electric furnace but you should just be able to use the core.clear_craft to do it too.
 The secound parameter is the name of the recipe you want to override. This is the item name of the item you
 put into the machine i.e "default:silver_sandstone" which will clear the recipe that uses the silver sandstone as an input.
 Example:
@@ -134,7 +134,7 @@ given table name and not just the first one it finds.]]
 
 --TO DO:This function needs to be tested.
 function clear_technic_recipe_all_inputs(recipe_type, recipe_input_name)
-    minetest.after(0.1, function()
+    core.after(0.1, function()
         local recipe_table = technic.recipes[recipe_type]["recipes"]
         for key, recipe in pairs(recipe_table) do
             if recipe.input == recipe_input_name then
@@ -146,7 +146,7 @@ end
 
 --Ovverrides elepower machine recipes
 function clear_elepower_recipe(craft_type, output_to_remove)
-    minetest.after(0.5, function() --TO DO:Find out if this function will still work if we set it to run at 0.1 instead of 0.5 to prevent unwanted recipes from being used when a player first joins a world.
+    core.after(0.5, function() --TO DO:Find out if this function will still work if we set it to run at 0.1 instead of 0.5 to prevent unwanted recipes from being used when a player first joins a world.
         local craft_table = elepm.craft[craft_type]
         local output_to_remove_itemstack = ItemStack(output_to_remove)
         for i = #craft_table, 1, -1 do
@@ -167,7 +167,7 @@ This function accepts two parameters, the recipe type and the output of the reci
 Recipe types:
     "compress"
     "grind" The grinding recipe for the depleted fuel rod will not work with this function because it has multiple outputs.
-    "cooking" This one is for the cooking recipes for the electric furnace, but you should just be able to use the minetest.clear_craft to do it too.
+    "cooking" This one is for the cooking recipes for the electric furnace, but you should just be able to use the core.clear_craft to do it too.
     "can"
     "solder"
     "alloy"
@@ -193,6 +193,6 @@ clear_elepower_recipe("compress", "default:silver_sandstone")
 
 clear_elepower_recipe("grind", "default:silver_sand 4")
 
-if minetest.get_modpath("technic_recipes") then
+if core.get_modpath("technic_recipes") then
 	clear_elepower_recipe("grind", "farming:flour 2")
 end
