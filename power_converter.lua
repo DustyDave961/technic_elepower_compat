@@ -225,25 +225,64 @@ core.register_on_player_receive_fields(function(player, formname, fields)
 
     -- Check which button was pressed and update the metadata accordingly
     if fields.toggle_direction then
+		if meta:get_string("state") == "on" then
+			core.chat_send_player(player:get_player_name(), "You must turn off the power converter before changing the conversion direction.")
+			return
+		end
         local current_direction = meta:get_string("conversion_direction")
         if current_direction == "technic_to_elepower" then
             meta:set_string("conversion_direction", "elepower_to_technic")
+			meta:set_int("inrush", 1000)
+			meta:set_int("output", 0)
             core.chat_send_player(player:get_player_name(), "Power converter conversion direction set to elepower_to_technic.")
         else
             meta:set_string("conversion_direction", "technic_to_elepower")
+
             core.chat_send_player(player:get_player_name(), "Power converter conversion direction set to technic_to_elepower.")
         end
     elseif fields.toggle_on_off then
         local current_state = meta:get_string("state")
         if current_state == "on" then
-            meta:set_string("state", "off")
+			meta:set_int("LV_EU_supply", 0)
+			meta:set_int("LV_EU_demand", 0)
+			meta:set_int("usage", 0)
+			meta:set_int("inrush", 0)
+			meta:set_int("output", 0)
+			meta:set_string("state", "off")
             core.chat_send_player(player:get_player_name(), "Power converter was turned off.")
         else
-            meta:set_string("state", "on")
-            core.chat_send_player(player:get_player_name(), "Power converter was turned on.")
+			local direction = meta:get_string("conversion_direction")
+			local en_input = tonumber(meta:get_string("en_input"))
+			if en_input == nil or en_input < 0 then
+				en_input = 0
+			end
+			if direction == "technic_to_elepower" then
+				meta:set_int("inrush", 0)
+				meta:set_int("output", 1000)
+				meta:set_int("LV_EU_demand", en_input)
+				meta:set_int("LV_EU_supply", 0)
+				meta:set_int("usage", en_input)
+			elseif direction == "elepower_to_technic" then
+				meta:set_int("inrush", 1000)
+				meta:set_int("output", 0)
+				meta:set_int("LV_EU_demand", 0)
+				meta:set_int("usage", en_input)
+            end
+			meta:set_string("state", "on")
+			core.chat_send_player(player:get_player_name(), "Power converter was turned on.")
         end
     elseif fields.set_en_input then
-        meta:set_string("en_input", fields.en_input)
+		if fields.en_input == nil or fields.en_input == "" then
+			fields.en_input = "0"
+        	meta:set_string("en_input", "0")
+		else
+			local input_number = math.round(tonumber(fields.en_input))
+			if input_number == nil then
+				input_number = 0
+			end
+			fields.en_input = tostring(input_number)
+			meta:set_string("en_input", fields.en_input)
+		end
         -- Send a chat message to the player
         core.chat_send_player(player:get_player_name(), "Power converter Energy Input set to " .. fields.en_input .. ".")
     end
@@ -258,139 +297,98 @@ end
 
 local function run_conversion_logic(pos)
 	is_converting = true
-	
-			local meta = core.get_meta(pos)
-		local state = meta:get_string("state")
-		local direction = meta:get_string("conversion_direction")
-		local en_input_str = meta:get_string("en_input")
-		local en_input = tonumber(en_input_str)
-		local eu_input = meta:get_int("LV_EU_input")
-		local capacity   = ele.helpers.get_node_property(meta, pos, "capacity")
-		local inrush     = ele.helpers.get_node_property(meta, pos, "inrush")
-		local storage    = meta:get_int("storage")
-		local generation = ele.helpers.get_node_property(meta, pos, "usage")
-		local is_enabled = state == "on"
-		local pow_buffer = {capacity = capacity, storage = storage, usage = 0}
-		local status = "Idle"
 
-		local function set_infotext()
-			meta:set_string("infotext", ("%s %s\n%s"):format("Power Converter", status, ele.capacity_text(capacity, pow_buffer.storage)))
-		end
-		
-		if en_input == nil or en_input < 0 then
-			en_input = 0
-			meta:set_string("en_input", "0")
-		end
+	local meta = core.get_meta(pos)
+	local state = meta:get_string("state")
+	local direction = meta:get_string("conversion_direction")
+	local en_input_str = meta:get_string("en_input")
+	local max_input = math.round(tonumber(en_input_str))
+	local eu_input = meta:get_int("LV_EU_input")
+	local capacity = ele.helpers.get_node_property(meta, pos, "capacity")
+	local storage = ele.helpers.get_node_property(meta, pos, "storage")
+	local status = "undefined"
 
-		-- this is commented because it is a conversion limiter and I have it off right no
-		--[[if en_input > 1000  then
-			en_input = 1000
-			meta:set_string("en_input", "1000")
-		end ]]
-	
-		if is_enabled then
-			pow_buffer.usage = generation
-			pow_buffer.storage = pow_buffer.storage + pow_buffer.usage
-			if pow_buffer.storage > capacity then
-				pow_buffer.storage = capacity
-			end
-			status = "Active 0"
-		end
-
-		meta:set_string("formspec", get_formspec(pow_buffer))
-		meta:set_string("infotext", ("%s %s\n%s"):format("Test Node", status, ele.capacity_text(capacity, pow_buffer.storage)))
-		meta:set_int("storage", pow_buffer.storage)
-		
-		meta:set_string("infotext", ("%s %s\n%s"):format("Power Converter", status, ele.capacity_text(capacity, pow_buffer.storage)))
-	
-
-	if direction == "elepower_to_technic" then
-		if is_connected_to_elepower_producer(pos) then
-			if storage >=  2 * en_input and storage <= 10000 - en_input then
-				meta:set_int("LV_EU_demand", 0)
-				meta:set_int("output", 0) 
-				meta:set_int("inrush", en_input)
-				meta:set_int("usage", 1/2 * -en_input)
-				meta:set_int("LV_EU_supply", en_input)
-				status = "Active 1"
-				set_infotext()
-			elseif storage >= 10000 - en_input then
-				meta:set_int("LV_EU_demand", 0)
-				meta:set_int("LV_EU_supply", 0)
-				meta:set_int("inrush", 0)
-				meta:set_int("output", 0) 
-				meta:set_int("usage", -en_input)
-				status = "Active 2"
-				set_infotext()
-			elseif storage < 2 * en_input then
-				meta:set_int("LV_EU_supply", 0)
-				meta:set_int("usage", 0)
-				meta:set_int("LV_EU_demand", 0)
-				meta:set_int("output", 0)
-				meta:set_int("inrush", en_input)
-				mtatus = "Unpowered 3"
-				set_infotext()
-			end
-		elseif is_connected_to_elepower_producer == false and is_converting == false then
-			-- Storage hasn't changed, so we're not connected to an Elepower node
-			meta:set_int("output", 0)
-			meta:set_int("inrush", 0)
-			meta:set_int("usage", 0)
-			meta:set_int("LV_EU_supply", 0)
-			meta:set_int("LV_EU_demand", 0)
-			status = "has no elepower network 4"
-			set_infotext()
-		end
-	elseif direction == "technic_to_elepower" then
-		if is_connected_to_elepower_user(pos) then
-			if storage >= 2 * en_input and storage <= 10000 - en_input then
-				meta:set_int("LV_EU_supply", 0)
-				meta:set_int("inrush", 0)
-				meta:set_int("LV_EU_demand", en_input)
-				meta:set_int("usage", 0)
-				meta:set_int("output", en_input)
-				status = "Active 5"
-				set_infotext()
-			elseif storage >= 10000 - en_input then
-				meta:set_int("usage", 0)
-				meta:set_int("LV_EU_demand", 0)
-				meta:set_int("LV_EU_supply", 0)
-				meta:set_int("inrush", 0)
-				meta:set_int("output", en_input)
-				status = "Active 6"
-				set_infotext()
-			elseif eu_input >= en_input then
-				meta:set_int("LV_EU_supply", 0)
-				meta:set_int("LV_EU_demand", en_input)
-				meta:set_int("usage", en_input)
-				meta:set_int("inrush", 0)
-				meta:set_int("output", en_input)
-				status = "Active 7"
-				set_infotext()
-			elseif eu_input < en_input and storage < en_input then
-				meta:set_int("output", 0)
-				meta:set_int("inrush", 0)
-				meta:set_int("usage", 0)
-				meta:set_int("LV_EU_supply", 0)
-				meta:set_int("LV_EU_demand", en_input)
-				status = "Unpowered 8"
-				set_infotext()
-			end
-		elseif is_connected_to_elepower_user == false and is_converting == false then
-			meta:set_int("output", 0)
-			meta:set_int("inrush", 0)
-			meta:set_int("usage", 0)
-			meta:set_int("LV_EU_supply", 0)
-			meta:set_int("LV_EU_demand", 0)
-			status = "has no elepower network 9"
-			set_infotext()
-		end
-		if meta:get_int("LV_EU_demand") == 0 then
-			meta:set_int("output", 0)
-			meta:set_int("inrush", 0)
-			meta:set_int("usage", 0)
-		end
+	local function set_infotext(pow_buffer)
+		meta:set_string("infotext",
+			("%s %s\n%s"):format("Power Converter", status,
+				ele.capacity_text(pow_buffer.capacity,
+					pow_buffer.storage
+				)
+			)
+		)
 	end
+
+	-- IMPORTANT NOTES
+	-- output appears to be like inrush but should be called outrush.
+
+	minetest.chat_send_all(
+		"Power Converter: LV Input = " .. (eu_input or "nil")
+		.. ", storage = " .. storage ..
+		", LV_DEMAND = " .. meta:get_int("LV_EU_demand") .. " LV_SUPPLY = " ..
+		meta:get_int("LV_EU_supply") .. " output = " .. meta:get_int("output") ..
+		" inrush = " .. meta:get_int("inrush") .. " usage = " .. meta:get_int("usage")
+		.. ", max_input = " .. max_input
+	)
+
+	--[[if state ~= "on" then
+		--meta:set_int("output", 0)
+		--meta:set_int("inrush", 0)
+		meta:set_int("usage", 0)
+		meta:set_int("LV_EU_supply", 0)
+		meta:set_int("LV_EU_demand", 0)
+		status = "Off 1"
+		set_infotext()
+		is_converting = false
+		meta:set_string("formspec", get_formspec(pow_buffer))
+		return
+	end]]
+
+	-- ALWAYS USE AS INTEGERS PLEASE!!!
+	-- cap is one less then the demand so we can use > instead of >=
+	local cap = max_input - 1
+	local dmd = max_input -- Demand
+
+	--TODO: Impment energy debit to keep track of correct
+	--      energy output and input.
+
+	-- Set up the power buffer.
+	local pow_buffer = {}
+	pow_buffer.capacity = capacity
+	pow_buffer.storage = storage
+	pow_buffer.usage = ele.helpers.get_node_property(meta, pos, "usage")
+	if direction == "technic_to_elepower" then
+		pow_buffer.en_input = meta:get_int("LV_EU_input")
+		if pow_buffer.en_input > cap then
+			pow_buffer.storage = pow_buffer.storage + dmd
+			if pow_buffer.storage < pow_buffer.capacity then
+				-- TODO: May cuase slight power loss in this case.
+				meta:set_int("storage", pow_buffer.storage)
+			else
+				meta:set_int("storage", pow_buffer.capacity)
+			end
+			status = "Active 2"
+		else
+			status = "Unpowered 3"			
+		end
+	elseif direction == "elepower_to_technic" then
+		meta:set_int("usage", dmd)
+		pow_buffer.en_input = ele.helpers.get_node_property(meta, pos, "usage")
+		if pow_buffer.storage > cap then
+			pow_buffer.storage = pow_buffer.storage - dmd
+			meta:set_int("LV_EU_supply", dmd)
+			meta:set_int("storage", pow_buffer.storage)
+			status = "Active 4"
+		else
+			meta:set_int("LV_EU_supply", 0)
+			status = "Unpowered 5"
+		end
+	else
+		minetest.debug("Invalid conversion direction: " .. direction)
+		status = "Invalid Direction"
+	end
+
+	set_infotext(pow_buffer)
+	meta:set_string("formspec", get_formspec(pow_buffer))
 	is_converting = false
 end
 
@@ -419,9 +417,11 @@ ele.register_machine("technic_elepower_compat:power_converter", {
 		is_converting = false
         local meta = core.get_meta(pos)
         -- initialize en_input, state, and conversion_direction to default values
-        meta:set_string("en_input", "0")
+        meta:set_string("en_input", "1000")
         meta:set_string("state", "off")
         meta:set_string("conversion_direction", "technic_to_elepower")
+		meta:set_int("inrush", 0)
+		meta:set_int("output", 1000)
         -- start the timer
         core.get_node_timer(pos):start(1.0)
 	    meta:set_string("pos", core.pos_to_string(pos))
@@ -430,7 +430,7 @@ ele.register_machine("technic_elepower_compat:power_converter", {
     ele_capacity = 8000,
     ele_usage = 0,
     ele_inrush = 0,
-    ele_output = 0,
+    ele_output = 1000,
     connect_sides = {"right", "left", "back", "front", "bottom"},
     sounds = default.node_sound_metal_defaults(),
 	
@@ -468,33 +468,40 @@ ele.register_machine("technic_elepower_compat:power_converter", {
 			meta:set_string("en_input", "1000")
 		end ]]
 	
-		if is_enabled then
-			pow_buffer.usage = generation
-			pow_buffer.storage = pow_buffer.storage + pow_buffer.usage
-			if pow_buffer.storage > capacity then
-				pow_buffer.storage = capacity
-			end
-			status = "Active 0"
+		--if is_enabled then
+		--	pow_buffer.usage = generation
+		--	pow_buffer.storage = pow_buffer.storage + pow_buffer.usage
+		--	if pow_buffer.storage > capacity then
+		--		pow_buffer.storage = capacity
+		--	end
+		--	status = "Active 0"
+		--end
+
+		--meta:set_string("formspec", get_formspec(pow_buffer))
+		--meta:set_string("infotext", ("%s %s\n%s"):format("Test Node", status, ele.capacity_text(capacity, pow_buffer.storage)))
+		--meta:set_int("storage", pow_buffer.storage)
+		
+		--meta:set_string("infotext", ("%s %s\n%s"):format("Power Converter", status, ele.capacity_text(capacity, pow_buffer.storage)))
+		
+		if is_converting == true then
+			minetest.chat_send_all("Conversion logic took too long.")
+			return false
 		end
 
-		meta:set_string("formspec", get_formspec(pow_buffer))
-		meta:set_string("infotext", ("%s %s\n%s"):format("Test Node", status, ele.capacity_text(capacity, pow_buffer.storage)))
-		meta:set_int("storage", pow_buffer.storage)
-		
-		meta:set_string("infotext", ("%s %s\n%s"):format("Power Converter", status, ele.capacity_text(capacity, pow_buffer.storage)))
-	
 		if state == "on" and is_converting == false then
 			run_conversion_logic(pos)
 		elseif state == "off" and is_converting == false then
-			meta:set_int("output", 0)
-			meta:set_int("inrush", 0)
 			meta:set_int("usage", 0)
 			meta:set_int("LV_EU_supply", 0)
 			meta:set_int("LV_EU_demand", 0)
 			status = "Off 10"
 			set_infotext()
-		elseif is_converting == true then
-			return false
+		else
+			state = "off"
+			meta:set_int("usage", 0)
+			meta:set_int("LV_EU_demand", 0)
+			status = "off 3"
+			set_infotext()
 		end
 		
 		local timer = core.get_node_timer(pos)
